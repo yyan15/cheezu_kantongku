@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ═══════════════════════════════════ -->
+    <!--         PRIMARY TEAL PALETTE       -->
+    <!-- ═══════════════════════════════════ -->
+    <color name="teal_primary">#0D9488</color>
+    <color name="teal_dark">#0F766E</color>
+    <color name="teal_light">#CCFBF1</color>
+    <color name="teal_extra_light">#F0FDFA</color>
+
+    <!-- ═══════════════════════════════════ -->
+    <!--         BACKGROUND & SURFACE       -->
+    <!-- ═══════════════════════════════════ -->
+    <color name="background">#F8FAFB</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_secondary">#F1F5F9</color>
+
+    <!-- ═══════════════════════════════════ -->
+    <!--              TEXT COLORS           -->
+    <!-- ═══════════════════════════════════ -->
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#64748B</color>
+    <color name="text_hint">#94A3B8</color>
+
+    <!-- ═══════════════════════════════════ -->
+    <!--         INCOME & EXPENSE           -->
+    <!-- ═══════════════════════════════════ -->
+    <color name="income_green">#10B981</color>
+    <color name="income_green_bg">#DCFCE7</color>
+    <color name="expense_red">#EF4444</color>
+    <color name="expense_red_bg">#FEE2E2</color>
+
+    <!-- ═══════════════════════════════════ -->
+    <!--       BUDGET WARNING COLORS        -->
+    <!-- ═══════════════════════════════════ -->
+    <color name="budget_safe">#0D9488</color>       <!-- 0–79% -->
+    <color name="budget_warning">#F59E0B</color>    <!-- 80–99% -->
+    <color name="budget_danger">#EF4444</color>     <!-- 100%+  -->
+
+    <!-- ═══════════════════════════════════ -->
+    <!--         CATEGORY ICON BG           -->
+    <!-- ═══════════════════════════════════ -->
+    <color name="icon_bg_makan">#FEF3C7</color>
+    <color name="icon_bg_transport">#E0F2FE</color>
+    <color name="icon_bg_belanja">#F3E8FF</color>
+    <color name="icon_bg_hiburan">#FCE7F3</color>
+    <color name="icon_bg_pemasukan">#CCFBF1</color>
+    <color name="icon_bg_lainnya">#F1F5F9</color>
+
+    <!-- ═══════════════════════════════════ -->
+    <!--         CATEGORY ICON COLOR        -->
+    <!-- ═══════════════════════════════════ -->
+    <color name="icon_color_makan">#D97706</color>
+    <color name="icon_color_transport">#0284C7</color>
+    <color name="icon_color_belanja">#7C3AED</color>
+    <color name="icon_color_hiburan">#DB2777</color>
+    <color name="icon_color_pemasukan">#0D9488</color>
+    <color name="icon_color_lainnya">#64748B</color>
+
+    <!-- ═══════════════════════════════════ -->
+    <!--              DIVIDER               -->
+    <!-- ═══════════════════════════════════ -->
+    <color name="divider">#E2E8F0</color>
+
+    <!-- ═══════════════════════════════════ -->
+    <!--         BOTTOM NAV                 -->
+    <!-- ═══════════════════════════════════ -->
+    <color name="nav_active">#0D9488</color>
+    <color name="nav_inactive">#94A3B8</color>
+
+</resources>
