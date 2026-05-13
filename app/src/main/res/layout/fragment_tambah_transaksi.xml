@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- TOOLBAR -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:paddingTop="48dp">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_circle_surface"
+                android:src="@drawable/ic_arrow_left"
+                android:contentDescription="Kembali" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tambah Transaksi"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginStart="12dp" />
+        </LinearLayout>
+
+        <!-- TOGGLE TIPE -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btn_pengeluaran"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:text="Pengeluaran"
+                android:textSize="13sp"
+                android:textColor="@android:color/white"
+                android:backgroundTint="@color/teal_primary"
+                app:cornerRadius="99dp" />
+
+            <Button
+                android:id="@+id/btn_pemasukan"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:text="Pemasukan"
+                android:textSize="13sp"
+                android:textColor="@color/text_secondary"
+                android:backgroundTint="@color/surface_secondary"
+                app:cornerRadius="99dp" />
+        </LinearLayout>
+
+        <!-- INPUT NOMINAL -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nominal"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp"
+                        android:textColor="@color/teal_primary"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="8dp"/>
+
+                    <EditText
+                        android:id="@+id/et_nominal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="0"
+                        android:textColorHint="@color/text_hint"
+                        android:textColor="@color/text_primary"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:inputType="numberDecimal"
+                        android:background="@null"
+                        android:maxLines="1"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- PILIH KATEGORI -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kategori"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="12dp"/>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    android:useDefaultMargins="true">
+
+                    <LinearLayout android:id="@+id/cat_makan"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_columnWeight="1" android:orientation="horizontal"
+                        android:gravity="center_vertical" android:background="@drawable/bg_category_selected"
+                        android:padding="10dp" android:layout_marginEnd="6dp" android:layout_marginBottom="8dp"
+                        android:clickable="true" android:focusable="true">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_food" android:contentDescription="Makan"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Makan" android:textColor="@color/teal_dark" android:textSize="13sp" android:layout_marginStart="8dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:id="@+id/cat_transport"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_columnWeight="1" android:orientation="horizontal"
+                        android:gravity="center_vertical" android:background="@drawable/bg_category_normal"
+                        android:padding="10dp" android:layout_marginStart="6dp" android:layout_marginBottom="8dp"
+                        android:clickable="true" android:focusable="true">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_transport" android:contentDescription="Transport"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Transport" android:textColor="@color/text_primary" android:textSize="13sp" android:layout_marginStart="8dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:id="@+id/cat_belanja"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_columnWeight="1" android:orientation="horizontal"
+                        android:gravity="center_vertical" android:background="@drawable/bg_category_normal"
+                        android:padding="10dp" android:layout_marginEnd="6dp" android:layout_marginBottom="8dp"
+                        android:clickable="true" android:focusable="true">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_shopping" android:contentDescription="Belanja"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Belanja" android:textColor="@color/text_primary" android:textSize="13sp" android:layout_marginStart="8dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:id="@+id/cat_hiburan"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_columnWeight="1" android:orientation="horizontal"
+                        android:gravity="center_vertical" android:background="@drawable/bg_category_normal"
+                        android:padding="10dp" android:layout_marginStart="6dp" android:layout_marginBottom="8dp"
+                        android:clickable="true" android:focusable="true">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_game" android:contentDescription="Hiburan"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hiburan" android:textColor="@color/text_primary" android:textSize="13sp" android:layout_marginStart="8dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:id="@+id/cat_kesehatan"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_columnWeight="1" android:orientation="horizontal"
+                        android:gravity="center_vertical" android:background="@drawable/bg_category_normal"
+                        android:padding="10dp" android:layout_marginEnd="6dp" android:layout_marginBottom="8dp"
+                        android:clickable="true" android:focusable="true">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_health" android:contentDescription="Kesehatan"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Kesehatan" android:textColor="@color/text_primary" android:textSize="13sp" android:layout_marginStart="8dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:id="@+id/cat_lainnya"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_columnWeight="1" android:orientation="horizontal"
+                        android:gravity="center_vertical" android:background="@drawable/bg_category_normal"
+                        android:padding="10dp" android:layout_marginStart="6dp" android:layout_marginBottom="8dp"
+                        android:clickable="true" android:focusable="true">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_other" android:contentDescription="Lainnya"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lainnya" android:textColor="@color/text_primary" android:textSize="13sp" android:layout_marginStart="8dp"/>
+                    </LinearLayout>
+
+                </GridLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- PILIH TANGGAL -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tanggal"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <LinearLayout
+                    android:id="@+id/btn_pilih_tanggal"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_input_field"
+                    android:padding="12dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/ic_calendar"
+                        android:contentDescription="Kalender"/>
+
+                    <TextView
+                        android:id="@+id/tv_tanggal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pilih tanggal"
+                        android:textColor="@color/text_primary"
+                        android:textSize="13sp"
+                        android:layout_marginStart="10dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- CATATAN -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Catatan (opsional)"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <EditText
+                    android:id="@+id/et_catatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:hint="Tambah catatan..."
+                    android:textColorHint="@color/text_hint"
+                    android:textColor="@color/text_primary"
+                    android:textSize="13sp"
+                    android:background="@drawable/bg_input_field"
+                    android:padding="12dp"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:maxLines="3"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- TOMBOL SIMPAN -->
+        <Button
+            android:id="@+id/btn_simpan"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            android:text="Simpan Transaksi"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/teal_primary"
+            app:cornerRadius="16dp" />
+
+    </LinearLayout>
+</ScrollView>

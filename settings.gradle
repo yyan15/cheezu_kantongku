@@ -11,13 +11,17 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+
+        // ⬇️ Wajib ditambahkan untuk MPAndroidChart
+        maven { url 'https://jitpack.io' }
     }
 }
 
-rootProject.name = "cheezu kantongku"
+rootProject.name = "CheeuzKantongku"
 include ':app'
