@@ -1,0 +1,41 @@
+package com.cheezu.kantongku.data.api;
+
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+public class ApiClient {
+
+    // ⚠️ GANTI dengan IP laptop kamu saat menjalankan Laravel
+    // Jalankan "ipconfig" di CMD Windows, cari IPv4 Address
+    // Contoh: http://192.168.1.5:8000/api/
+    private static final String BASE_URL = "http://192.168.1.10:8000/api/";
+
+    private static Retrofit retrofit = null;
+
+    public static Retrofit getClient() {
+        if (retrofit == null) {
+
+            // Logging untuk debug (tampilkan request & response di Logcat)
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .addInterceptor(logging)
+                    .build();
+
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .client(client)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+        }
+        return retrofit;
+    }
+
+    // Buat instance ApiService
+    public static TransaksiApiService getApiService() {
+        return getClient().create(TransaksiApiService.class);
+    }
+}
