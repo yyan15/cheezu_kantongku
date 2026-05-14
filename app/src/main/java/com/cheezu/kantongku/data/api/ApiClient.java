@@ -10,7 +10,10 @@ public class ApiClient {
     // ⚠️ GANTI dengan IP laptop kamu saat menjalankan Laravel
     // Jalankan "ipconfig" di CMD Windows, cari IPv4 Address
     // Contoh: http://192.168.1.5:8000/api/
-    private static final String BASE_URL = "http://192.168.1.10:8000/api/";
+//    private static final String BASE_URL = "http://192.168.1.10:8000/api/";
+
+    //emu
+    private static final String BASE_URL = "http://10.0.2.2:8000/api/";
 
     private static Retrofit retrofit = null;
 
