@@ -43,7 +43,7 @@ public class TransaksiAdapter extends RecyclerView.Adapter<TransaksiAdapter.View
 
     // ─── Update data dari LiveData ───────────────────────────
     public void setData(List<Transaksi> data) {
-        this.listTransaksi = data;
+        this.listTransaksi = data != null ? data : new ArrayList<>();
         notifyDataSetChanged();
     }
 
@@ -64,8 +64,14 @@ public class TransaksiAdapter extends RecyclerView.Adapter<TransaksiAdapter.View
         holder.tvKategori.setText(item.getKategori());
 
         // Format tanggal
-        SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy", new Locale("id", "ID"));
-        holder.tvTanggal.setText(sdf.format(new Date(item.getTanggal())));
+        try {
+            SimpleDateFormat inputSdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'", Locale.getDefault());
+            SimpleDateFormat outputSdf = new SimpleDateFormat("dd MMM yyyy", new Locale("id", "ID"));
+            Date date = inputSdf.parse(item.getTanggal());
+            holder.tvTanggal.setText(date != null ? outputSdf.format(date) : item.getTanggal());
+        } catch (Exception e) {
+            holder.tvTanggal.setText(item.getTanggal());
+        }
 
         // Format nominal ke Rupiah
         NumberFormat formatter = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
@@ -82,9 +88,15 @@ public class TransaksiAdapter extends RecyclerView.Adapter<TransaksiAdapter.View
 
         // Icon kategori
         holder.ivIcon.setImageResource(getIconByKategori(item.getKategori()));
-        holder.ivIcon.getBackground().setTint(
-                ContextCompat.getColor(context, getBgColorByKategori(item.getKategori()))
-        );
+        if (holder.ivIcon.getBackground() != null) {
+            holder.ivIcon.getBackground().setTint(
+                    ContextCompat.getColor(context, getBgColorByKategori(item.getKategori()))
+            );
+        } else {
+            holder.ivIcon.setBackgroundTintList(
+                    ContextCompat.getColorStateList(context, getBgColorByKategori(item.getKategori()))
+            );
+        }
 
         // Click listener
         holder.itemView.setOnClickListener(v -> {
@@ -98,7 +110,7 @@ public class TransaksiAdapter extends RecyclerView.Adapter<TransaksiAdapter.View
 
     @Override
     public int getItemCount() {
-        return listTransaksi.size();
+        return listTransaksi != null ? listTransaksi.size() : 0;
     }
 
     // ─── ViewHolder ─────────────────────────────────────────

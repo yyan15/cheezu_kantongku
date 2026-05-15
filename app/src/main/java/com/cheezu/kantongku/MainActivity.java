@@ -2,23 +2,58 @@ package com.cheezu.kantongku;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+
+import com.cheezu.kantongku.ui.fragment.DashboardFragment;
+import com.cheezu.kantongku.ui.fragment.RiwayatFragment;
+import com.cheezu.kantongku.ui.fragment.StatistikFragment;
+import com.cheezu.kantongku.ui.fragment.SetelanFragment;
+import com.cheezu.kantongku.ui.fragment.TambahTransaksiFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
+
+        // Tampilkan Dashboard saat pertama buka
+        if (savedInstanceState == null) {
+            loadFragment(new DashboardFragment());
+        }
+
+        bottomNav.setOnItemSelectedListener(item -> {
+            Fragment fragment = null;
+            int id = item.getItemId();
+
+            if (id == R.id.nav_home) {
+                fragment = new DashboardFragment();
+            } else if (id == R.id.nav_riwayat) {
+                fragment = new RiwayatFragment();
+            } else if (id == R.id.nav_tambah) {
+                fragment = new TambahTransaksiFragment();
+            } else if (id == R.id.nav_statistik) {
+                fragment = new StatistikFragment();
+            } else if (id == R.id.nav_setelan) {
+                fragment = new SetelanFragment();
+            }
+
+            if (fragment != null) {
+                loadFragment(fragment);
+                return true;
+            }
+            return false;
         });
+    }
+
+    private void loadFragment(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .commit();
     }
 }

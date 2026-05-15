@@ -35,9 +35,7 @@ public class RiwayatFragment extends Fragment {
 
     private RecyclerView rvRiwayat;
     private EditText etSearch;
-    private TextView chipSemua, chipMakan, chipTransport,
-            chipBelanja, chipHiburan;
-
+    private TextView chipSemua, chipMakan, chipTransport, chipBelanja, chipHiburan;
     private TransaksiAdapter adapter;
     private TransaksiApiService apiService;
     private List<Transaksi> allData = new ArrayList<>();
@@ -54,13 +52,13 @@ public class RiwayatFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        rvRiwayat      = view.findViewById(R.id.rv_riwayat);
-        etSearch       = view.findViewById(R.id.et_search);
-        chipSemua      = view.findViewById(R.id.chip_semua);
-        chipMakan      = view.findViewById(R.id.chip_makan);
-        chipTransport  = view.findViewById(R.id.chip_transport);
-        chipBelanja    = view.findViewById(R.id.chip_belanja);
-        chipHiburan    = view.findViewById(R.id.chip_hiburan);
+        rvRiwayat     = view.findViewById(R.id.rv_riwayat);
+        etSearch      = view.findViewById(R.id.et_search);
+        chipSemua     = view.findViewById(R.id.chip_semua);
+        chipMakan     = view.findViewById(R.id.chip_makan);
+        chipTransport = view.findViewById(R.id.chip_transport);
+        chipBelanja   = view.findViewById(R.id.chip_belanja);
+        chipHiburan   = view.findViewById(R.id.chip_hiburan);
 
         adapter = new TransaksiAdapter(requireContext());
         rvRiwayat.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -68,15 +66,12 @@ public class RiwayatFragment extends Fragment {
 
         apiService = ApiClient.getApiService();
 
-        // Klik item → bisa edit (dikembangkan nanti)
         adapter.setOnItemClickListener(new TransaksiAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Transaksi transaksi) {
-                // TODO: buka dialog edit
                 Toast.makeText(requireContext(),
                         "Edit: " + transaksi.getJudul(), Toast.LENGTH_SHORT).show();
             }
-
             @Override
             public void onItemLongClick(Transaksi transaksi) {
                 showDeleteDialog(transaksi);
@@ -88,45 +83,48 @@ public class RiwayatFragment extends Fragment {
         loadSemuaTransaksi();
     }
 
-    // ─── Load semua transaksi dari API ───────────────────────
     private void loadSemuaTransaksi() {
         apiService.getAllTransaksi().enqueue(new Callback<ApiResponse.TransaksiList>() {
             @Override
             public void onResponse(@NonNull Call<ApiResponse.TransaksiList> call,
                                    @NonNull Response<ApiResponse.TransaksiList> response) {
-                if (response.isSuccessful() && response.body() != null) {
+                if (!isAdded() || getContext() == null) return;
+                if (response.isSuccessful() && response.body() != null
+                        && response.body().data != null) {
                     allData = response.body().data;
-                    adapter.setData(allData);
+                } else {
+                    allData = new ArrayList<>();
                 }
+                adapter.setData(allData);
             }
 
             @Override
             public void onFailure(@NonNull Call<ApiResponse.TransaksiList> call,
                                   @NonNull Throwable t) {
+                if (!isAdded() || getContext() == null) return;
+                allData = new ArrayList<>();
+                adapter.setData(allData);
                 Toast.makeText(requireContext(),
                         "Gagal memuat data: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    // ─── Search realtime ────────────────────────────────────
     private void setupSearch() {
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override public void afterTextChanged(Editable s) {}
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!isAdded() || allData == null) return;
                 String keyword = s.toString().trim();
                 if (keyword.isEmpty()) {
                     adapter.setData(allData);
                 } else {
-                    // Filter lokal dari data yang sudah ada
                     List<Transaksi> filtered = new ArrayList<>();
                     for (Transaksi t : allData) {
-                        if (t.getJudul().toLowerCase().contains(keyword.toLowerCase())) {
+                        if (t.getJudul().toLowerCase().contains(keyword.toLowerCase()))
                             filtered.add(t);
-                        }
                     }
                     adapter.setData(filtered);
                 }
@@ -134,7 +132,6 @@ public class RiwayatFragment extends Fragment {
         });
     }
 
-    // ─── Filter chip kategori ────────────────────────────────
     private void setupChipFilter() {
         TextView[] chips = {chipSemua, chipMakan, chipTransport, chipBelanja, chipHiburan};
         String[] kategori = {"Semua", "Makan", "Transport", "Belanja", "Hiburan"};
@@ -142,18 +139,16 @@ public class RiwayatFragment extends Fragment {
         for (int i = 0; i < chips.length; i++) {
             final String kat = kategori[i];
             final TextView chip = chips[i];
-
             chip.setOnClickListener(v -> {
-                // Reset semua chip
+                if (!isAdded() || getContext() == null) return;
                 for (TextView c : chips) {
                     c.setBackgroundResource(R.drawable.bg_chip_normal);
                     c.setTextColor(requireContext().getColor(R.color.text_secondary));
                 }
-                // Aktifkan chip yang diklik
                 chip.setBackgroundResource(R.drawable.bg_chip_active);
                 chip.setTextColor(requireContext().getColor(android.R.color.white));
 
-                // Filter data
+                if (allData == null) { adapter.setData(new ArrayList<>()); return; }
                 if (kat.equals("Semua")) {
                     adapter.setData(allData);
                 } else {
@@ -167,7 +162,6 @@ public class RiwayatFragment extends Fragment {
         }
     }
 
-    // ─── Dialog konfirmasi hapus ─────────────────────────────
     private void showDeleteDialog(Transaksi transaksi) {
         new AlertDialog.Builder(requireContext())
                 .setTitle("Hapus Transaksi")
@@ -183,17 +177,18 @@ public class RiwayatFragment extends Fragment {
                     @Override
                     public void onResponse(@NonNull Call<ApiResponse.GeneralResponse> call,
                                            @NonNull Response<ApiResponse.GeneralResponse> response) {
+                        if (!isAdded() || getContext() == null) return;
                         if (response.isSuccessful() && response.body() != null
                                 && response.body().success) {
                             Toast.makeText(requireContext(),
                                     "Transaksi dihapus", Toast.LENGTH_SHORT).show();
-                            loadSemuaTransaksi(); // refresh list
+                            loadSemuaTransaksi();
                         }
                     }
-
                     @Override
                     public void onFailure(@NonNull Call<ApiResponse.GeneralResponse> call,
                                           @NonNull Throwable t) {
+                        if (!isAdded() || getContext() == null) return;
                         Toast.makeText(requireContext(),
                                 "Gagal menghapus: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                     }

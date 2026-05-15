@@ -37,12 +37,13 @@ public class TambahTransaksiFragment extends Fragment {
     private LinearLayout btnPilihTanggal;
     private LinearLayout catMakan, catTransport, catBelanja,
             catHiburan, catKesehatan, catLainnya;
-
-    private String tipeSelected    = "pengeluaran";
+    private View cardKategori;
+    private String tipeSelected     = "pengeluaran";
     private String kategoriSelected = "Makan";
     private String tanggalSelected;
 
     private TransaksiApiService apiService;
+
 
     @Nullable
     @Override
@@ -56,7 +57,6 @@ public class TambahTransaksiFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Init views
         btnPengeluaran  = view.findViewById(R.id.btn_pengeluaran);
         btnPemasukan    = view.findViewById(R.id.btn_pemasukan);
         btnSimpan       = view.findViewById(R.id.btn_simpan);
@@ -64,17 +64,15 @@ public class TambahTransaksiFragment extends Fragment {
         etCatatan       = view.findViewById(R.id.et_catatan);
         tvTanggal       = view.findViewById(R.id.tv_tanggal);
         btnPilihTanggal = view.findViewById(R.id.btn_pilih_tanggal);
-
         catMakan        = view.findViewById(R.id.cat_makan);
         catTransport    = view.findViewById(R.id.cat_transport);
         catBelanja      = view.findViewById(R.id.cat_belanja);
         catHiburan      = view.findViewById(R.id.cat_hiburan);
         catKesehatan    = view.findViewById(R.id.cat_kesehatan);
         catLainnya      = view.findViewById(R.id.cat_lainnya);
-
+        cardKategori    = view.findViewById(R.id.card_kategori);
         apiService = ApiClient.getApiService();
 
-        // Set tanggal default = hari ini
         Calendar cal = Calendar.getInstance();
         tanggalSelected = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(cal.getTime());
         tvTanggal.setText(new SimpleDateFormat("dd MMM yyyy", new Locale("id", "ID")).format(cal.getTime()));
@@ -85,30 +83,31 @@ public class TambahTransaksiFragment extends Fragment {
         setupTombolSimpan();
     }
 
-    // ─── Toggle Pengeluaran / Pemasukan ─────────────────────
     private void setupToggleTipe() {
+        // Cari card kategori — tambahkan variable ini di atas class
+        // View cardKategori = view.findViewById(R.id.card_kategori);
+
         btnPengeluaran.setOnClickListener(v -> {
             tipeSelected = "pengeluaran";
-            btnPengeluaran.setBackgroundTintList(
-                    requireContext().getColorStateList(R.color.teal_primary));
+            btnPengeluaran.setBackgroundTintList(requireContext().getColorStateList(R.color.teal_primary));
             btnPengeluaran.setTextColor(requireContext().getColor(android.R.color.white));
-            btnPemasukan.setBackgroundTintList(
-                    requireContext().getColorStateList(R.color.surface_secondary));
+            btnPemasukan.setBackgroundTintList(requireContext().getColorStateList(R.color.surface_secondary));
             btnPemasukan.setTextColor(requireContext().getColor(R.color.text_secondary));
+            cardKategori.setVisibility(View.VISIBLE); // tampilkan kategori
+            kategoriSelected = "Makan"; // reset ke default
         });
 
         btnPemasukan.setOnClickListener(v -> {
             tipeSelected = "pemasukan";
-            btnPemasukan.setBackgroundTintList(
-                    requireContext().getColorStateList(R.color.teal_primary));
+            btnPemasukan.setBackgroundTintList(requireContext().getColorStateList(R.color.teal_primary));
             btnPemasukan.setTextColor(requireContext().getColor(android.R.color.white));
-            btnPengeluaran.setBackgroundTintList(
-                    requireContext().getColorStateList(R.color.surface_secondary));
+            btnPengeluaran.setBackgroundTintList(requireContext().getColorStateList(R.color.surface_secondary));
             btnPengeluaran.setTextColor(requireContext().getColor(R.color.text_secondary));
+            cardKategori.setVisibility(View.GONE); // sembunyikan kategori
+            kategoriSelected = "Pemasukan"; // set otomatis
         });
     }
 
-    // ─── Pilih Kategori ─────────────────────────────────────
     private void setupKategori() {
         LinearLayout[] semuaKategori = {catMakan, catTransport, catBelanja,
                 catHiburan, catKesehatan, catLainnya};
@@ -118,29 +117,21 @@ public class TambahTransaksiFragment extends Fragment {
         for (int i = 0; i < semuaKategori.length; i++) {
             final String nama = namaKategori[i];
             final LinearLayout item = semuaKategori[i];
-
             item.setOnClickListener(v -> {
+                if (!isAdded() || getContext() == null) return;
                 kategoriSelected = nama;
-                // Reset semua ke normal
                 for (LinearLayout cat : semuaKategori) {
                     cat.setBackgroundResource(R.drawable.bg_category_normal);
-                    // Reset warna teks anak TextView
-                    if (cat.getChildCount() > 1 && cat.getChildAt(1) instanceof TextView) {
-                        ((TextView) cat.getChildAt(1)).setTextColor(
-                                requireContext().getColor(R.color.text_primary));
-                    }
+                    if (cat.getChildCount() > 1 && cat.getChildAt(1) instanceof TextView)
+                        ((TextView) cat.getChildAt(1)).setTextColor(requireContext().getColor(R.color.text_primary));
                 }
-                // Set yang dipilih jadi aktif
                 item.setBackgroundResource(R.drawable.bg_category_selected);
-                if (item.getChildCount() > 1 && item.getChildAt(1) instanceof TextView) {
-                    ((TextView) item.getChildAt(1)).setTextColor(
-                            requireContext().getColor(R.color.teal_dark));
-                }
+                if (item.getChildCount() > 1 && item.getChildAt(1) instanceof TextView)
+                    ((TextView) item.getChildAt(1)).setTextColor(requireContext().getColor(R.color.teal_dark));
             });
         }
     }
 
-    // ─── Date Picker ────────────────────────────────────────
     private void setupDatePicker() {
         btnPilihTanggal.setOnClickListener(v -> {
             Calendar cal = Calendar.getInstance();
@@ -149,31 +140,22 @@ public class TambahTransaksiFragment extends Fragment {
                     (datePicker, year, month, day) -> {
                         Calendar selected = Calendar.getInstance();
                         selected.set(year, month, day);
-
-                        // Format untuk dikirim ke Laravel (yyyy-MM-dd)
                         tanggalSelected = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                                 .format(selected.getTime());
-
-                        // Format untuk ditampilkan ke user
                         tvTanggal.setText(new SimpleDateFormat("dd MMM yyyy", new Locale("id", "ID"))
                                 .format(selected.getTime()));
                     },
-                    cal.get(Calendar.YEAR),
-                    cal.get(Calendar.MONTH),
-                    cal.get(Calendar.DAY_OF_MONTH)
+                    cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)
             );
             dialog.show();
         });
     }
 
-    // ─── Simpan Transaksi ke Laravel ────────────────────────
     private void setupTombolSimpan() {
         btnSimpan.setOnClickListener(v -> {
-
             String nominalStr = etNominal.getText().toString().trim();
             String catatan    = etCatatan.getText().toString().trim();
 
-            // Validasi nominal
             if (nominalStr.isEmpty()) {
                 etNominal.setError("Nominal tidak boleh kosong");
                 etNominal.requestFocus();
@@ -186,8 +168,6 @@ public class TambahTransaksiFragment extends Fragment {
                 return;
             }
 
-            // Buat objek Transaksi
-            // Judul otomatis dari kategori jika tidak diisi
             String judul = kategoriSelected + " - " +
                     new SimpleDateFormat("dd MMM", new Locale("id", "ID"))
                             .format(Calendar.getInstance().getTime());
@@ -197,53 +177,44 @@ public class TambahTransaksiFragment extends Fragment {
                     nominal, catatan, tanggalSelected
             );
 
-            // Disable tombol supaya tidak double submit
             btnSimpan.setEnabled(false);
             btnSimpan.setText("Menyimpan...");
 
-            // POST ke Laravel
             apiService.tambahTransaksi(transaksi).enqueue(new Callback<ApiResponse.TransaksiSingle>() {
                 @Override
                 public void onResponse(@NonNull Call<ApiResponse.TransaksiSingle> call,
                                        @NonNull Response<ApiResponse.TransaksiSingle> response) {
+                    if (!isAdded() || getContext() == null) return;
                     btnSimpan.setEnabled(true);
                     btnSimpan.setText("Simpan Transaksi");
-
-                    if (response.isSuccessful() && response.body() != null
-                            && response.body().success) {
-                        Toast.makeText(requireContext(),
-                                "Transaksi berhasil disimpan!", Toast.LENGTH_SHORT).show();
+                    if (response.isSuccessful() && response.body() != null && response.body().success) {
+                        Toast.makeText(requireContext(), "Transaksi berhasil disimpan!", Toast.LENGTH_SHORT).show();
                         resetForm();
                     } else {
-                        Toast.makeText(requireContext(),
-                                "Gagal menyimpan transaksi", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(requireContext(), "Gagal menyimpan transaksi", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(@NonNull Call<ApiResponse.TransaksiSingle> call,
                                       @NonNull Throwable t) {
+                    if (!isAdded() || getContext() == null) return;
                     btnSimpan.setEnabled(true);
                     btnSimpan.setText("Simpan Transaksi");
-                    Toast.makeText(requireContext(),
-                            "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         });
     }
 
-    // ─── Reset form setelah simpan ───────────────────────────
     private void resetForm() {
         etNominal.setText("");
         etCatatan.setText("");
         tipeSelected     = "pengeluaran";
         kategoriSelected = "Makan";
-
-        btnPengeluaran.setBackgroundTintList(
-                requireContext().getColorStateList(R.color.teal_primary));
+        btnPengeluaran.setBackgroundTintList(requireContext().getColorStateList(R.color.teal_primary));
         btnPengeluaran.setTextColor(requireContext().getColor(android.R.color.white));
-        btnPemasukan.setBackgroundTintList(
-                requireContext().getColorStateList(R.color.surface_secondary));
+        btnPemasukan.setBackgroundTintList(requireContext().getColorStateList(R.color.surface_secondary));
         btnPemasukan.setTextColor(requireContext().getColor(R.color.text_secondary));
     }
 }

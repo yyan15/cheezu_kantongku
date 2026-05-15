@@ -79,9 +79,13 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onResponse(@NonNull Call<ApiResponse.DashboardResponse> call,
                                    @NonNull Response<ApiResponse.DashboardResponse> response) {
+                if (!isAdded() || getContext() == null) return;
 
                 if (response.isSuccessful() && response.body() != null) {
                     ApiResponse.DashboardResponse data = response.body();
+
+                    android.util.Log.d("DASHBOARD", "Data size: " + (data.data != null ? data.data.size() : "null"));
+                    android.util.Log.d("DASHBOARD", "Saldo: " + data.saldo);
 
                     // Format Rupiah
                     NumberFormat fmt = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
@@ -107,6 +111,7 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Call<ApiResponse.DashboardResponse> call,
                                   @NonNull Throwable t) {
+                if (!isAdded() || getContext() == null) return;
                 Toast.makeText(requireContext(),
                         "Gagal terhubung ke server: " + t.getMessage(),
                         Toast.LENGTH_SHORT).show();
@@ -115,6 +120,7 @@ public class DashboardFragment extends Fragment {
     }
 
     private void updateBudgetBar(double totalPengeluaran) {
+        if (!isAdded() || getContext() == null) return;
         int persen = (int) ((totalPengeluaran / budgetLimit) * 100);
         persen = Math.min(persen, 100); // max 100
 
