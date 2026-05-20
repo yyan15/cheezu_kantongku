@@ -1,5 +1,7 @@
 package com.cheezu.kantongku.ui.fragment;
 
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,6 +30,14 @@ import java.util.Locale;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import com.cheezu.kantongku.ui.fragment.SetelanFragment;
+import com.cheezu.kantongku.util.NotificationHelper;
+import com.cheezu.kantongku.util.NotificationHelper;
+import com.cheezu.kantongku.ui.fragment.SetelanFragment;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 public class DashboardFragment extends Fragment {
 
@@ -37,7 +48,7 @@ public class DashboardFragment extends Fragment {
     private TransaksiApiService apiService;
 
     // Budget limit (nanti diambil dari SharedPreferences)
-    private double budgetLimit = 3900000;
+    private double budgetLimit;
 
     @Nullable
     @Override
@@ -67,6 +78,20 @@ public class DashboardFragment extends Fragment {
 
         // Init API service
         apiService = ApiClient.getApiService();
+        // Request permission notifikasi (Android 13+)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(requireContext(),
+                    android.Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(
+                        new String[]{android.Manifest.permission.POST_NOTIFICATIONS},
+                        101
+                );
+            }
+        }
+
+// Load data dari Laravel
+        loadDashboardData();
 
         // Load data dari Laravel
         loadDashboardData();
@@ -144,12 +169,31 @@ public class DashboardFragment extends Fragment {
             tvBudgetStatus.setText(persen + "% terpakai · " + sisaStr + " tersisa");
             tvBudgetStatus.setTextColor(requireContext().getColor(R.color.budget_safe));
         }
+        // Cek setting notifikasi
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(requireContext());
+        boolean notifAktif = prefs.getBoolean(SetelanFragment.KEY_NOTIF_BUDGET, true);
+        int threshold = prefs.getInt(SetelanFragment.KEY_THRESHOLD, 80);
+
+        if (notifAktif) {
+            if (persen >= 100) {
+                NotificationHelper.kirimNotifBudget(requireContext(),
+                        "⚠️ Over Budget!",
+                        "Pengeluaran kamu sudah melebihi budget limit bulan ini!");
+            } else if (persen >= threshold) {
+                NotificationHelper.kirimNotifBudget(requireContext(),
+                        "Peringatan Budget",
+                        "Pengeluaran kamu sudah " + persen + "% dari budget limit!");
+            }
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        // Refresh data setiap kali fragment ditampilkan
+        // Ambil budget limit dari SharedPreferences
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(requireContext());
+        budgetLimit = prefs.getFloat(SetelanFragment.KEY_BUDGET_TOTAL, 3900000f);
+
         loadDashboardData();
     }
 }
