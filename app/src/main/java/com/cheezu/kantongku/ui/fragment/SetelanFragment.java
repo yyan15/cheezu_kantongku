@@ -15,12 +15,32 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 import com.cheezu.kantongku.R;
 
 import java.text.NumberFormat;
 import java.util.Locale;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.work.WorkManager;
+
+import com.cheezu.kantongku.data.api.ApiClient;
+import com.cheezu.kantongku.data.api.ApiResponse;
+import com.cheezu.kantongku.data.api.TransaksiApiService;
+import com.cheezu.kantongku.data.api.model.Transaksi;
+import com.cheezu.kantongku.util.RupiahTextWatcher;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import com.cheezu.kantongku.util.RupiahTextWatcher;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
+import com.cheezu.kantongku.util.ReminderWorker;
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 public class SetelanFragment extends Fragment {
 
@@ -38,6 +58,7 @@ public class SetelanFragment extends Fragment {
 
     private SharedPreferences prefs;
     private NumberFormat fmt = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
+    private TransaksiApiService apiService;
 
     @Nullable
     @Override
@@ -64,6 +85,7 @@ public class SetelanFragment extends Fragment {
         itemThreshold       = view.findViewById(R.id.item_threshold);
         itemExport          = view.findViewById(R.id.item_export);
         itemResetData       = view.findViewById(R.id.item_reset_data);
+        apiService = ApiClient.getApiService();
 
         loadSavedSettings();
         setupListeners();
@@ -91,6 +113,7 @@ public class SetelanFragment extends Fragment {
         // Edit budget total
         itemBudgetTotal.setOnClickListener(v -> showDialogBudget());
 
+
         // Edit threshold peringatan
         itemThreshold.setOnClickListener(v -> showDialogThreshold());
 
@@ -105,16 +128,21 @@ public class SetelanFragment extends Fragment {
         // Toggle reminder harian
         switchReminder.setOnCheckedChangeListener((btn, isChecked) -> {
             prefs.edit().putBoolean(KEY_REMINDER, isChecked).apply();
-            Toast.makeText(requireContext(),
-                    isChecked ? "Pengingat harian aktif" : "Pengingat harian nonaktif",
-                    Toast.LENGTH_SHORT).show();
+            if (isChecked) {
+                jadwalkanReminder();
+            } else {
+                batalkanReminder();
+            }
         });
 
         // Toggle dark mode
         switchDarkMode.setOnCheckedChangeListener((btn, isChecked) -> {
             prefs.edit().putBoolean(KEY_DARK_MODE, isChecked).apply();
-            Toast.makeText(requireContext(),
-                    "Restart app untuk menerapkan tema", Toast.LENGTH_SHORT).show();
+            if (isChecked) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            }
         });
 
         // Export (placeholder)
@@ -135,6 +163,8 @@ public class SetelanFragment extends Fragment {
         etBudget.setHint("Masukkan nominal budget");
         etBudget.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);
         etBudget.setPadding(48, 32, 48, 32);
+        etBudget.addTextChangedListener(new RupiahTextWatcher(etBudget));
+
 
         double currentBudget = prefs.getFloat(KEY_BUDGET_TOTAL, 3900000f);
         etBudget.setText(String.valueOf((int) currentBudget));
@@ -145,7 +175,7 @@ public class SetelanFragment extends Fragment {
                 .setPositiveButton("Simpan", (dialog, which) -> {
                     String input = etBudget.getText().toString().trim();
                     if (!input.isEmpty()) {
-                        float budget = Float.parseFloat(input);
+                        float budget = (float) RupiahTextWatcher.getNilai(etBudget);
                         prefs.edit().putFloat(KEY_BUDGET_TOTAL, budget).apply();
                         tvBudgetTotalValue.setText(
                                 fmt.format(budget).replace("Rp", "Rp ").replace(",00", "") + " / bulan");
@@ -177,6 +207,39 @@ public class SetelanFragment extends Fragment {
                 .setNegativeButton("Batal", null)
                 .show();
     }
+    private void deleteSemuaData() {
+        apiService.getAllTransaksi().enqueue(new Callback<ApiResponse.TransaksiList>() {
+            @Override
+            public void onResponse(@NonNull Call<ApiResponse.TransaksiList> call,
+                                   @NonNull Response<ApiResponse.TransaksiList> response) {
+                if (!isAdded() || getContext() == null) return;
+                if (response.isSuccessful() && response.body() != null
+                        && response.body().data != null) {
+                    for (Transaksi t : response.body().data) {
+                        apiService.deleteTransaksi(t.getId()).enqueue(
+                                new Callback<ApiResponse.GeneralResponse>() {
+                                    @Override
+                                    public void onResponse(@NonNull Call<ApiResponse.GeneralResponse> call,
+                                                           @NonNull Response<ApiResponse.GeneralResponse> response) {}
+                                    @Override
+                                    public void onFailure(@NonNull Call<ApiResponse.GeneralResponse> call,
+                                                          @NonNull Throwable t) {}
+                                });
+                    }
+                    Toast.makeText(requireContext(),
+                            "Semua data berhasil dihapus!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<ApiResponse.TransaksiList> call,
+                                  @NonNull Throwable t) {
+                if (!isAdded() || getContext() == null) return;
+                Toast.makeText(requireContext(),
+                        "Gagal menghapus data: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     // ─── Dialog konfirmasi reset data ────────────────────────
     private void showDialogResetData() {
@@ -184,12 +247,42 @@ public class SetelanFragment extends Fragment {
                 .setTitle("Reset Semua Data")
                 .setMessage("Seluruh riwayat transaksi akan dihapus permanen. Yakin?")
                 .setPositiveButton("Reset", (dialog, which) -> {
-                    // TODO: panggil API delete all jika tersedia
-                    // Untuk sekarang hanya tampilkan pesan
-                    Toast.makeText(requireContext(),
-                            "Data berhasil direset", Toast.LENGTH_SHORT).show();
+                    deleteSemuaData();
                 })
                 .setNegativeButton("Batal", null)
                 .show();
+    }
+    private void jadwalkanReminder() {
+        // Hitung delay sampai jam 21:00 malam ini
+        Calendar sekarang = Calendar.getInstance();
+        Calendar target = Calendar.getInstance();
+        target.set(Calendar.HOUR_OF_DAY, 21);
+        target.set(Calendar.MINUTE, 0);
+        target.set(Calendar.SECOND, 0);
+
+        // Kalau sudah lewat jam 21, jadwalkan besok
+        if (sekarang.after(target)) {
+            target.add(Calendar.DAY_OF_MONTH, 1);
+        }
+
+        long delay = target.getTimeInMillis() - sekarang.getTimeInMillis();
+
+        PeriodicWorkRequest reminderWork = new PeriodicWorkRequest.Builder(
+                ReminderWorker.class, 1, TimeUnit.DAYS)
+                .setInitialDelay(delay, TimeUnit.MILLISECONDS)
+                .build();
+
+        WorkManager.getInstance(requireContext()).enqueueUniquePeriodicWork(
+                "daily_reminder",
+                ExistingPeriodicWorkPolicy.REPLACE,
+                reminderWork
+        );
+
+        Toast.makeText(requireContext(), "Pengingat aktif setiap jam 21:00", Toast.LENGTH_SHORT).show();
+    }
+
+    private void batalkanReminder() {
+        WorkManager.getInstance(requireContext()).cancelUniqueWork("daily_reminder");
+        Toast.makeText(requireContext(), "Pengingat dinonaktifkan", Toast.LENGTH_SHORT).show();
     }
 }

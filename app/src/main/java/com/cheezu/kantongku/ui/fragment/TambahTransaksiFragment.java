@@ -20,6 +20,7 @@ import com.cheezu.kantongku.data.api.ApiClient;
 import com.cheezu.kantongku.data.api.ApiResponse;
 import com.cheezu.kantongku.data.api.TransaksiApiService;
 import com.cheezu.kantongku.data.api.model.Transaksi;
+import com.cheezu.kantongku.util.RupiahTextWatcher;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -28,6 +29,7 @@ import java.util.Locale;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import com.cheezu.kantongku.util.RupiahTextWatcher;
 
 public class TambahTransaksiFragment extends Fragment {
 
@@ -61,6 +63,7 @@ public class TambahTransaksiFragment extends Fragment {
         btnPemasukan    = view.findViewById(R.id.btn_pemasukan);
         btnSimpan       = view.findViewById(R.id.btn_simpan);
         etNominal       = view.findViewById(R.id.et_nominal);
+        etNominal.addTextChangedListener(new RupiahTextWatcher(etNominal));
         etCatatan       = view.findViewById(R.id.et_catatan);
         tvTanggal       = view.findViewById(R.id.tv_tanggal);
         btnPilihTanggal = view.findViewById(R.id.btn_pilih_tanggal);
@@ -162,7 +165,7 @@ public class TambahTransaksiFragment extends Fragment {
                 return;
             }
 
-            double nominal = Double.parseDouble(nominalStr);
+            double nominal = RupiahTextWatcher.getNilai(etNominal);
             if (nominal <= 0) {
                 etNominal.setError("Nominal harus lebih dari 0");
                 return;

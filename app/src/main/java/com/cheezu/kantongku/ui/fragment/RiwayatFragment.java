@@ -26,10 +26,14 @@ import com.cheezu.kantongku.ui.adapter.TransaksiAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class RiwayatFragment extends Fragment {
 
@@ -66,17 +70,19 @@ public class RiwayatFragment extends Fragment {
 
         apiService = ApiClient.getApiService();
 
-        adapter.setOnItemClickListener(new TransaksiAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(Transaksi transaksi) {
-                Toast.makeText(requireContext(),
-                        "Edit: " + transaksi.getJudul(), Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onItemLongClick(Transaksi transaksi) {
-                showDeleteDialog(transaksi);
-            }
-        });
+
+            adapter.setOnItemClickListener(new TransaksiAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(Transaksi transaksi) {
+                    showDetailDialog(transaksi);
+                }
+
+                @Override
+                public void onItemLongClick(Transaksi transaksi) {
+                    showDeleteDialog(transaksi);
+                }
+            });
+
 
         setupSearch();
         setupChipFilter();
@@ -168,6 +174,45 @@ public class RiwayatFragment extends Fragment {
                 .setMessage("Yakin ingin menghapus \"" + transaksi.getJudul() + "\"?")
                 .setPositiveButton("Hapus", (dialog, which) -> deleteTransaksi(transaksi))
                 .setNegativeButton("Batal", null)
+                .show();
+    }
+
+    private void showDetailDialog(Transaksi transaksi) {
+        // Format nominal
+        NumberFormat fmt = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
+        String nominal = fmt.format(transaksi.getNominal())
+                .replace("Rp", "Rp ").replace(",00", "");
+
+        // Format tanggal
+        String tanggal = transaksi.getTanggal();
+        try {
+            SimpleDateFormat inputSdf = new SimpleDateFormat(
+                    "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'", Locale.getDefault());
+            SimpleDateFormat outputSdf = new SimpleDateFormat(
+                    "dd MMM yyyy", new Locale("id", "ID"));
+            tanggal = outputSdf.format(inputSdf.parse(transaksi.getTanggal()));
+        } catch (Exception e) {
+            tanggal = transaksi.getTanggal();
+        }
+
+        // Catatan
+        String catatan = (transaksi.getCatatan() != null && !transaksi.getCatatan().isEmpty())
+                ? transaksi.getCatatan()
+                : "Tidak ada catatan";
+
+        String tipe = transaksi.getTipe().equals("pengeluaran") ? "🔴 Pengeluaran" : "🟢 Pemasukan";
+
+        String pesan = "Kategori : " + transaksi.getKategori() + "\n" +
+                "Tipe     : " + tipe + "\n" +
+                "Nominal  : " + nominal + "\n" +
+                "Tanggal  : " + tanggal + "\n" +
+                "Catatan  : " + catatan;
+
+        new AlertDialog.Builder(requireContext())
+                .setTitle(transaksi.getJudul())
+                .setMessage(pesan)
+                .setPositiveButton("Tutup", null)
+                .setNeutralButton("Hapus", (dialog, which) -> showDeleteDialog(transaksi))
                 .show();
     }
 
