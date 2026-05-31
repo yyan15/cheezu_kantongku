@@ -163,7 +163,10 @@ public class StatistikFragment extends Fragment {
                     ApiResponse.DashboardResponse data = response.body();
                     tvTotalPengeluaran.setText(
                             fmt.format(data.totalPengeluaran).replace("Rp", "").replace(",00", "").trim());
-                    tvJumlahTransaksi.setText(String.valueOf(data.data != null ? data.data.size() : 0));
+                    long jumlahPengeluaran = data.data != null
+                            ? data.data.stream().filter(t -> "pengeluaran".equalsIgnoreCase(t.getTipe())).count()
+                            : 0;
+                    tvJumlahTransaksi.setText(String.valueOf(jumlahPengeluaran));
                 }
             }
             @Override

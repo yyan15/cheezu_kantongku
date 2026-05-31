@@ -2,6 +2,7 @@ package com.cheezu.kantongku.ui.fragment;
 
 import android.app.AlertDialog;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -33,11 +34,14 @@ import com.cheezu.kantongku.data.api.ApiClient;
 import com.cheezu.kantongku.data.api.ApiResponse;
 import com.cheezu.kantongku.data.api.TransaksiApiService;
 import com.cheezu.kantongku.data.api.model.Transaksi;
+import com.cheezu.kantongku.util.ExportHelper;
 import com.cheezu.kantongku.util.RupiahTextWatcher;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.cheezu.kantongku.util.ExportHelper;
 
 public class SetelanFragment extends Fragment {
 
@@ -160,45 +164,101 @@ public class SetelanFragment extends Fragment {
                     : AppCompatDelegate.MODE_NIGHT_NO);
         });
 
-        itemExport.setOnClickListener(v ->
-                Toast.makeText(requireContext(), "Fitur export segera hadir!", Toast.LENGTH_SHORT).show());
+        itemExport.setOnClickListener(v -> {
+            apiService.getAllTransaksi().enqueue(new Callback<ApiResponse.TransaksiList>() {
+                @Override
+                public void onResponse(@NonNull Call<ApiResponse.TransaksiList> call,
+                                       @NonNull Response<ApiResponse.TransaksiList> response) {
+                    if (!isAdded() || getContext() == null) return;
+                    if (response.isSuccessful() && response.body() != null
+                            && response.body().data != null) {
+                        ExportHelper.exportToPdf(requireContext(), response.body().data);
+                    } else {
+                        Toast.makeText(requireContext(), "Tidak ada data untuk diekspor", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                @Override
+                public void onFailure(@NonNull Call<ApiResponse.TransaksiList> call, @NonNull Throwable t) {
+                    if (!isAdded() || getContext() == null) return;
+                    Toast.makeText(requireContext(), "Gagal memuat data: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        });
 
         itemResetData.setOnClickListener(v -> showDialogResetData());
     }
 
     // ─── Dialog budget total ─────────────────────────────────
     private void showDialogBudget() {
-        EditText etBudget = new EditText(requireContext());
-        etBudget.setHint("Masukkan nominal budget");
-        etBudget.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);
-        etBudget.setPadding(48, 32, 48, 32);
-        etBudget.addTextChangedListener(new RupiahTextWatcher(etBudget));
-        etBudget.setText(String.valueOf((int) prefs.getFloat(KEY_BUDGET_TOTAL, 3900000f)));
+        BottomSheetDialog dialog = new BottomSheetDialog(requireContext());
+        View view = LayoutInflater.from(requireContext()).inflate(R.layout.bottomsheet_input, null);
+        dialog.setContentView(view);
 
-        new AlertDialog.Builder(requireContext())
-                .setTitle("Set Budget Limit")
-                .setView(etBudget)
-                .setPositiveButton("Simpan", (dialog, which) -> {
-                    String input = etBudget.getText().toString().trim();
-                    if (!input.isEmpty()) {
-                        float budget = (float) RupiahTextWatcher.getNilai(etBudget);
-                        prefs.edit().putFloat(KEY_BUDGET_TOTAL, budget).apply();
-                        tvBudgetTotalValue.setText(
-                                fmt.format(budget).replace("Rp", "Rp ").replace(",00", "") + " / bulan");
-                        Toast.makeText(requireContext(), "Budget limit disimpan!", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setNegativeButton("Batal", null)
-                .show();
+        TextView tvTitle = view.findViewById(R.id.tv_bs_title);
+        TextView tvSubtitle = view.findViewById(R.id.tv_bs_subtitle);
+        EditText etInput = view.findViewById(R.id.et_bs_input);
+        TextView btnBatal = view.findViewById(R.id.btn_bs_batal);
+        TextView btnSimpan = view.findViewById(R.id.btn_bs_simpan);
+
+        tvTitle.setText("Budget Limit Total");
+        tvSubtitle.setText("Atur total budget pengeluaran per bulan");
+        etInput.setHint("Masukkan nominal");
+        etInput.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);
+        etInput.addTextChangedListener(new RupiahTextWatcher(etInput));
+        etInput.setText(String.valueOf((int) prefs.getFloat(KEY_BUDGET_TOTAL, 3900000f)));
+
+        btnBatal.setOnClickListener(v -> dialog.dismiss());
+        btnSimpan.setOnClickListener(v -> {
+            String input = etInput.getText().toString().trim();
+            if (!input.isEmpty()) {
+                float budget = (float) RupiahTextWatcher.getNilai(etInput);
+                prefs.edit().putFloat(KEY_BUDGET_TOTAL, budget).apply();
+                tvBudgetTotalValue.setText(
+                        fmt.format(budget).replace("Rp", "Rp ").replace(",00", "") + " / bulan");
+                Toast.makeText(requireContext(), "Budget limit disimpan!", Toast.LENGTH_SHORT).show();
+            }
+            dialog.dismiss();
+        });
+
+        dialog.show();
     }
 
     // ─── Dialog budget per kategori (FITUR BARU) ─────────────
     private void showDialogBudgetKategori() {
-        new AlertDialog.Builder(requireContext())
-                .setTitle("Budget per Kategori")
-                .setItems(KATEGORI_LABELS, (dialog, which) -> showDialogSetBudgetKategori(which))
-                .setNegativeButton("Tutup", null)
-                .show();
+        BottomSheetDialog dialog = new BottomSheetDialog(requireContext());
+        View view = LayoutInflater.from(requireContext()).inflate(R.layout.bottomsheet_kategori, null);
+        dialog.setContentView(view);
+
+        String[] icons = {"🍽️", "🚌", "🛒", "🎮", "❤️", "📦"};
+
+        LinearLayout container = view.findViewById(R.id.ll_kategori_container);
+        TextView btnTutup = view.findViewById(R.id.btn_bs_tutup);
+
+        for (int i = 0; i < KATEGORI_LABELS.length; i++) {
+            final int index = i;
+            float budget = prefs.getFloat(KATEGORI_KEYS[i], KATEGORI_DEFAULT[i]);
+
+            View item = LayoutInflater.from(requireContext())
+                    .inflate(R.layout.item_kategori_budget, container, false);
+
+            TextView tvIcon  = item.findViewById(R.id.tv_icon);
+            TextView tvNama  = item.findViewById(R.id.tv_nama);
+            TextView tvBudget = item.findViewById(R.id.tv_budget);
+
+            tvIcon.setText(icons[i]);
+            tvNama.setText(KATEGORI_LABELS[i]);
+            tvBudget.setText(fmt.format(budget).replace("Rp", "Rp ").replace(",00", ""));
+
+            item.setOnClickListener(v -> {
+                dialog.dismiss();
+                showDialogSetBudgetKategori(index);
+            });
+
+            container.addView(item);
+        }
+
+        btnTutup.setOnClickListener(v -> dialog.dismiss());
+        dialog.show();
     }
 
     private void showDialogSetBudgetKategori(int index) {
@@ -266,23 +326,33 @@ public class SetelanFragment extends Fragment {
 
     // ─── Dialog threshold ────────────────────────────────────
     private void showDialogThreshold() {
-        String[] options = {"60%", "70%", "80%", "90%"};
-        int[] values     = {60, 70, 80, 90};
-        int current      = prefs.getInt(KEY_THRESHOLD, 80);
-        int checkedItem  = 2;
-        for (int i = 0; i < values.length; i++) {
-            if (values[i] == current) { checkedItem = i; break; }
+        BottomSheetDialog dialog = new BottomSheetDialog(requireContext());
+        View view = LayoutInflater.from(requireContext()).inflate(R.layout.bottomsheet_threshold, null);
+        dialog.setContentView(view);
+
+        int[] values = {60, 70, 80, 90};
+        int[] ids = {R.id.btn_60, R.id.btn_70, R.id.btn_80, R.id.btn_90};
+        int current = prefs.getInt(KEY_THRESHOLD, 80);
+
+        TextView btnTutup = view.findViewById(R.id.btn_bs_tutup);
+
+        for (int i = 0; i < ids.length; i++) {
+            final int val = values[i];
+            TextView btn = view.findViewById(ids[i]);
+            if (val == current) {
+                btn.setBackgroundResource(R.drawable.bg_chip_active);
+                btn.setTextColor(Color.WHITE);
+            }
+            btn.setOnClickListener(v -> {
+                prefs.edit().putInt(KEY_THRESHOLD, val).apply();
+                tvThresholdValue.setText(val + "% dari limit");
+                Toast.makeText(requireContext(), "Batas peringatan: " + val + "%", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            });
         }
 
-        new AlertDialog.Builder(requireContext())
-                .setTitle("Batas Peringatan Budget")
-                .setSingleChoiceItems(options, checkedItem, (dialog, which) -> {
-                    prefs.edit().putInt(KEY_THRESHOLD, values[which]).apply();
-                    tvThresholdValue.setText(values[which] + "% dari limit");
-                    dialog.dismiss();
-                })
-                .setNegativeButton("Batal", null)
-                .show();
+        btnTutup.setOnClickListener(v -> dialog.dismiss());
+        dialog.show();
     }
 
     // ─── Reset data ──────────────────────────────────────────

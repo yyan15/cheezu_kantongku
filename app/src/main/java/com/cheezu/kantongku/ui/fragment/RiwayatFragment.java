@@ -35,6 +35,7 @@ import retrofit2.Response;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class RiwayatFragment extends Fragment {
 
@@ -211,6 +212,10 @@ public class RiwayatFragment extends Fragment {
     }
 
     private void showDetailDialog(Transaksi transaksi) {
+        BottomSheetDialog dialog = new BottomSheetDialog(requireContext());
+        View view = LayoutInflater.from(requireContext()).inflate(R.layout.bottomsheet_detail_transaksi, null);
+        dialog.setContentView(view);
+
         // Format nominal
         NumberFormat fmt = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
         String nominal = fmt.format(transaksi.getNominal())
@@ -219,34 +224,44 @@ public class RiwayatFragment extends Fragment {
         // Format tanggal
         String tanggal = transaksi.getTanggal();
         try {
-            SimpleDateFormat inputSdf = new SimpleDateFormat(
-                    "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'", Locale.getDefault());
-            SimpleDateFormat outputSdf = new SimpleDateFormat(
-                    "dd MMM yyyy", new Locale("id", "ID"));
+            SimpleDateFormat inputSdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'", Locale.getDefault());
+            SimpleDateFormat outputSdf = new SimpleDateFormat("dd MMM yyyy", new Locale("id", "ID"));
             tanggal = outputSdf.format(inputSdf.parse(transaksi.getTanggal()));
         } catch (Exception e) {
             tanggal = transaksi.getTanggal();
         }
 
-        // Catatan
         String catatan = (transaksi.getCatatan() != null && !transaksi.getCatatan().isEmpty())
-                ? transaksi.getCatatan()
-                : "Tidak ada catatan";
+                ? transaksi.getCatatan() : "Tidak ada catatan";
 
-        String tipe = transaksi.getTipe().equals("pengeluaran") ? "🔴 Pengeluaran" : "🟢 Pemasukan";
+        boolean isPengeluaran = transaksi.getTipe().equals("pengeluaran");
 
-        String pesan = "Kategori : " + transaksi.getKategori() + "\n" +
-                "Tipe     : " + tipe + "\n" +
-                "Nominal  : " + nominal + "\n" +
-                "Tanggal  : " + tanggal + "\n" +
-                "Catatan  : " + catatan;
+        // Bind views
+        TextView tvJudul    = view.findViewById(R.id.tv_detail_judul);
+        TextView tvNominal  = view.findViewById(R.id.tv_detail_nominal);
+        TextView tvTipe     = view.findViewById(R.id.tv_detail_tipe);
+        TextView tvKategori = view.findViewById(R.id.tv_detail_kategori);
+        TextView tvTanggal  = view.findViewById(R.id.tv_detail_tanggal);
+        TextView tvCatatan  = view.findViewById(R.id.tv_detail_catatan);
+        TextView btnHapus   = view.findViewById(R.id.btn_detail_hapus);
+        TextView btnTutup   = view.findViewById(R.id.btn_detail_tutup);
 
-        new AlertDialog.Builder(requireContext())
-                .setTitle(transaksi.getJudul())
-                .setMessage(pesan)
-                .setPositiveButton("Tutup", null)
-                .setNeutralButton("Hapus", (dialog, which) -> showDeleteDialog(transaksi))
-                .show();
+        tvJudul.setText(transaksi.getJudul());
+        tvNominal.setText((isPengeluaran ? "- " : "+ ") + nominal);
+        tvNominal.setTextColor(requireContext().getColor(
+                isPengeluaran ? R.color.expense_red : R.color.income_green));
+        tvTipe.setText(isPengeluaran ? "🔴 Pengeluaran" : "🟢 Pemasukan");
+        tvKategori.setText(transaksi.getKategori());
+        tvTanggal.setText(tanggal);
+        tvCatatan.setText(catatan);
+
+        btnHapus.setOnClickListener(v -> {
+            dialog.dismiss();
+            showDeleteDialog(transaksi);
+        });
+        btnTutup.setOnClickListener(v -> dialog.dismiss());
+
+        dialog.show();
     }
 
     private void deleteTransaksi(Transaksi transaksi) {

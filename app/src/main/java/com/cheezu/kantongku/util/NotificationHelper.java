@@ -61,8 +61,8 @@ public class NotificationHelper {
         createChannel(context);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_notification)
-                .setContentTitle("🔄 Budget Direset!")
-                .setContentText("Budget bulan baru telah dimulai. Selamat mengelola keuangan!")
+                .setContentTitle("🎉 Budget Bulan Baru Dimulai!")
+                .setContentText("Yuk mulai catat pengeluaran bulan ini dan kelola keuangan lebih baik!")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setAutoCancel(true);
         try {

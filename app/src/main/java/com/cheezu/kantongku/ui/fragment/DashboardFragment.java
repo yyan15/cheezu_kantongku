@@ -34,10 +34,6 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import com.cheezu.kantongku.ui.fragment.SetelanFragment;
 import com.cheezu.kantongku.util.NotificationHelper;
-import com.cheezu.kantongku.util.NotificationHelper;
-import com.cheezu.kantongku.ui.fragment.SetelanFragment;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 public class DashboardFragment extends Fragment {
 
@@ -90,11 +86,6 @@ public class DashboardFragment extends Fragment {
             }
         }
 
-// Load data dari Laravel
-        loadDashboardData();
-
-        // Load data dari Laravel
-        loadDashboardData();
     }
 
     private void loadDashboardData() {
@@ -146,6 +137,7 @@ public class DashboardFragment extends Fragment {
 
     private void updateBudgetBar(double totalPengeluaran) {
         if (!isAdded() || getContext() == null) return;
+        if (budgetLimit <= 0) return;
         int persen = (int) ((totalPengeluaran / budgetLimit) * 100);
         persen = Math.min(persen, 100); // max 100
 
