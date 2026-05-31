@@ -1,6 +1,9 @@
 package com.cheezu.kantongku.ui.fragment;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +23,7 @@ import com.cheezu.kantongku.data.api.ApiClient;
 import com.cheezu.kantongku.data.api.ApiResponse;
 import com.cheezu.kantongku.data.api.TransaksiApiService;
 import com.cheezu.kantongku.data.api.model.Transaksi;
+import com.cheezu.kantongku.ui.activity.LoginActivity;
 import com.cheezu.kantongku.util.RupiahTextWatcher;
 
 import java.text.SimpleDateFormat;
@@ -59,6 +63,10 @@ public class TambahTransaksiFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        view.findViewById(R.id.btn_back).setOnClickListener(v -> {
+            if (getActivity() != null) getActivity().onBackPressed();
+        });
+
         btnPengeluaran  = view.findViewById(R.id.btn_pengeluaran);
         btnPemasukan    = view.findViewById(R.id.btn_pemasukan);
         btnSimpan       = view.findViewById(R.id.btn_simpan);
@@ -77,7 +85,7 @@ public class TambahTransaksiFragment extends Fragment {
         apiService = ApiClient.getApiService();
 
         Calendar cal = Calendar.getInstance();
-        tanggalSelected = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(cal.getTime());
+        tanggalSelected = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(cal.getTime());
         tvTanggal.setText(new SimpleDateFormat("dd MMM yyyy", new Locale("id", "ID")).format(cal.getTime()));
 
         setupToggleTipe();
@@ -143,7 +151,7 @@ public class TambahTransaksiFragment extends Fragment {
                     (datePicker, year, month, day) -> {
                         Calendar selected = Calendar.getInstance();
                         selected.set(year, month, day);
-                        tanggalSelected = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                        tanggalSelected = new SimpleDateFormat("yyyy-MM-dd", Locale.US)
                                 .format(selected.getTime());
                         tvTanggal.setText(new SimpleDateFormat("dd MMM yyyy", new Locale("id", "ID"))
                                 .format(selected.getTime()));
@@ -171,9 +179,14 @@ public class TambahTransaksiFragment extends Fragment {
                 return;
             }
 
-            String judul = kategoriSelected + " - " +
-                    new SimpleDateFormat("dd MMM", new Locale("id", "ID"))
-                            .format(Calendar.getInstance().getTime());
+            String judul;
+            try {
+                SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+                SimpleDateFormat formatter = new SimpleDateFormat("dd MMM", new Locale("id", "ID"));
+                judul = kategoriSelected + " - " + formatter.format(parser.parse(tanggalSelected));
+            } catch (Exception e) {
+                judul = kategoriSelected;
+            }
 
             Transaksi transaksi = new Transaksi(
                     judul, kategoriSelected, tipeSelected,
@@ -190,11 +203,42 @@ public class TambahTransaksiFragment extends Fragment {
                     if (!isAdded() || getContext() == null) return;
                     btnSimpan.setEnabled(true);
                     btnSimpan.setText("Simpan Transaksi");
+
                     if (response.isSuccessful() && response.body() != null && response.body().success) {
                         Toast.makeText(requireContext(), "Transaksi berhasil disimpan!", Toast.LENGTH_SHORT).show();
                         resetForm();
                     } else {
-                        Toast.makeText(requireContext(), "Gagal menyimpan transaksi", Toast.LENGTH_SHORT).show();
+                        if (response.code() == 401) {
+                            Toast.makeText(requireContext(), "Sesi habis, silakan login kembali", Toast.LENGTH_LONG).show();
+                            // Redirect ke Login
+                            SharedPreferences sharedPref = requireContext().getSharedPreferences("KantongkuPrefs", Context.MODE_PRIVATE);
+                            sharedPref.edit().clear().apply();
+                            Intent intent = new Intent(requireContext(), LoginActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                            return;
+                        }
+
+                        String errorMsg = "Gagal menyimpan transaksi";
+                        try {
+                            if (response.body() != null && response.body().message != null) {
+                                errorMsg = response.body().message;
+                            } else if (response.errorBody() != null) {
+                                // Ambil pesan error dari JSON errorBody
+                                String errorJson = response.errorBody().string();
+                                // Sederhanakan: jika contains "message", ambil isinya (manual parsing simple)
+                                if (errorJson.contains("\"message\":\"")) {
+                                    int start = errorJson.indexOf("\"message\":\"") + 11;
+                                    int end = errorJson.indexOf("\"", start);
+                                    errorMsg = errorJson.substring(start, end);
+                                } else {
+                                    errorMsg = "Error " + response.code() + ": " + errorMsg;
+                                }
+                            }
+                        } catch (Exception e) {
+                            errorMsg = "Error parsing: " + e.getMessage();
+                        }
+                        Toast.makeText(requireContext(), errorMsg, Toast.LENGTH_LONG).show();
                     }
                 }
 
