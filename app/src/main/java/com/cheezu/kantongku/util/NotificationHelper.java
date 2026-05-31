@@ -56,6 +56,21 @@ public class NotificationHelper {
         }
     }
 
+    // ─── Notifikasi reset budget bulanan ─────────────────────
+    public static void showBudgetResetNotification(Context context) {
+        createChannel(context);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentTitle("🔄 Budget Direset!")
+                .setContentText("Budget bulan baru telah dimulai. Selamat mengelola keuangan!")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(true);
+        try {
+            NotificationManagerCompat.from(context).notify(NOTIF_ID + 10, builder.build());
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+    }
     // ─── Notifikasi pengingat harian ─────────────────────────
     public static void kirimNotifReminder(Context context) {
         createChannel(context);

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,6 +70,9 @@ public class RiwayatFragment extends Fragment {
         rvRiwayat.setAdapter(adapter);
 
         apiService = ApiClient.getApiService();
+        // Tombol filter
+        ImageButton btnFilter = view.findViewById(R.id.btn_filter);
+        btnFilter.setOnClickListener(v -> showFilterDialog());
 
 
             adapter.setOnItemClickListener(new TransaksiAdapter.OnItemClickListener() {
@@ -114,6 +118,35 @@ public class RiwayatFragment extends Fragment {
                         "Gagal memuat data: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    private void showFilterDialog() {
+        String[] opsi = {"Semua", "Pengeluaran", "Pemasukan"};
+
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Filter Transaksi")
+                .setItems(opsi, (dialog, which) -> {
+                    if (allData == null) return;
+                    switch (which) {
+                        case 0: // Semua
+                            adapter.setData(allData);
+                            break;
+                        case 1: // Pengeluaran
+                            List<Transaksi> pengeluaran = new ArrayList<>();
+                            for (Transaksi t : allData) {
+                                if (t.getTipe().equals("pengeluaran")) pengeluaran.add(t);
+                            }
+                            adapter.setData(pengeluaran);
+                            break;
+                        case 2: // Pemasukan
+                            List<Transaksi> pemasukan = new ArrayList<>();
+                            for (Transaksi t : allData) {
+                                if (t.getTipe().equals("pemasukan")) pemasukan.add(t);
+                            }
+                            adapter.setData(pemasukan);
+                            break;
+                    }
+                })
+                .show();
     }
 
     private void setupSearch() {
