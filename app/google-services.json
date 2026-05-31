@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "502977103838",
+    "project_id": "studio-3554745084-7347a",
+    "storage_bucket": "studio-3554745084-7347a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:502977103838:android:ab6f87c81a704560627f4f",
+        "android_client_info": {
+          "package_name": "com.cheezu.kantongku"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt7x4fOmh8lN2mv2EhtnJkkwrqubINY44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
