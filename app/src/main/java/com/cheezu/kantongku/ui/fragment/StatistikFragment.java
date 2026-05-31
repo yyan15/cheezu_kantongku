@@ -97,8 +97,9 @@ public class StatistikFragment extends Fragment {
             public void onResponse(@NonNull Call<ApiResponse.StatistikResponse> call,
                                    @NonNull Response<ApiResponse.StatistikResponse> response) {
                 if (!isAdded() || getContext() == null) return;
-                if (response.isSuccessful() && response.body() != null) {
-                    updateStatistikUI(response.body().data);
+                if (response.isSuccessful() && response.body() != null && response.body().data != null) {
+                    updateStatistikUI(response.body().data.perKategori);
+                    updateBarChart(response.body().data.last6Months);
                 }
             }
 
@@ -151,6 +152,12 @@ public class StatistikFragment extends Fragment {
 
         tvKategoriTerbesar.setText(kategoriTerbesar);
 
+        // Reset progress & label sebelum update
+        progressMakan.setProgress(0);     tvPctMakan.setText("Rp 0 · 0%");
+        progressTransport.setProgress(0); tvPctTransport.setText("Rp 0 · 0%");
+        progressBelanja.setProgress(0);   tvPctBelanja.setText("Rp 0 · 0%");
+        progressHiburan.setProgress(0);   tvPctHiburan.setText("Rp 0 · 0%");
+
         for (ApiResponse.StatistikItem item : items) {
             int persen = totalAll > 0 ? (int) ((item.total / totalAll) * 100) : 0;
             String label = fmt.format(item.total).replace("Rp", "Rp ")
@@ -163,31 +170,41 @@ public class StatistikFragment extends Fragment {
                 case "Hiburan":   progressHiburan.setProgress(persen);   tvPctHiburan.setText(label);   break;
             }
         }
-
-        updateBarChart();
     }
 
-    private void updateBarChart() {
-        if (!isAdded() || getContext() == null) return;
+    private void updateBarChart(List<ApiResponse.ChartItem> chartItems) {
+        if (!isAdded() || getContext() == null || chartItems == null) return;
+
         List<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(0, 1500000));
-        entries.add(new BarEntry(1, 2200000));
-        entries.add(new BarEntry(2, 1800000));
-        entries.add(new BarEntry(3, 3100000));
-        entries.add(new BarEntry(4, 2400000));
-        entries.add(new BarEntry(5, 2660000));
+        String[] labels = new String[chartItems.size()];
+
+        for (int i = 0; i < chartItems.size(); i++) {
+            ApiResponse.ChartItem item = chartItems.get(i);
+            entries.add(new BarEntry(i, (float) item.total));
+            labels[i] = item.label;
+        }
 
         BarDataSet dataSet = new BarDataSet(entries, "Pengeluaran");
         dataSet.setColor(Color.parseColor("#0D9488"));
         dataSet.setValueTextColor(Color.parseColor("#64748B"));
         dataSet.setValueTextSize(10f);
 
+        // Sederhanakan format angka di atas bar
+        dataSet.setValueFormatter(new com.github.mikephil.charting.formatter.ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                if (value == 0) return "";
+                if (value >= 1000000) return String.format("%.1fM", value / 1000000);
+                if (value >= 1000) return String.format("%.0fk", value / 1000);
+                return String.format("%.0f", value);
+            }
+        });
+
         BarData barData = new BarData(dataSet);
         barData.setBarWidth(0.6f);
         barChart.setData(barData);
 
-        String[] bulan = {"Des", "Jan", "Feb", "Mar", "Apr", "Mei"};
-        barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(bulan));
+        barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(labels));
         barChart.invalidate();
     }
 

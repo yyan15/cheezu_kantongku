@@ -1,9 +1,9 @@
 package com.cheezu.kantongku.ui.fragment;
 
-import android.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,13 +18,19 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
+import com.cheezu.kantongku.ui.activity.LoginActivity;
+import android.content.Context;
+import android.content.Intent;
 import com.cheezu.kantongku.R;
 
 import java.text.NumberFormat;
 import java.util.Locale;
-import androidx.appcompat.app.AppCompatDelegate;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
-
+import com.cheezu.kantongku.util.ReminderWorker;
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 import com.cheezu.kantongku.data.api.ApiClient;
 import com.cheezu.kantongku.data.api.ApiResponse;
 import com.cheezu.kantongku.data.api.TransaksiApiService;
@@ -34,13 +40,6 @@ import com.cheezu.kantongku.util.RupiahTextWatcher;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import com.cheezu.kantongku.util.RupiahTextWatcher;
-import androidx.work.ExistingPeriodicWorkPolicy;
-import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkManager;
-import com.cheezu.kantongku.util.ReminderWorker;
-import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
 
 public class SetelanFragment extends Fragment {
 
@@ -51,10 +50,10 @@ public class SetelanFragment extends Fragment {
     public static final String KEY_REMINDER        = "reminder_aktif";
     public static final String KEY_DARK_MODE       = "dark_mode";
 
-    private TextView tvBudgetTotalValue, tvThresholdValue;
+    private TextView tvBudgetTotalValue, tvThresholdValue, tvUserName, tvUserEmail;
     private Switch switchResetBudget, switchNotifBudget, switchReminder, switchDarkMode;
     private LinearLayout itemBudgetTotal, itemBudgetKategori,
-            itemThreshold, itemExport, itemResetData;
+            itemThreshold, itemExport, itemResetData, itemLogout;
 
     private SharedPreferences prefs;
     private NumberFormat fmt = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
@@ -76,6 +75,8 @@ public class SetelanFragment extends Fragment {
 
         tvBudgetTotalValue  = view.findViewById(R.id.tv_budget_total_value);
         tvThresholdValue    = view.findViewById(R.id.tv_threshold_value);
+        tvUserName          = view.findViewById(R.id.tv_user_name);
+        tvUserEmail         = view.findViewById(R.id.tv_user_email);
         switchResetBudget   = view.findViewById(R.id.switch_reset_budget);
         switchNotifBudget   = view.findViewById(R.id.switch_notif_budget);
         switchReminder      = view.findViewById(R.id.switch_reminder);
@@ -83,12 +84,24 @@ public class SetelanFragment extends Fragment {
         itemBudgetTotal     = view.findViewById(R.id.item_budget_total);
         itemBudgetKategori  = view.findViewById(R.id.item_budget_kategori);
         itemThreshold       = view.findViewById(R.id.item_threshold);
-        itemExport          = view.findViewById(R.id.item_export);
+        itemExport          = view.findViewById(R.id.item_export_data);
         itemResetData       = view.findViewById(R.id.item_reset_data);
+        itemLogout          = view.findViewById(R.id.item_logout);
         apiService = ApiClient.getApiService();
 
         loadSavedSettings();
+        loadUserInfo();
         setupListeners();
+    }
+
+    // ─── Load data user ──────────────────────────────────────
+    private void loadUserInfo() {
+        SharedPreferences kantongkuPrefs = requireContext().getSharedPreferences("KantongkuPrefs", Context.MODE_PRIVATE);
+        String name = kantongkuPrefs.getString("user_name", "Pengguna");
+        String email = kantongkuPrefs.getString("user_email", "Belum Login");
+
+        tvUserName.setText(name);
+        tvUserEmail.setText(email);
     }
 
     // ─── Load setting tersimpan ──────────────────────────────
@@ -152,13 +165,37 @@ public class SetelanFragment extends Fragment {
 
         // Reset data
         itemResetData.setOnClickListener(v -> showDialogResetData());
+
+        // Logout
+        itemLogout.setOnClickListener(v -> showDialogLogout());
+    }
+
+    private void showDialogLogout() {
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Logout")
+                .setMessage("Apakah Anda yakin ingin keluar?")
+                .setPositiveButton("Logout", (dialog, which) -> {
+                    // 1. Hapus token dari SharedPreferences
+                    SharedPreferences kantongkuPrefs = requireContext().getSharedPreferences("KantongkuPrefs", Context.MODE_PRIVATE);
+                    kantongkuPrefs.edit().clear().apply();
+
+                    // 2. Clear Google Sign In (Optional but recommended)
+                    // You might need to inject GoogleSignInClient here or just clear the local state
+                    
+                    Toast.makeText(requireContext(), "Logout berhasil", Toast.LENGTH_SHORT).show();
+
+                    // 3. Pindah ke LoginActivity
+                    Intent intent = new Intent(requireActivity(), LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    requireActivity().finish();
+                })
+                .setNegativeButton("Batal", null)
+                .show();
     }
 
     // ─── Dialog set budget total ─────────────────────────────
     private void showDialogBudget() {
-        View dialogView = LayoutInflater.from(requireContext())
-                .inflate(android.R.layout.simple_list_item_1, null);
-
         EditText etBudget = new EditText(requireContext());
         etBudget.setHint("Masukkan nominal budget");
         etBudget.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class Transaksi {
 
     @SerializedName("id")
-    private int id;
+    private Integer id;
 
     @SerializedName("judul")
     private String judul;
@@ -37,8 +37,8 @@ public class Transaksi {
     }
 
     // ─── Getter & Setter ────────────────────────────────────
-    public int getId()                  { return id; }
-    public void setId(int id)           { this.id = id; }
+    public Integer getId()              { return id; }
+    public void setId(Integer id)       { this.id = id; }
 
     public String getJudul()            { return judul; }
     public void setJudul(String j)      { this.judul = j; }
