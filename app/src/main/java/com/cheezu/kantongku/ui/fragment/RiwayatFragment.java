@@ -41,10 +41,11 @@ public class RiwayatFragment extends Fragment {
 
     private RecyclerView rvRiwayat;
     private EditText etSearch;
-    private TextView chipSemua, chipMakan, chipTransport, chipBelanja, chipHiburan;
+    private TextView chipSemua, chipMakan, chipTransport, chipBelanja, chipHiburan, chipKesehatan, chipLainnya;
     private TransaksiAdapter adapter;
     private TransaksiApiService apiService;
     private List<Transaksi> allData = new ArrayList<>();
+
 
     @Nullable
     @Override
@@ -65,6 +66,8 @@ public class RiwayatFragment extends Fragment {
         chipTransport = view.findViewById(R.id.chip_transport);
         chipBelanja   = view.findViewById(R.id.chip_belanja);
         chipHiburan   = view.findViewById(R.id.chip_hiburan);
+        chipKesehatan = view.findViewById(R.id.chip_kesehatan);
+        chipLainnya   = view.findViewById(R.id.chip_lainnya);
 
         adapter = new TransaksiAdapter(requireContext());
         rvRiwayat.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -121,33 +124,62 @@ public class RiwayatFragment extends Fragment {
         });
     }
     private void showFilterDialog() {
-        String[] opsi = {"Semua", "Pengeluaran", "Pemasukan"};
+        BottomSheetDialog dialog = new BottomSheetDialog(requireContext());
+        View view = LayoutInflater.from(requireContext()).inflate(R.layout.bottomsheet_filter, null);
+        dialog.setContentView(view);
 
-        new AlertDialog.Builder(requireContext())
-                .setTitle("Filter Transaksi")
-                .setItems(opsi, (dialog, which) -> {
-                    if (allData == null) return;
-                    switch (which) {
-                        case 0: // Semua
-                            adapter.setData(allData);
-                            break;
-                        case 1: // Pengeluaran
-                            List<Transaksi> pengeluaran = new ArrayList<>();
-                            for (Transaksi t : allData) {
-                                if (t.getTipe().equals("pengeluaran")) pengeluaran.add(t);
-                            }
-                            adapter.setData(pengeluaran);
-                            break;
-                        case 2: // Pemasukan
-                            List<Transaksi> pemasukan = new ArrayList<>();
-                            for (Transaksi t : allData) {
-                                if (t.getTipe().equals("pemasukan")) pemasukan.add(t);
-                            }
-                            adapter.setData(pemasukan);
-                            break;
-                    }
-                })
-                .show();
+        TextView btnSemua       = view.findViewById(R.id.btn_filter_semua);
+        TextView btnPengeluaran = view.findViewById(R.id.btn_filter_pengeluaran);
+        TextView btnPemasukan   = view.findViewById(R.id.btn_filter_pemasukan);
+        TextView btnTerbaru     = view.findViewById(R.id.btn_filter_terbaru);
+        TextView btnTerlama     = view.findViewById(R.id.btn_filter_terlama);
+        TextView btnTutup       = view.findViewById(R.id.btn_filter_tutup);
+
+        btnSemua.setOnClickListener(v -> {
+            adapter.setData(allData);
+            dialog.dismiss();
+        });
+
+        btnPengeluaran.setOnClickListener(v -> {
+            List<Transaksi> filtered = new ArrayList<>();
+            for (Transaksi t : allData) {
+                if ("pengeluaran".equals(t.getTipe())) filtered.add(t);
+            }
+            adapter.setData(filtered);
+            dialog.dismiss();
+        });
+
+        btnPemasukan.setOnClickListener(v -> {
+            List<Transaksi> filtered = new ArrayList<>();
+            for (Transaksi t : allData) {
+                if ("pemasukan".equals(t.getTipe())) filtered.add(t);
+            }
+            adapter.setData(filtered);
+            dialog.dismiss();
+        });
+
+        btnTerbaru.setOnClickListener(v -> {
+            List<Transaksi> sorted = new ArrayList<>(allData);
+            java.util.Collections.sort(sorted, (a, b) -> {
+                if (a.getTanggal() == null || b.getTanggal() == null) return 0;
+                return b.getTanggal().compareTo(a.getTanggal());
+            });
+            adapter.setData(sorted);
+            dialog.dismiss();
+        });
+
+        btnTerlama.setOnClickListener(v -> {
+            List<Transaksi> sorted = new ArrayList<>(allData);
+            java.util.Collections.sort(sorted, (a, b) -> {
+                if (a.getTanggal() == null || b.getTanggal() == null) return 0;
+                return a.getTanggal().compareTo(b.getTanggal());
+            });
+            adapter.setData(sorted);
+            dialog.dismiss();
+        });
+
+        btnTutup.setOnClickListener(v -> dialog.dismiss());
+        dialog.show();
     }
 
     private void setupSearch() {
@@ -173,8 +205,8 @@ public class RiwayatFragment extends Fragment {
     }
 
     private void setupChipFilter() {
-        TextView[] chips = {chipSemua, chipMakan, chipTransport, chipBelanja, chipHiburan};
-        String[] kategori = {"Semua", "Makan", "Transport", "Belanja", "Hiburan"};
+        TextView[] chips = {chipSemua, chipMakan, chipTransport, chipBelanja, chipHiburan, chipKesehatan, chipLainnya};
+        String[] kategori = {"Semua", "Makan", "Transport", "Belanja", "Hiburan", "Kesehatan", "Lainnya"};
 
         for (int i = 0; i < chips.length; i++) {
             final String kat = kategori[i];

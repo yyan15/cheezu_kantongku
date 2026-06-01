@@ -50,6 +50,8 @@ public class StatistikFragment extends Fragment {
     private TransaksiApiService apiService;
     private final NumberFormat fmt = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
     private List<Transaksi> semuaTransaksi = new ArrayList<>();
+    private ProgressBar progressKesehatan, progressLainnya;
+    private TextView tvPctKesehatan, tvPctLainnya;
 
     @Nullable
     @Override
@@ -77,6 +79,11 @@ public class StatistikFragment extends Fragment {
         tvPctHiburan       = view.findViewById(R.id.tv_pct_hiburan);
         toggleBulanan      = view.findViewById(R.id.toggle_bulanan);
         toggleMingguan     = view.findViewById(R.id.toggle_mingguan);
+        progressKesehatan  = view.findViewById(R.id.progress_kesehatan);
+        progressLainnya    = view.findViewById(R.id.progress_lainnya);
+        tvPctKesehatan     = view.findViewById(R.id.tv_pct_kesehatan);
+        tvPctLainnya       = view.findViewById(R.id.tv_pct_lainnya);
+
 
         apiService = ApiClient.getApiService();
         setupBarChart();
@@ -210,8 +217,9 @@ public class StatistikFragment extends Fragment {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         double[] harian = new double[7];
-        double totalMakan = 0, totalTransport = 0, totalBelanja = 0, totalHiburan = 0;
-        double totalMingguIni = 0;
+        double totalMakan = 0, totalTransport = 0, totalBelanja = 0,
+                totalHiburan = 0, totalKesehatan = 0, totalLainnya = 0, totalMingguIni = 0;
+
         int jumlah = 0;
 
         for (Transaksi t : semua) {
@@ -237,13 +245,15 @@ public class StatistikFragment extends Fragment {
                     case "Transport": totalTransport += t.getNominal(); break;
                     case "Belanja":   totalBelanja   += t.getNominal(); break;
                     case "Hiburan":   totalHiburan   += t.getNominal(); break;
+                    case "Kesehatan": totalKesehatan += t.getNominal(); break;
+                    case "Lainnya":   totalLainnya   += t.getNominal(); break;
                 }
             } catch (ParseException e) { e.printStackTrace(); }
         }
 
         // Cari kategori terbesar
-        double[] totKat = {totalMakan, totalTransport, totalBelanja, totalHiburan};
-        String[] nmKat  = {"Makan", "Transport", "Belanja", "Hiburan"};
+        double[] totKat = {totalMakan, totalTransport, totalBelanja, totalHiburan, totalKesehatan, totalLainnya};
+        String[] nmKat  = {"Makan", "Transport", "Belanja", "Hiburan", "Kesehatan", "Lainnya"};
         String terbesar = "-";
         double max = 0;
         for (int i = 0; i < totKat.length; i++) {
@@ -255,15 +265,17 @@ public class StatistikFragment extends Fragment {
         tvJumlahTransaksi.setText(String.valueOf(jumlah));
         tvKategoriTerbesar.setText(jumlah == 0 ? "-" : terbesar);
 
-        double totalAll = totalMakan + totalTransport + totalBelanja + totalHiburan;
-        updateProgressKategori(totalMakan, totalTransport, totalBelanja, totalHiburan, totalAll);
-        updateBarChartMingguan(harian);
+        double totalAll = totalMakan + totalTransport + totalBelanja
+                + totalHiburan + totalKesehatan + totalLainnya;
+        updateProgressKategori(totalMakan, totalTransport, totalBelanja,
+                totalHiburan, totalKesehatan, totalLainnya, totalAll);
     }
 
     private void updateKategoriUI(List<ApiResponse.StatistikItem> items) {
         if (!isAdded() || getContext() == null || items == null || items.isEmpty()) return;
 
-        double totalAll = 0, makan = 0, transport = 0, belanja = 0, hiburan = 0;
+        double totalAll = 0, makan = 0, transport = 0, belanja = 0,
+                hiburan = 0, kesehatan = 0, lainnya = 0;
         String terbesar = "-";
         double max = 0;
 
@@ -275,29 +287,38 @@ public class StatistikFragment extends Fragment {
                 case "Transport": transport = item.total; break;
                 case "Belanja":   belanja   = item.total; break;
                 case "Hiburan":   hiburan   = item.total; break;
+                case "Kesehatan": kesehatan = item.total; break;
+                case "Lainnya":   lainnya   = item.total; break;
             }
         }
         tvKategoriTerbesar.setText(terbesar);
-        updateProgressKategori(makan, transport, belanja, hiburan, totalAll);
+        updateProgressKategori(makan, transport, belanja, hiburan, kesehatan, lainnya, totalAll);
     }
 
     private void updateProgressKategori(double makan, double transport,
-                                        double belanja, double hiburan, double total) {
+                                        double belanja, double hiburan,
+                                        double kesehatan, double lainnya, double total) {
         if (!isAdded() || getContext() == null) return;
-        int pM = total > 0 ? (int) ((makan     / total) * 100) : 0;
-        int pT = total > 0 ? (int) ((transport / total) * 100) : 0;
-        int pB = total > 0 ? (int) ((belanja   / total) * 100) : 0;
-        int pH = total > 0 ? (int) ((hiburan   / total) * 100) : 0;
+        int pM  = total > 0 ? (int) ((makan      / total) * 100) : 0;
+        int pT  = total > 0 ? (int) ((transport  / total) * 100) : 0;
+        int pB  = total > 0 ? (int) ((belanja    / total) * 100) : 0;
+        int pH  = total > 0 ? (int) ((hiburan    / total) * 100) : 0;
+        int pK  = total > 0 ? (int) ((kesehatan  / total) * 100) : 0;
+        int pL  = total > 0 ? (int) ((lainnya    / total) * 100) : 0;
 
         progressMakan.setProgress(pM);
         progressTransport.setProgress(pT);
         progressBelanja.setProgress(pB);
         progressHiburan.setProgress(pH);
+        progressKesehatan.setProgress(pK);
+        progressLainnya.setProgress(pL);
 
         tvPctMakan.setText(fmt.format(makan).replace("Rp", "Rp ").replace(",00", "") + " · " + pM + "%");
         tvPctTransport.setText(fmt.format(transport).replace("Rp", "Rp ").replace(",00", "") + " · " + pT + "%");
         tvPctBelanja.setText(fmt.format(belanja).replace("Rp", "Rp ").replace(",00", "") + " · " + pB + "%");
         tvPctHiburan.setText(fmt.format(hiburan).replace("Rp", "Rp ").replace(",00", "") + " · " + pH + "%");
+        tvPctKesehatan.setText(fmt.format(kesehatan).replace("Rp", "Rp ").replace(",00", "") + " · " + pK + "%");
+        tvPctLainnya.setText(fmt.format(lainnya).replace("Rp", "Rp ").replace(",00", "") + " · " + pL + "%");
     }
 
     // ─── Bar chart bulanan (6 bulan) ─────────────────────────

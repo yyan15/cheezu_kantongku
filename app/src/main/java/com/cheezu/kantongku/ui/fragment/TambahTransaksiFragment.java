@@ -213,11 +213,28 @@ public class TambahTransaksiFragment extends Fragment {
     private void resetForm() {
         etNominal.setText("");
         etCatatan.setText("");
-        tipeSelected     = "pengeluaran";
-        kategoriSelected = "Makan";
-        btnPengeluaran.setBackgroundTintList(requireContext().getColorStateList(R.color.teal_primary));
-        btnPengeluaran.setTextColor(requireContext().getColor(android.R.color.white));
-        btnPemasukan.setBackgroundTintList(requireContext().getColorStateList(R.color.surface_secondary));
-        btnPemasukan.setTextColor(requireContext().getColor(R.color.text_secondary));
+
+        // Reset tanggal ke hari ini
+        Calendar cal = Calendar.getInstance();
+        tanggalSelected = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(cal.getTime());
+        tvTanggal.setText(new SimpleDateFormat("dd MMM yyyy", new Locale("id", "ID")).format(cal.getTime()));
+
+        // Tidak reset tipe — biarkan user tetap di tipe yang sama
+        // Hanya reset kategori kalau mode pengeluaran
+        if (tipeSelected.equals("pengeluaran")) {
+            kategoriSelected = "Makan";
+            cardKategori.setVisibility(View.VISIBLE);
+            btnPengeluaran.setBackgroundTintList(requireContext().getColorStateList(R.color.teal_primary));
+            btnPengeluaran.setTextColor(requireContext().getColor(android.R.color.white));
+            btnPemasukan.setBackgroundTintList(requireContext().getColorStateList(R.color.surface_secondary));
+            btnPemasukan.setTextColor(requireContext().getColor(R.color.text_secondary));
+        } else {
+            kategoriSelected = "Pemasukan";
+            cardKategori.setVisibility(View.GONE);
+            btnPemasukan.setBackgroundTintList(requireContext().getColorStateList(R.color.teal_primary));
+            btnPemasukan.setTextColor(requireContext().getColor(android.R.color.white));
+            btnPengeluaran.setBackgroundTintList(requireContext().getColorStateList(R.color.surface_secondary));
+            btnPengeluaran.setTextColor(requireContext().getColor(R.color.text_secondary));
+        }
     }
 }

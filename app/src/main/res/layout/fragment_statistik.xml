@@ -273,7 +273,45 @@
                         android:progressTint="@color/icon_color_hiburan"
                         android:progressBackgroundTint="@color/surface_secondary"/>
                 </LinearLayout>
+                <!-- Kategori Item: Kesehatan -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:layout_marginTop="12dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="5dp">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="❤️  Kesehatan"
+                            android:textColor="@color/text_primary" android:textSize="13sp"/>
+                        <TextView android:id="@+id/tv_pct_kesehatan"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Rp 0 · 0%" android:textColor="@color/text_secondary" android:textSize="11sp"/>
+                    </LinearLayout>
+                    <ProgressBar android:id="@+id/progress_kesehatan"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent" android:layout_height="6dp"
+                        android:max="100" android:progress="0"
+                        android:progressTint="#EC4899"
+                        android:progressBackgroundTint="@color/surface_secondary"/>
+                </LinearLayout>
 
+                <!-- Kategori Item: Lainnya -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:layout_marginTop="12dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="5dp">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="📦  Lainnya"
+                            android:textColor="@color/text_primary" android:textSize="13sp"/>
+                        <TextView android:id="@+id/tv_pct_lainnya"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Rp 0 · 0%" android:textColor="@color/text_secondary" android:textSize="11sp"/>
+                    </LinearLayout>
+                    <ProgressBar android:id="@+id/progress_lainnya"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent" android:layout_height="6dp"
+                        android:max="100" android:progress="0"
+                        android:progressTint="#F59E0B"
+                        android:progressBackgroundTint="@color/surface_secondary"/>
+                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

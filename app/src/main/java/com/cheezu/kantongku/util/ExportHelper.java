@@ -45,7 +45,7 @@ public class ExportHelper {
         paint.setColor(Color.WHITE);
         paint.setTextSize(20f);
         paint.setFakeBoldText(true);
-        canvas.drawText("Laporan Keuangan - CheeuzKantongku", margin, 36, paint);
+        canvas.drawText("Laporan Keuangan - CheezuKantongku", margin, 36, paint);
 
         paint.setTextSize(11f);
         paint.setFakeBoldText(false);
@@ -153,7 +153,7 @@ public class ExportHelper {
         // ─── Simpan file ──────────────────────────────────────
         try {
             File dir = new File(Environment.getExternalStoragePublicDirectory(
-                    Environment.DIRECTORY_DOWNLOADS), "CheeuzKantongku");
+                    Environment.DIRECTORY_DOWNLOADS), "CheezuKantongku");
             if (!dir.exists()) dir.mkdirs();
 
             String fileName = "Laporan_" + new SimpleDateFormat("yyyyMMdd_HHmm",

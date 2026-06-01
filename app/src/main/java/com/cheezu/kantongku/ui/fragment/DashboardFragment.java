@@ -32,8 +32,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import com.cheezu.kantongku.ui.fragment.SetelanFragment;
 import com.cheezu.kantongku.util.NotificationHelper;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+
 
 public class DashboardFragment extends Fragment {
 
@@ -67,10 +68,20 @@ public class DashboardFragment extends Fragment {
         progressBudget  = view.findViewById(R.id.progress_budget);
         rvTransaksi     = view.findViewById(R.id.rv_transaksi);
 
+        // Set nama bulan
+        TextView tvBulan = view.findViewById(R.id.tv_bulan);
+        String namaBulan = new java.text.SimpleDateFormat("MMMM yyyy", new Locale("id", "ID"))
+                .format(new java.util.Date());
+        tvBulan.setText(namaBulan);
+
+        // Icon lonceng
+        view.findViewById(R.id.btn_notification).setOnClickListener(v -> showNotifikasiBottomSheet());
+
         // Setup RecyclerView
         adapter = new TransaksiAdapter(requireContext());
         rvTransaksi.setLayoutManager(new LinearLayoutManager(requireContext()));
         rvTransaksi.setAdapter(adapter);
+
 
         // Init API service
         apiService = ApiClient.getApiService();
@@ -187,5 +198,55 @@ public class DashboardFragment extends Fragment {
         budgetLimit = prefs.getFloat(SetelanFragment.KEY_BUDGET_TOTAL, 3900000f);
 
         loadDashboardData();
+    }
+    private void showNotifikasiBottomSheet() {
+        BottomSheetDialog dialog = new BottomSheetDialog(requireContext());
+        View view = LayoutInflater.from(requireContext()).inflate(R.layout.bottomsheet_notifikasi, null);
+        dialog.setContentView(view);
+
+        RecyclerView rv = view.findViewById(R.id.rv_notifikasi);
+        TextView tvEmpty = view.findViewById(R.id.tv_notif_empty);
+        TextView btnHapus = view.findViewById(R.id.btn_hapus_notif);
+
+        java.util.List<String[]> notifList = NotificationHelper.getNotifikasi(requireContext());
+
+        if (notifList.isEmpty()) {
+            rv.setVisibility(View.GONE);
+            tvEmpty.setVisibility(View.VISIBLE);
+        } else {
+            rv.setVisibility(View.VISIBLE);
+            tvEmpty.setVisibility(View.GONE);
+            rv.setLayoutManager(new LinearLayoutManager(requireContext()));
+            rv.setAdapter(new androidx.recyclerview.widget.RecyclerView.Adapter() {
+                @NonNull
+                @Override
+                public androidx.recyclerview.widget.RecyclerView.ViewHolder onCreateViewHolder(
+                        @NonNull ViewGroup parent, int viewType) {
+                    View itemView = LayoutInflater.from(parent.getContext())
+                            .inflate(R.layout.item_notifikasi, parent, false);
+                    return new androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {};
+                }
+
+                @Override
+                public void onBindViewHolder(
+                        @NonNull androidx.recyclerview.widget.RecyclerView.ViewHolder holder, int position) {
+                    String[] item = notifList.get(position);
+                    ((TextView) holder.itemView.findViewById(R.id.tv_notif_waktu)).setText(item[0]);
+                    ((TextView) holder.itemView.findViewById(R.id.tv_notif_judul)).setText(item[1]);
+                    ((TextView) holder.itemView.findViewById(R.id.tv_notif_pesan)).setText(item[2]);
+                }
+
+                @Override
+                public int getItemCount() { return notifList.size(); }
+            });
+        }
+
+        btnHapus.setOnClickListener(v -> {
+            NotificationHelper.hapusSemuaNotif(requireContext());
+            dialog.dismiss();
+            Toast.makeText(requireContext(), "Notifikasi dihapus", Toast.LENGTH_SHORT).show();
+        });
+
+        dialog.show();
     }
 }
