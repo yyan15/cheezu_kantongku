@@ -157,7 +157,37 @@
                 android:layout_marginEnd="8dp"
                 android:clickable="true"
                 android:focusable="true"/>
+            <TextView
+                android:id="@+id/chip_kesehatan"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="Kesehatan"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary"
+                android:background="@drawable/bg_chip_normal"
+                android:gravity="center"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:layout_marginEnd="8dp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <TextView
+                android:id="@+id/chip_lainnya"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="Lainnya"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary"
+                android:background="@drawable/bg_chip_normal"
+                android:gravity="center"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:layout_marginEnd="8dp"
+                android:clickable="true"
+                android:focusable="true"/>
         </LinearLayout>
+
     </HorizontalScrollView>
 
     <!-- RECYCLER VIEW LIST -->

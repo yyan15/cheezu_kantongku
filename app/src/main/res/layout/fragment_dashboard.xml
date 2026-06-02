@@ -289,16 +289,6 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/btn_lihat_semua"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lihat semua"
-                android:textColor="@color/teal_primary"
-                android:textSize="12sp"
-                android:padding="4dp"
-                android:clickable="true"
-                android:focusable="true" />
         </LinearLayout>
 
         <!-- RecyclerView Transaksi -->

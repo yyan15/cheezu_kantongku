@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,15 +35,17 @@ import retrofit2.Response;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class RiwayatFragment extends Fragment {
 
     private RecyclerView rvRiwayat;
     private EditText etSearch;
-    private TextView chipSemua, chipMakan, chipTransport, chipBelanja, chipHiburan;
+    private TextView chipSemua, chipMakan, chipTransport, chipBelanja, chipHiburan, chipKesehatan, chipLainnya;
     private TransaksiAdapter adapter;
     private TransaksiApiService apiService;
     private List<Transaksi> allData = new ArrayList<>();
+
 
     @Nullable
     @Override
@@ -63,12 +66,17 @@ public class RiwayatFragment extends Fragment {
         chipTransport = view.findViewById(R.id.chip_transport);
         chipBelanja   = view.findViewById(R.id.chip_belanja);
         chipHiburan   = view.findViewById(R.id.chip_hiburan);
+        chipKesehatan = view.findViewById(R.id.chip_kesehatan);
+        chipLainnya   = view.findViewById(R.id.chip_lainnya);
 
         adapter = new TransaksiAdapter(requireContext());
         rvRiwayat.setLayoutManager(new LinearLayoutManager(requireContext()));
         rvRiwayat.setAdapter(adapter);
 
         apiService = ApiClient.getApiService();
+        // Tombol filter
+        ImageButton btnFilter = view.findViewById(R.id.btn_filter);
+        btnFilter.setOnClickListener(v -> showFilterDialog());
 
 
             adapter.setOnItemClickListener(new TransaksiAdapter.OnItemClickListener() {
@@ -115,6 +123,64 @@ public class RiwayatFragment extends Fragment {
             }
         });
     }
+    private void showFilterDialog() {
+        BottomSheetDialog dialog = new BottomSheetDialog(requireContext());
+        View view = LayoutInflater.from(requireContext()).inflate(R.layout.bottomsheet_filter, null);
+        dialog.setContentView(view);
+
+        TextView btnSemua       = view.findViewById(R.id.btn_filter_semua);
+        TextView btnPengeluaran = view.findViewById(R.id.btn_filter_pengeluaran);
+        TextView btnPemasukan   = view.findViewById(R.id.btn_filter_pemasukan);
+        TextView btnTerbaru     = view.findViewById(R.id.btn_filter_terbaru);
+        TextView btnTerlama     = view.findViewById(R.id.btn_filter_terlama);
+        TextView btnTutup       = view.findViewById(R.id.btn_filter_tutup);
+
+        btnSemua.setOnClickListener(v -> {
+            adapter.setData(allData);
+            dialog.dismiss();
+        });
+
+        btnPengeluaran.setOnClickListener(v -> {
+            List<Transaksi> filtered = new ArrayList<>();
+            for (Transaksi t : allData) {
+                if ("pengeluaran".equals(t.getTipe())) filtered.add(t);
+            }
+            adapter.setData(filtered);
+            dialog.dismiss();
+        });
+
+        btnPemasukan.setOnClickListener(v -> {
+            List<Transaksi> filtered = new ArrayList<>();
+            for (Transaksi t : allData) {
+                if ("pemasukan".equals(t.getTipe())) filtered.add(t);
+            }
+            adapter.setData(filtered);
+            dialog.dismiss();
+        });
+
+        btnTerbaru.setOnClickListener(v -> {
+            List<Transaksi> sorted = new ArrayList<>(allData);
+            java.util.Collections.sort(sorted, (a, b) -> {
+                if (a.getTanggal() == null || b.getTanggal() == null) return 0;
+                return b.getTanggal().compareTo(a.getTanggal());
+            });
+            adapter.setData(sorted);
+            dialog.dismiss();
+        });
+
+        btnTerlama.setOnClickListener(v -> {
+            List<Transaksi> sorted = new ArrayList<>(allData);
+            java.util.Collections.sort(sorted, (a, b) -> {
+                if (a.getTanggal() == null || b.getTanggal() == null) return 0;
+                return a.getTanggal().compareTo(b.getTanggal());
+            });
+            adapter.setData(sorted);
+            dialog.dismiss();
+        });
+
+        btnTutup.setOnClickListener(v -> dialog.dismiss());
+        dialog.show();
+    }
 
     private void setupSearch() {
         etSearch.addTextChangedListener(new TextWatcher() {
@@ -139,8 +205,8 @@ public class RiwayatFragment extends Fragment {
     }
 
     private void setupChipFilter() {
-        TextView[] chips = {chipSemua, chipMakan, chipTransport, chipBelanja, chipHiburan};
-        String[] kategori = {"Semua", "Makan", "Transport", "Belanja", "Hiburan"};
+        TextView[] chips = {chipSemua, chipMakan, chipTransport, chipBelanja, chipHiburan, chipKesehatan, chipLainnya};
+        String[] kategori = {"Semua", "Makan", "Transport", "Belanja", "Hiburan", "Kesehatan", "Lainnya"};
 
         for (int i = 0; i < chips.length; i++) {
             final String kat = kategori[i];
@@ -178,6 +244,10 @@ public class RiwayatFragment extends Fragment {
     }
 
     private void showDetailDialog(Transaksi transaksi) {
+        BottomSheetDialog dialog = new BottomSheetDialog(requireContext());
+        View view = LayoutInflater.from(requireContext()).inflate(R.layout.bottomsheet_detail_transaksi, null);
+        dialog.setContentView(view);
+
         // Format nominal
         NumberFormat fmt = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
         String nominal = fmt.format(transaksi.getNominal())
@@ -186,34 +256,44 @@ public class RiwayatFragment extends Fragment {
         // Format tanggal
         String tanggal = transaksi.getTanggal();
         try {
-            SimpleDateFormat inputSdf = new SimpleDateFormat(
-                    "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'", Locale.getDefault());
-            SimpleDateFormat outputSdf = new SimpleDateFormat(
-                    "dd MMM yyyy", new Locale("id", "ID"));
+            SimpleDateFormat inputSdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'", Locale.getDefault());
+            SimpleDateFormat outputSdf = new SimpleDateFormat("dd MMM yyyy", new Locale("id", "ID"));
             tanggal = outputSdf.format(inputSdf.parse(transaksi.getTanggal()));
         } catch (Exception e) {
             tanggal = transaksi.getTanggal();
         }
 
-        // Catatan
         String catatan = (transaksi.getCatatan() != null && !transaksi.getCatatan().isEmpty())
-                ? transaksi.getCatatan()
-                : "Tidak ada catatan";
+                ? transaksi.getCatatan() : "Tidak ada catatan";
 
-        String tipe = transaksi.getTipe().equals("pengeluaran") ? "🔴 Pengeluaran" : "🟢 Pemasukan";
+        boolean isPengeluaran = transaksi.getTipe().equals("pengeluaran");
 
-        String pesan = "Kategori : " + transaksi.getKategori() + "\n" +
-                "Tipe     : " + tipe + "\n" +
-                "Nominal  : " + nominal + "\n" +
-                "Tanggal  : " + tanggal + "\n" +
-                "Catatan  : " + catatan;
+        // Bind views
+        TextView tvJudul    = view.findViewById(R.id.tv_detail_judul);
+        TextView tvNominal  = view.findViewById(R.id.tv_detail_nominal);
+        TextView tvTipe     = view.findViewById(R.id.tv_detail_tipe);
+        TextView tvKategori = view.findViewById(R.id.tv_detail_kategori);
+        TextView tvTanggal  = view.findViewById(R.id.tv_detail_tanggal);
+        TextView tvCatatan  = view.findViewById(R.id.tv_detail_catatan);
+        TextView btnHapus   = view.findViewById(R.id.btn_detail_hapus);
+        TextView btnTutup   = view.findViewById(R.id.btn_detail_tutup);
 
-        new AlertDialog.Builder(requireContext())
-                .setTitle(transaksi.getJudul())
-                .setMessage(pesan)
-                .setPositiveButton("Tutup", null)
-                .setNeutralButton("Hapus", (dialog, which) -> showDeleteDialog(transaksi))
-                .show();
+        tvJudul.setText(transaksi.getJudul());
+        tvNominal.setText((isPengeluaran ? "- " : "+ ") + nominal);
+        tvNominal.setTextColor(requireContext().getColor(
+                isPengeluaran ? R.color.expense_red : R.color.income_green));
+        tvTipe.setText(isPengeluaran ? "🔴 Pengeluaran" : "🟢 Pemasukan");
+        tvKategori.setText(transaksi.getKategori());
+        tvTanggal.setText(tanggal);
+        tvCatatan.setText(catatan);
+
+        btnHapus.setOnClickListener(v -> {
+            dialog.dismiss();
+            showDeleteDialog(transaksi);
+        });
+        btnTutup.setOnClickListener(v -> dialog.dismiss());
+
+        dialog.show();
     }
 
     private void deleteTransaksi(Transaksi transaksi) {
