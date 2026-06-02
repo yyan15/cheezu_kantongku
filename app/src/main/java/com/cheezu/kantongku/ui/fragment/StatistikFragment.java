@@ -152,7 +152,7 @@ public class StatistikFragment extends Fragment {
                                    @NonNull Response<ApiResponse.StatistikResponse> response) {
                 if (!isAdded() || getContext() == null) return;
                 if (response.isSuccessful() && response.body() != null)
-                    updateKategoriUI(response.body().data);
+                    updateKategoriUI((List<ApiResponse.StatistikItem>) response.body().data);
             }
             @Override
             public void onFailure(@NonNull Call<ApiResponse.StatistikResponse> call, @NonNull Throwable t) {
