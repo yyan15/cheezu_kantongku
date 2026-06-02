@@ -32,7 +32,17 @@ public class ApiResponse {
 
     public static class StatistikResponse {
         @SerializedName("success") public boolean success;
-        @SerializedName("data")    public List<StatistikItem> data;
+        @SerializedName("data")    public StatistikData data;
+    }
+
+    public static class StatistikData {
+        @SerializedName("per_kategori")  public List<StatistikItem> perKategori;
+        @SerializedName("last_6_months") public List<ChartItem> last6Months;
+    }
+
+    public static class ChartItem {
+        @SerializedName("label") public String label;
+        @SerializedName("total") public double total;
     }
 
     public static class GeneralResponse {

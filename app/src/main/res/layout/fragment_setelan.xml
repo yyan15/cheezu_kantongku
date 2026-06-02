@@ -140,7 +140,8 @@
                         android:id="@+id/switch_reset_budget"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:checked="false"/>
+                        android:checked="true"
+                        android:thumb="@null"/>
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -264,12 +265,12 @@
         </androidx.cardview.widget.CardView>
 
         <!-- ═══════════════════════════════════════════ -->
-        <!--            SECTION: TAMPILAN               -->
+        <!--          SECTION: EKSPOR & DATA            -->
         <!-- ═══════════════════════════════════════════ -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TAMPILAN"
+            android:text="EKSPOR &amp; DATA"
             android:textColor="@color/teal_primary"
             android:textSize="11sp"
             android:textStyle="bold"
@@ -292,62 +293,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!-- Dark Mode -->
+                <!-- Export Data -->
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp">
-
-                    <ImageView android:layout_width="20dp" android:layout_height="20dp"
-                        android:src="@drawable/ic_moon" android:contentDescription="Dark mode"
-                        app:tint="@color/teal_primary"/>
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="1" android:text="Dark mode"
-                        android:textColor="@color/text_primary" android:textSize="14sp" android:layout_marginStart="12dp"/>
-                    <Switch
-                        android:id="@+id/switch_dark_mode"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="false"/>
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- ═══════════════════════════════════════════ -->
-        <!--            SECTION: DATA                   -->
-        <!-- ═══════════════════════════════════════════ -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DATA"
-            android:textColor="@color/teal_primary"
-            android:textSize="11sp"
-            android:textStyle="bold"
-            android:letterSpacing="0.08"
-            android:paddingStart="20dp"
-            android:paddingBottom="8dp"/>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="32dp"
-            app:cardBackgroundColor="@color/surface"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="2dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- Export -->
-                <LinearLayout
-                    android:id="@+id/item_export"
+                    android:id="@+id/item_export_data"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:orientation="horizontal"
@@ -364,9 +312,9 @@
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
                         android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Export laporan" android:textColor="@color/text_primary" android:textSize="14sp"/>
+                            android:text="Ekspor Data" android:textColor="@color/text_primary" android:textSize="14sp"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Simpan ke PDF atau Excel" android:textColor="@color/text_secondary" android:textSize="12sp"/>
+                            android:text="Simpan riwayat ke CSV/Excel" android:textColor="@color/text_secondary" android:textSize="12sp"/>
                     </LinearLayout>
                     <ImageView android:layout_width="16dp" android:layout_height="16dp"
                         android:src="@drawable/ic_arrow_right" android:contentDescription="Export"/>
@@ -394,12 +342,174 @@
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
                         android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Reset semua data" android:textColor="@color/expense_red" android:textSize="14sp"/>
+                            android:text="Hapus Semua Data" android:textColor="@color/expense_red" android:textSize="14sp"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                            android:text="Hapus seluruh riwayat transaksi" android:textColor="@color/text_secondary" android:textSize="12sp"/>
+                            android:text="Reset seluruh riwayat transaksi" android:textColor="@color/text_secondary" android:textSize="12sp"/>
                     </LinearLayout>
-                    <ImageView android:layout_width="16dp" android:layout_height="16dp"
-                        android:src="@drawable/ic_arrow_right" android:contentDescription="Reset"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!--            SECTION: AKUN                   -->
+        <!-- ═══════════════════════════════════════════ -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AKUN"
+            android:textColor="@color/teal_primary"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.08"
+            android:paddingStart="20dp"
+            android:paddingBottom="8dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:cardCornerRadius="24dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="@color/teal_extra_light">
+                        <ImageView
+                            android:id="@+id/iv_user_avatar"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_other"
+                            android:padding="12dp"
+                            app:tint="@color/teal_primary"
+                            android:contentDescription="Avatar"/>
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp">
+
+                        <TextView
+                            android:id="@+id/tv_user_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nama Pengguna"
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/tv_user_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="email@example.com"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- Logout -->
+                <LinearLayout
+                    android:id="@+id/item_logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground">
+
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp"
+                        android:src="@drawable/ic_other" android:contentDescription="Logout"
+                        app:tint="@color/expense_red"/>
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Logout / Keluar" android:textColor="@color/expense_red"
+                        android:textSize="14sp" android:layout_marginStart="12dp" android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!--            SECTION: TAMPILAN               -->
+        <!-- ═══════════════════════════════════════════ -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TAMPILAN"
+            android:textColor="@color/teal_primary"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.08"
+            android:paddingStart="20dp"
+            android:paddingBottom="8dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="32dp"
+            app:cardBackgroundColor="@color/surface"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Dark Mode -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
+
+                    <ImageView android:layout_width="20dp" android:layout_height="20dp"
+                        android:src="@drawable/ic_moon" android:contentDescription="Dark Mode"
+                        app:tint="@color/teal_primary"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Mode Gelap" android:textColor="@color/text_primary" android:textSize="14sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Ubah tema aplikasi" android:textColor="@color/text_secondary" android:textSize="12sp"/>
+                    </LinearLayout>
+                    <Switch
+                        android:id="@+id/switch_dark_mode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"/>
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

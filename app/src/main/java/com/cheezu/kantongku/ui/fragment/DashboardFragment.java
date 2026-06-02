@@ -35,10 +35,14 @@ import android.preference.PreferenceManager;
 import com.cheezu.kantongku.util.NotificationHelper;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import com.cheezu.kantongku.ui.fragment.SetelanFragment;
+import android.content.Context;
+import java.util.Calendar;
 
 public class DashboardFragment extends Fragment {
 
     private TextView tvSaldo, tvPemasukan, tvPengeluaran, tvBudgetAmount, tvBudgetStatus;
+    private TextView tvGreeting, tvUsername;
     private ProgressBar progressBudget;
     private RecyclerView rvTransaksi;
     private TransaksiAdapter adapter;
@@ -60,6 +64,8 @@ public class DashboardFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Init views
+        tvGreeting      = view.findViewById(R.id.tv_greeting);
+        tvUsername      = view.findViewById(R.id.tv_username);
         tvSaldo         = view.findViewById(R.id.tv_saldo);
         tvPemasukan     = view.findViewById(R.id.tv_pemasukan);
         tvPengeluaran   = view.findViewById(R.id.tv_pengeluaran);
@@ -85,6 +91,9 @@ public class DashboardFragment extends Fragment {
 
         // Init API service
         apiService = ApiClient.getApiService();
+
+        updateGreeting();
+
         // Request permission notifikasi (Android 13+)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ContextCompat.checkSelfPermission(requireContext(),
@@ -97,6 +106,8 @@ public class DashboardFragment extends Fragment {
             }
         }
 
+        // Load data dari Laravel
+        loadDashboardData();
     }
 
     private void loadDashboardData() {
@@ -190,6 +201,32 @@ public class DashboardFragment extends Fragment {
         }
     }
 
+    private void updateGreeting() {
+        if (!isAdded() || getContext() == null) return;
+
+        // 1. Ambil Nama User dari SharedPreferences
+        SharedPreferences kantongkuPrefs = requireContext().getSharedPreferences("KantongkuPrefs", Context.MODE_PRIVATE);
+        String name = kantongkuPrefs.getString("user_name", "Pengguna");
+        tvUsername.setText("Halo, " + name + "!");
+
+        // 2. Logika Jam untuk Salam
+        Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        double currentTime = hour + (minute / 100.0);
+
+        String greeting;
+        if (currentTime > 0.00 && currentTime <= 9.00) {
+            greeting = "Selamat pagi 👋";
+        } else if (currentTime > 9.00 && currentTime <= 17.00) {
+            greeting = "Selamat siang 👋";
+        } else {
+            greeting = "Selamat malam 👋";
+        }
+
+        tvGreeting.setText(greeting);
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -197,6 +234,7 @@ public class DashboardFragment extends Fragment {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(requireContext());
         budgetLimit = prefs.getFloat(SetelanFragment.KEY_BUDGET_TOTAL, 3900000f);
 
+        updateGreeting();
         loadDashboardData();
     }
     private void showNotifikasiBottomSheet() {
