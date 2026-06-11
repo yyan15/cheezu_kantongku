@@ -1,0 +1,1 @@
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/uimRemoteServer0' timed out after 2.000s (killing pid 14216)

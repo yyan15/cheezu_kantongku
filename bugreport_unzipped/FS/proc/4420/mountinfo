@@ -1,0 +1,148 @@
+10310 10309 259:24 / / ro,relatime master:1 - ext4 /dev/block/mmcblk0p56 ro,seclabel,discard
+10311 10310 0:15 / /dev rw,nosuid,relatime master:2 - tmpfs tmpfs rw,seclabel,size=1432376k,nr_inodes=358094,mode=755
+10312 10311 0:16 / /dev/pts rw,relatime master:3 - devpts devpts rw,seclabel,mode=600,ptmxmode=000
+10313 10311 0:22 / /dev/blkio rw,nosuid,nodev,noexec,relatime master:12 - cgroup none rw,blkio
+10314 10311 0:24 / /dev/cpuctl rw,nosuid,nodev,noexec,relatime master:14 - cgroup none rw,cpu
+10315 10311 0:25 / /dev/cpuset rw,nosuid,nodev,noexec,relatime master:15 - cgroup none rw,cpuset,noprefix,release_agent=/sbin/cpuset_release_agent
+10316 10311 0:26 / /dev/memcg rw,nosuid,nodev,noexec,relatime master:16 - cgroup none rw,memory
+10317 10311 0:27 / /dev/stune rw,nosuid,nodev,noexec,relatime master:17 - cgroup none rw,schedtune
+10318 10311 0:34 / /dev/usb-ffs/adb rw,relatime master:36 - functionfs adb rw
+10319 10310 0:5 / /proc rw,relatime master:4 - proc proc rw,gid=3009,hidepid=2
+10320 10310 0:17 / /sys rw,relatime master:5 - sysfs sysfs rw,seclabel
+10321 10320 0:14 / /sys/fs/selinux rw,relatime master:6 - selinuxfs selinuxfs rw
+10322 10320 0:23 / /sys/fs/cgroup rw,nosuid,nodev,noexec,relatime master:13 - cgroup2 none rw
+10323 10320 0:8 / /sys/kernel/tracing rw,relatime master:18 - tracefs tracefs rw,seclabel,gid=3012
+10324 10320 0:6 / /sys/kernel/debug rw,relatime master:23 - debugfs debugfs rw,seclabel
+10325 10324 0:8 / /sys/kernel/debug/tracing rw,relatime master:29 - tracefs tracefs rw,seclabel,gid=3012
+10326 10320 0:29 / /sys/fs/fuse/connections rw,relatime master:25 - fusectl none rw
+10327 10320 0:30 / /sys/fs/bpf rw,nosuid,nodev,noexec,relatime master:26 - bpf bpf rw
+10328 10320 0:31 / /sys/fs/pstore rw,nosuid,nodev,noexec,relatime master:27 - pstore pstore rw,seclabel
+10329 10310 0:18 / /mnt rw,nosuid,nodev,noexec,relatime master:7 - tmpfs tmpfs rw,seclabel,size=1432376k,nr_inodes=358094,mode=755,gid=1000
+10330 10329 0:18 /user /mnt/installer rw,nosuid,nodev,noexec,relatime master:9 - tmpfs tmpfs rw,seclabel,size=1432376k,nr_inodes=358094,mode=755,gid=1000
+10331 10330 0:116 / /mnt/installer/0/emulated rw,nosuid,nodev,noexec,noatime master:40 - fuse /dev/fuse rw,lazytime,user_id=0,group_id=0,allow_other
+10332 10331 0:115 /0/Android/data /mnt/installer/0/emulated/0/Android/data rw,nosuid,nodev,noexec,noatime master:41 - sdcardfs /data/media rw,fsuid=1023,fsgid=1023,gid=1015,multiuser,mask=6,derive_gid,default_normal
+10333 10331 0:115 /0/Android/obb /mnt/installer/0/emulated/0/Android/obb rw,nosuid,nodev,noexec,noatime master:37 - sdcardfs /data/media rw,fsuid=1023,fsgid=1023,gid=9997,multiuser,mask=7,derive_gid,default_normal
+10334 10329 0:18 /user /mnt/androidwritable rw,nosuid,nodev,noexec,relatime master:11 - tmpfs tmpfs rw,seclabel,size=1432376k,nr_inodes=358094,mode=755,gid=1000
+10335 10334 0:116 / /mnt/androidwritable/0/emulated rw,nosuid,nodev,noexec,noatime master:39 - fuse /dev/fuse rw,lazytime,user_id=0,group_id=0,allow_other
+10336 10335 0:115 /0/Android/data /mnt/androidwritable/0/emulated/0/Android/data rw,nosuid,nodev,noexec,noatime master:42 - sdcardfs /data/media rw,fsuid=1023,fsgid=1023,gid=1015,multiuser,mask=6,derive_gid,default_normal
+10337 10335 0:115 /0/Android/obb /mnt/androidwritable/0/emulated/0/Android/obb rw,nosuid,nodev,noexec,noatime master:44 - sdcardfs /data/media rw,fsuid=1023,fsgid=1023,gid=1015,multiuser,mask=6,derive_gid,default_normal
+10338 10329 0:32 / /mnt/vm rw,nosuid,nodev,noexec,relatime master:28 - tmpfs tmpfs rw,seclabel,size=1432376k,nr_inodes=358094
+10339 10329 259:11 / /mnt/vendor/persist rw,nosuid,nodev,noatime master:32 - ext4 /dev/block/mmcblk0p43 rw,seclabel,data=ordered
+10340 10329 0:115 / /mnt/runtime/default/emulated rw,nosuid,nodev,noexec,noatime master:37 - sdcardfs /data/media rw,fsuid=1023,fsgid=1023,gid=1015,multiuser,mask=6,derive_gid,default_normal
+10341 10329 0:115 / /mnt/runtime/read/emulated rw,nosuid,nodev,noexec,noatime master:37 - sdcardfs /data/media rw,fsuid=1023,fsgid=1023,gid=9997,multiuser,mask=23,derive_gid,default_normal
+10342 10329 0:115 / /mnt/runtime/write/emulated rw,nosuid,nodev,noexec,noatime master:37 - sdcardfs /data/media rw,fsuid=1023,fsgid=1023,gid=9997,multiuser,mask=7,derive_gid,default_normal
+10343 10329 0:115 / /mnt/runtime/full/emulated rw,nosuid,nodev,noexec,noatime master:37 - sdcardfs /data/media rw,fsuid=1023,fsgid=1023,gid=9997,multiuser,mask=7,derive_gid,default_normal
+10344 10329 0:116 / /mnt/user/0/emulated rw,nosuid,nodev,noexec,noatime master:38 - fuse /dev/fuse rw,lazytime,user_id=0,group_id=0,allow_other
+10345 10344 0:115 /0/Android/data /mnt/user/0/emulated/0/Android/data rw,nosuid,nodev,noexec,noatime master:37 - sdcardfs /data/media rw,fsuid=1023,fsgid=1023,gid=1015,multiuser,mask=6,derive_gid,default_normal
+10346 10344 0:115 /0/Android/obb /mnt/user/0/emulated/0/Android/obb rw,nosuid,nodev,noexec,noatime master:37 - sdcardfs /data/media rw,fsuid=1023,fsgid=1023,gid=1015,multiuser,mask=6,derive_gid,default_normal
+10347 10329 0:115 / /mnt/pass_through/0/emulated rw,nosuid,nodev,noexec,noatime master:37 - sdcardfs /data/media rw,fsuid=1023,fsgid=1023,gid=9997,multiuser,mask=7,derive_gid,default_normal
+10348 10310 259:23 / /vendor ro,relatime master:8 - ext4 /dev/block/mmcblk0p55 ro,seclabel,discard
+10349 10348 259:8 / /vendor/dsp ro,nosuid,nodev,relatime master:33 - ext4 /dev/block/mmcblk0p40 ro,seclabel,data=ordered
+10350 10348 259:17 / /vendor/firmware_mnt ro,relatime master:34 - vfat /dev/block/mmcblk0p49 ro,context=u:object_r:firmware_file:s0,uid=1000,gid=1000,fmask=0337,dmask=0227,codepage=437,iocharset=utf8,shortname=lower,errors=remount-ro
+10351 10310 0:19 / /apex rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,seclabel,size=1432376k,nr_inodes=358094,mode=755
+10352 10351 7:48 / /apex/com.android.tzdata@352090000 ro,nodev,noatime - ext4 /dev/block/loop6 ro,dirsync,seclabel
+10353 10351 7:72 / /apex/com.android.runtime@1 ro,nodev,noatime - ext4 /dev/block/loop9 ro,dirsync,seclabel
+10354 10351 253:15 / /apex/com.android.cellbroadcast@352090000 ro,nodev,noatime - ext4 /dev/block/dm-15 ro,dirsync,seclabel
+10355 10351 7:72 / /apex/com.android.runtime ro,nodev,noatime - ext4 /dev/block/loop9 ro,dirsync,seclabel
+10356 10351 7:56 / /apex/com.android.rkpd@352090000 ro,nodev,noatime - ext4 /dev/block/loop7 ro,dirsync,seclabel
+10357 10351 7:48 / /apex/com.android.tzdata ro,nodev,noatime - ext4 /dev/block/loop6 ro,dirsync,seclabel
+10358 10351 7:32 / /apex/com.android.virt@2 ro,nodev,noatime - ext4 /dev/block/loop4 ro,dirsync,seclabel
+10359 10351 253:15 / /apex/com.android.cellbroadcast ro,nodev,noatime - ext4 /dev/block/dm-15 ro,dirsync,seclabel
+10360 10351 7:56 / /apex/com.android.rkpd ro,nodev,noatime - ext4 /dev/block/loop7 ro,dirsync,seclabel
+10361 10351 7:24 / /apex/com.android.os.statsd@352090000 ro,nodev,noatime - ext4 /dev/block/loop3 ro,dirsync,seclabel
+10362 10351 7:32 / /apex/com.android.virt ro,nodev,noatime - ext4 /dev/block/loop4 ro,dirsync,seclabel
+10363 10351 7:64 / /apex/com.android.i18n@1 ro,nodev,noatime - ext4 /dev/block/loop8 ro,dirsync,seclabel
+10364 10351 7:24 / /apex/com.android.os.statsd ro,nodev,noatime - ext4 /dev/block/loop3 ro,dirsync,seclabel
+10365 10351 7:80 / /apex/com.android.apex.cts.shim@1 ro,nodev,noatime - ext4 /dev/block/loop10 ro,dirsync,seclabel
+10366 10351 7:64 / /apex/com.android.i18n ro,nodev,noatime - ext4 /dev/block/loop8 ro,dirsync,seclabel
+10367 10351 7:104 / /apex/com.android.sdkext@352090000 ro,nodev,noatime - ext4 /dev/block/loop13 ro,dirsync,seclabel
+10368 10351 253:30 / /apex/com.android.nfcservices@352090000 ro,nodev,noatime - ext4 /dev/block/dm-30 ro,dirsync,seclabel
+10369 10351 7:96 / /apex/com.android.healthfitness@352090000 ro,nodev,noatime - ext4 /dev/block/loop12 ro,dirsync,seclabel
+10370 10351 7:80 / /apex/com.android.apex.cts.shim ro,nodev,noatime - ext4 /dev/block/loop10 ro,dirsync,seclabel
+10371 10351 7:96 / /apex/com.android.healthfitness ro,nodev,noatime - ext4 /dev/block/loop12 ro,dirsync,seclabel
+10372 10351 7:88 / /apex/com.android.btservices@352090000 ro,nodev,noatime - ext4 /dev/block/loop11 ro,dirsync,seclabel
+10373 10351 7:104 / /apex/com.android.sdkext ro,nodev,noatime - ext4 /dev/block/loop13 ro,dirsync,seclabel
+10374 10351 7:88 / /apex/com.android.btservices ro,nodev,noatime - ext4 /dev/block/loop11 ro,dirsync,seclabel
+10375 10351 253:30 / /apex/com.android.nfcservices ro,nodev,noatime - ext4 /dev/block/dm-30 ro,dirsync,seclabel
+10376 10351 253:32 / /apex/com.android.scheduling@352090000 ro,nodev,noatime - ext4 /dev/block/dm-32 ro,dirsync,seclabel
+10377 10351 253:28 / /apex/com.android.media.swcodec@352090000 ro,nodev,noatime - ext4 /dev/block/dm-28 ro,dirsync,seclabel
+10378 10351 253:32 / /apex/com.android.scheduling ro,nodev,noatime - ext4 /dev/block/dm-32 ro,dirsync,seclabel
+10379 10351 253:28 / /apex/com.android.media.swcodec ro,nodev,noatime - ext4 /dev/block/dm-28 ro,dirsync,seclabel
+10380 10351 253:29 / /apex/com.android.adbd@352090000 ro,nodev,noatime - ext4 /dev/block/dm-29 ro,dirsync,seclabel
+10381 10351 253:29 / /apex/com.android.adbd ro,nodev,noatime - ext4 /dev/block/dm-29 ro,dirsync,seclabel
+10382 10351 253:18 / /apex/com.android.extservices@352090000 ro,nodev,noatime - ext4 /dev/block/dm-18 ro,dirsync,seclabel
+10383 10351 253:18 / /apex/com.android.extservices ro,nodev,noatime - ext4 /dev/block/dm-18 ro,dirsync,seclabel
+10384 10351 253:25 / /apex/com.android.conscrypt@352090000 ro,nodev,noatime - ext4 /dev/block/dm-25 ro,dirsync,seclabel
+10385 10351 253:22 / /apex/com.android.media@352090000 ro,nodev,noatime - ext4 /dev/block/dm-22 ro,dirsync,seclabel
+10386 10351 253:22 / /apex/com.android.media ro,nodev,noatime - ext4 /dev/block/dm-22 ro,dirsync,seclabel
+10387 10351 253:25 / /apex/com.android.conscrypt ro,nodev,noatime - ext4 /dev/block/dm-25 ro,dirsync,seclabel
+10388 10351 253:19 / /apex/com.android.uwb@352090000 ro,nodev,noatime - ext4 /dev/block/dm-19 ro,dirsync,seclabel
+10389 10351 253:27 / /apex/com.android.ipsec@352090000 ro,nodev,noatime - ext4 /dev/block/dm-27 ro,dirsync,seclabel
+10390 10351 253:19 / /apex/com.android.uwb ro,nodev,noatime - ext4 /dev/block/dm-19 ro,dirsync,seclabel
+10391 10351 253:27 / /apex/com.android.ipsec ro,nodev,noatime - ext4 /dev/block/dm-27 ro,dirsync,seclabel
+10392 10351 253:24 / /apex/com.android.permission@352090000 ro,nodev,noatime - ext4 /dev/block/dm-24 ro,dirsync,seclabel
+10393 10351 7:208 / /apex/com.android.devicelock@1 ro,nodev,noatime - ext4 /dev/block/loop26 ro,dirsync,seclabel
+10394 10351 253:14 / /apex/com.android.neuralnetworks@352090000 ro,nodev,noatime - ext4 /dev/block/dm-14 ro,dirsync,seclabel
+10395 10351 253:24 / /apex/com.android.permission ro,nodev,noatime - ext4 /dev/block/dm-24 ro,dirsync,seclabel
+10396 10351 7:208 / /apex/com.android.devicelock ro,nodev,noatime - ext4 /dev/block/loop26 ro,dirsync,seclabel
+10397 10351 253:14 / /apex/com.android.neuralnetworks ro,nodev,noatime - ext4 /dev/block/dm-14 ro,dirsync,seclabel
+10398 10351 253:23 / /apex/com.android.mediaprovider@352090000 ro,nodev,noatime - ext4 /dev/block/dm-23 ro,dirsync,seclabel
+10399 10351 253:23 / /apex/com.android.mediaprovider ro,nodev,noatime - ext4 /dev/block/dm-23 ro,dirsync,seclabel
+10400 10351 253:10 / /apex/com.android.profiling@352090000 ro,nodev,noatime - ext4 /dev/block/dm-10 ro,dirsync,seclabel
+10401 10351 253:4 / /apex/com.android.configinfrastructure@352090000 ro,nodev,noatime - ext4 /dev/block/dm-4 ro,dirsync,seclabel
+10402 10351 253:13 / /apex/com.android.adservices@352090000 ro,nodev,noatime - ext4 /dev/block/dm-13 ro,dirsync,seclabel
+10403 10351 253:4 / /apex/com.android.configinfrastructure ro,nodev,noatime - ext4 /dev/block/dm-4 ro,dirsync,seclabel
+10404 10351 253:13 / /apex/com.android.adservices ro,nodev,noatime - ext4 /dev/block/dm-13 ro,dirsync,seclabel
+10405 10351 253:10 / /apex/com.android.profiling ro,nodev,noatime - ext4 /dev/block/dm-10 ro,dirsync,seclabel
+10406 10351 253:7 / /apex/com.android.resolv@352090000 ro,nodev,noatime - ext4 /dev/block/dm-7 ro,dirsync,seclabel
+10407 10351 253:3 / /apex/com.android.art@352090000 ro,nodev,noatime - ext4 /dev/block/dm-3 ro,dirsync,seclabel
+10408 10351 253:7 / /apex/com.android.resolv ro,nodev,noatime - ext4 /dev/block/dm-7 ro,dirsync,seclabel
+10409 10351 253:3 / /apex/com.android.art ro,nodev,noatime - ext4 /dev/block/dm-3 ro,dirsync,seclabel
+10410 10351 253:6 / /apex/com.android.wifi@352090000 ro,nodev,noatime - ext4 /dev/block/dm-6 ro,dirsync,seclabel
+10411 10351 253:0 / /apex/com.android.appsearch@352090000 ro,nodev,noatime - ext4 /dev/block/dm-0 ro,dirsync,seclabel
+10412 10351 253:8 / /apex/com.android.ondevicepersonalization@352090000 ro,nodev,noatime - ext4 /dev/block/dm-8 ro,dirsync,seclabel
+10413 10351 253:6 / /apex/com.android.wifi ro,nodev,noatime - ext4 /dev/block/dm-6 ro,dirsync,seclabel
+10414 10351 253:0 / /apex/com.android.appsearch ro,nodev,noatime - ext4 /dev/block/dm-0 ro,dirsync,seclabel
+10415 10351 253:8 / /apex/com.android.ondevicepersonalization ro,nodev,noatime - ext4 /dev/block/dm-8 ro,dirsync,seclabel
+10416 10351 253:2 / /apex/com.android.tethering@352090000 ro,nodev,noatime - ext4 /dev/block/dm-2 ro,dirsync,seclabel
+10417 10351 253:2 / /apex/com.android.tethering ro,nodev,noatime - ext4 /dev/block/dm-2 ro,dirsync,seclabel
+10418 10351 0:19 /.default-apex-info-list.xml /apex/apex-info-list.xml rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,seclabel,size=1432376k,nr_inodes=358094,mode=755
+10419 10310 0:20 / /bootstrap-apex rw,nosuid,nodev,noexec,relatime master:10 - tmpfs tmpfs rw,seclabel,size=1432376k,nr_inodes=358094,mode=755
+10420 10419 7:0 / /bootstrap-apex/com.android.i18n@1 ro,nodev,noatime master:19 - ext4 /dev/block/loop0 ro,dirsync,seclabel
+10421 10419 7:0 / /bootstrap-apex/com.android.i18n ro,nodev,noatime master:19 - ext4 /dev/block/loop0 ro,dirsync,seclabel
+10422 10419 7:8 / /bootstrap-apex/com.android.runtime@1 ro,nodev,noatime master:20 - ext4 /dev/block/loop1 ro,dirsync,seclabel
+10423 10419 7:8 / /bootstrap-apex/com.android.runtime ro,nodev,noatime master:20 - ext4 /dev/block/loop1 ro,dirsync,seclabel
+10424 10419 7:16 / /bootstrap-apex/com.android.tzdata@352090000 ro,nodev,noatime master:21 - ext4 /dev/block/loop2 ro,dirsync,seclabel
+10425 10419 7:16 / /bootstrap-apex/com.android.tzdata ro,nodev,noatime master:21 - ext4 /dev/block/loop2 ro,dirsync,seclabel
+10426 10419 0:20 /.bootstrap-apex-info-list.xml /bootstrap-apex/apex-info-list.xml rw,nosuid,nodev,noexec,relatime master:10 - tmpfs tmpfs rw,seclabel,size=1432376k,nr_inodes=358094,mode=755
+10427 10310 0:21 / /linkerconfig rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,seclabel,size=1432376k,nr_inodes=358094,mode=755
+10428 10427 0:21 /default /linkerconfig rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,seclabel,size=1432376k,nr_inodes=358094,mode=755
+10429 10310 0:28 / /tmp rw,relatime master:22 - tmpfs tmpfs rw,seclabel,size=1432376k,nr_inodes=358094
+10430 10310 0:13 / /config rw,nosuid,nodev,noexec,relatime master:24 - configfs none rw
+10431 10310 259:25 / /data rw,nosuid,nodev,noatime master:30 - f2fs /dev/block/mmcblk0p57 rw,lazytime,seclabel,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,fsync_mode=nobarrier
+10432 10431 259:25 /data /data/user/0 rw,nosuid,nodev,noatime master:30 - f2fs /dev/block/mmcblk0p57 rw,lazytime,seclabel,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,fsync_mode=nobarrier
+10433 10310 259:20 / /cache rw,nosuid,nodev,noatime master:31 - f2fs /dev/block/mmcblk0p52 rw,lazytime,seclabel,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,data_flush,mode=adaptive,active_logs=6,alloc_mode=reuse,fsync_mode=posix
+10434 10310 0:33 / /data_mirror rw,nosuid,nodev,noexec,relatime master:35 - tmpfs tmpfs rw,seclabel,size=1432376k,nr_inodes=358094,mode=700,gid=1000
+10435 10434 259:25 /user /data_mirror/data_ce/null rw,nosuid,nodev,noatime master:30 - f2fs /dev/block/mmcblk0p57 rw,lazytime,seclabel,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,fsync_mode=nobarrier
+10436 10435 259:25 /data /data_mirror/data_ce/null/0 rw,nosuid,nodev,noatime master:30 - f2fs /dev/block/mmcblk0p57 rw,lazytime,seclabel,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,fsync_mode=nobarrier
+10437 10434 259:25 /user_de /data_mirror/data_de/null rw,nosuid,nodev,noatime master:30 - f2fs /dev/block/mmcblk0p57 rw,lazytime,seclabel,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,fsync_mode=nobarrier
+10438 10434 259:25 /misc_ce /data_mirror/misc_ce/null rw,nosuid,nodev,noatime master:30 - f2fs /dev/block/mmcblk0p57 rw,lazytime,seclabel,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,fsync_mode=nobarrier
+10439 10434 259:25 /misc_de /data_mirror/misc_de/null rw,nosuid,nodev,noatime master:30 - f2fs /dev/block/mmcblk0p57 rw,lazytime,seclabel,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,fsync_mode=nobarrier
+10440 10434 259:25 /storage_area /data_mirror/storage_area rw,nosuid,nodev,noatime master:30 - f2fs /dev/block/mmcblk0p57 rw,lazytime,seclabel,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,fsync_mode=nobarrier
+10441 10434 259:25 /misc/profiles/cur /data_mirror/cur_profiles rw,nosuid,nodev,noatime master:30 - f2fs /dev/block/mmcblk0p57 rw,lazytime,seclabel,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,fsync_mode=nobarrier
+10442 10434 259:25 /misc/profiles/ref /data_mirror/ref_profiles rw,nosuid,nodev,noatime master:30 - f2fs /dev/block/mmcblk0p57 rw,lazytime,seclabel,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,fsync_mode=nobarrier
+10443 10310 0:18 /user/0 /storage rw,nosuid,nodev,noexec,relatime master:7 - tmpfs tmpfs rw,seclabel,size=1432376k,nr_inodes=358094,mode=755,gid=1000
+10444 10443 0:116 / /storage/emulated rw,nosuid,nodev,noexec,noatime master:38 - fuse /dev/fuse rw,lazytime,user_id=0,group_id=0,allow_other
+10445 10444 0:115 /0/Android/data /storage/emulated/0/Android/data rw,nosuid,nodev,noexec,noatime master:37 - sdcardfs /data/media rw,fsuid=1023,fsgid=1023,gid=1015,multiuser,mask=6,derive_gid,default_normal
+10446 10444 0:115 /0/Android/obb /storage/emulated/0/Android/obb rw,nosuid,nodev,noexec,noatime master:37 - sdcardfs /data/media rw,fsuid=1023,fsgid=1023,gid=1015,multiuser,mask=6,derive_gid,default_normal
+10447 10431 0:282 / /data/data rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,seclabel,mode=751
+10448 10431 0:283 / /data/user rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,seclabel,mode=751
+10449 10431 0:284 / /data/user_de rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,seclabel,mode=751
+10450 10449 259:25 /user_de/0/com.google.android.tts /data/user_de/0/com.google.android.tts rw,nosuid,nodev,noatime master:30 - f2fs /dev/block/mmcblk0p57 rw,lazytime,seclabel,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,fsync_mode=nobarrier
+10451 10447 259:25 /data/com.google.android.tts /data/data/com.google.android.tts rw,nosuid,nodev,noatime master:30 - f2fs /dev/block/mmcblk0p57 rw,lazytime,seclabel,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,fsync_mode=nobarrier
+10452 10449 259:25 /user_de/0/com.google.android.gms /data/user_de/0/com.google.android.gms rw,nosuid,nodev,noatime master:30 - f2fs /dev/block/mmcblk0p57 rw,lazytime,seclabel,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,fsync_mode=nobarrier
+10453 10447 259:25 /data/com.google.android.gms /data/data/com.google.android.gms rw,nosuid,nodev,noatime master:30 - f2fs /dev/block/mmcblk0p57 rw,lazytime,seclabel,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,fsync_mode=nobarrier
+10454 10431 0:285 / /data/misc/profiles/cur rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,seclabel,mode=751
+10455 10431 0:286 / /data/misc/profiles/ref rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,seclabel,mode=751
+10456 10454 259:25 /misc/profiles/cur/0/com.google.android.tts /data/misc/profiles/cur/0/com.google.android.tts rw,nosuid,nodev,noatime master:30 - f2fs /dev/block/mmcblk0p57 rw,lazytime,seclabel,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,fsync_mode=nobarrier
+10457 10455 259:25 /misc/profiles/ref/com.google.android.tts /data/misc/profiles/ref/com.google.android.tts rw,nosuid,nodev,noatime master:30 - f2fs /dev/block/mmcblk0p57 rw,lazytime,seclabel,background_gc=on,discard,no_heap,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,fsync_mode=nobarrier

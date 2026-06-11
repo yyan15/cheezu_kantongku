@@ -147,13 +147,28 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("token_akses", sanctumToken);
                     
                     // Simpan data user untuk ditampilkan di Setelan
+                    String finalPhotoUrl = null;
+                    if (account != null && account.getPhotoUrl() != null) {
+                        finalPhotoUrl = account.getPhotoUrl().toString();
+                    }
+
                     if (loginResponse.getData() != null && loginResponse.getData().getUser() != null) {
                         editor.putString("user_name", loginResponse.getData().getUser().getName());
                         editor.putString("user_email", loginResponse.getData().getUser().getEmail());
+                        // Jika backend punya foto, pakai itu. Jika tidak, gunakan dari Google account
+                        String backendPhoto = loginResponse.getData().getUser().getPhoto();
+                        if (backendPhoto != null && !backendPhoto.isEmpty()) {
+                            finalPhotoUrl = backendPhoto;
+                        }
                     } else if (account != null) {
                         // Fallback ke data Google jika API tidak mengembalikan objek user
                         editor.putString("user_name", account.getDisplayName());
                         editor.putString("user_email", account.getEmail());
+                    }
+
+                    if (finalPhotoUrl != null) {
+                        editor.putString("user_photo", finalPhotoUrl);
+                        Log.d("PHOTO_DEBUG", "Menyimpan URL Foto: " + finalPhotoUrl);
                     }
 
                     editor.apply();

@@ -1,0 +1,1 @@
+*** command '/system/xbin/su root lshal debug -E android.hidl.manager@1.2::IServiceManager/default' failed: exit code 1

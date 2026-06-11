@@ -1,0 +1,582 @@
+Module metadata package name: com.android.modulemetadata
+Launching async 'SERIALIZE PERFETTO TRACE'Duration of 'DUMPSYS CRITICAL': 1.99s
+Duration of 'EVENT LOG': 0.02s
+Duration of 'STATS LOG': 0.02s
+Duration of 'RADIO LOG': 0.02s
+logcat: Logcat read failure: No such file or directory
+*** command 'logcat -L -b all -v threadtime -v printable -v uid -d *:v' failed: exit code 1
+Start thread pool:1
+Adding dir /cache/recovery (recursive: 1)
+Adding dir /data/misc/recovery (recursive: 1)
+Adding dir /data/misc/update_engine_log (recursive: 1)
+Adding dir /data/misc/update_engine/prefs (recursive: 1)
+/data/misc/update_engine/prefs: No such file or directory
+Adding dir /data/misc/logd (recursive: 0)
+Adding dir /data/misc/profiles/cur (recursive: 1)
+Adding dir /data/misc/profiles/ref (recursive: 1)
+Adding dir /data/misc/prereboot (recursive: 0)
+Unable to read link for /proc/14027/ns/mnt: No such file or directory
+Unable to read link for /proc/14029/ns/mnt: No such file or directory
+MOUNT INFO: 58 entries added to zip file
+Warning: Extension CONNMARK is not supported, missing kernel module?
+Warning: Extension CONNMARK is not supported, missing kernel module?
+Warning: Extension CONNMARK is not supported, missing kernel module?
+Warning: Extension CONNMARK is not supported, missing kernel module?
+Warning: Extension CONNMARK is not supported, missing kernel module?
+Warning: Extension CONNMARK is not supported, missing kernel module?
+Warning: Extension CONNMARK is not supported, missing kernel module?
+Warning: Extension CONNMARK is not supported, missing kernel module?
+Warning: Extension CONNMARK is not supported, missing kernel module?
+Warning: Extension CONNMARK is not supported, missing kernel module?
+Warning: Extension CONNMARK is not supported, missing kernel module?
+Warning: Extension CONNMARK is not supported, missing kernel module?
+Adding dir /metadata/ota (recursive: 1)
+/metadata/ota: No such file or directory
+Duration of 'IOTOP': 1.60s
+Duration of 'Dmabuf dump': 2.22s
+Adding dir /data/misc/apexdata/com.android.uwb/log (recursive: 1)
+/data/misc/apexdata/com.android.uwb/log: No such file or directory
+Duration of 'DUMP TRACES': 7.71s
+Duration of 'Wait for ': 2.40s
+shutdown thread pool
+Start thread pool:3
+execvp on command '/system/xbin/su root lshal --all --types=all' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal --all --types=all' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.frameworks.cameraservice.service@2.0::ICameraService/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.frameworks.cameraservice.service@2.0::ICameraService/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.frameworks.cameraservice.service@2.1::ICameraService/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.frameworks.cameraservice.service@2.1::ICameraService/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.frameworks.cameraservice.service@2.2::ICameraService/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.frameworks.cameraservice.service@2.2::ICameraService/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.frameworks.displayservice@1.0::IDisplayService/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.frameworks.displayservice@1.0::IDisplayService/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.frameworks.schedulerservice@1.0::ISchedulingPolicyService/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.frameworks.schedulerservice@1.0::ISchedulingPolicyService/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.frameworks.sensorservice@1.0::ISensorManager/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.frameworks.sensorservice@1.0::ISensorManager/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.frameworks.stats@1.0::IStats/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.frameworks.stats@1.0::IStats/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.audio.effect@6.0::IEffectsFactory/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.audio.effect@6.0::IEffectsFactory/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.audio@6.0::IDevicesFactory/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.audio@6.0::IDevicesFactory/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.bluetooth@1.0::IBluetoothHci/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.bluetooth@1.0::IBluetoothHci/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.camera.provider@2.4::ICameraProvider/legacy/0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.camera.provider@2.4::ICameraProvider/legacy/0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.cas@1.0::IMediaCasService/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.cas@1.0::IMediaCasService/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.cas@1.1::IMediaCasService/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.cas@1.1::IMediaCasService/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.cas@1.2::IMediaCasService/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.cas@1.2::IMediaCasService/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.drm@1.0::ICryptoFactory/widevine' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.drm@1.0::ICryptoFactory/widevine' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.drm@1.0::IDrmFactory/widevine' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.drm@1.0::IDrmFactory/widevine' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.drm@1.1::ICryptoFactory/widevine' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.drm@1.1::ICryptoFactory/widevine' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.drm@1.1::IDrmFactory/widevine' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.drm@1.1::IDrmFactory/widevine' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.drm@1.2::ICryptoFactory/widevine' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.drm@1.2::ICryptoFactory/widevine' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.drm@1.2::IDrmFactory/widevine' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.drm@1.2::IDrmFactory/widevine' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.gatekeeper@1.0::IGatekeeper/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.gatekeeper@1.0::IGatekeeper/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.gnss@1.0::IGnss/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.gnss@1.0::IGnss/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.gnss@1.0::IGnss/gnss_vendor' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.gnss@1.0::IGnss/gnss_vendor' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.gnss@1.1::IGnss/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.gnss@1.1::IGnss/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.gnss@2.0::IGnss/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.gnss@2.0::IGnss/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.graphics.allocator@2.0::IAllocator/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.graphics.allocator@2.0::IAllocator/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.graphics.composer@2.1::IComposer/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.graphics.composer@2.1::IComposer/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.keymaster@3.0::IKeymasterDevice/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.keymaster@3.0::IKeymasterDevice/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.media.c2@1.0::IComponentStore/software' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.media.c2@1.0::IComponentStore/software' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.media.c2@1.1::IComponentStore/software' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.media.c2@1.1::IComponentStore/software' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.media.c2@1.2::IComponentStore/software' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.media.c2@1.2::IComponentStore/software' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.media.omx@1.0::IOmx/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.media.omx@1.0::IOmx/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.media.omx@1.0::IOmxStore/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.media.omx@1.0::IOmxStore/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio.config@1.0::IRadioConfig/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio.config@1.0::IRadioConfig/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio.config@1.1::IRadioConfig/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio.config@1.1::IRadioConfig/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio@1.0::IRadio/slot1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio@1.0::IRadio/slot1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio@1.0::IRadio/slot2' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio@1.0::IRadio/slot2' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio@1.0::ISap/slot1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio@1.0::ISap/slot1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio@1.0::ISap/slot2' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio@1.0::ISap/slot2' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio@1.1::IRadio/slot1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio@1.1::IRadio/slot1' failed: exit code 1
+command 'dumpsys netstats --proto': Error after 0.0221s (killing pid 14125)
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio@1.1::IRadio/slot2' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio@1.1::IRadio/slot2' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio@1.1::ISap/slot1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio@1.1::ISap/slot1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio@1.1::ISap/slot2' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio@1.1::ISap/slot2' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio@1.2::IRadio/slot1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio@1.2::IRadio/slot1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio@1.2::IRadio/slot2' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio@1.2::IRadio/slot2' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio@1.2::ISap/slot1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio@1.2::ISap/slot1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio@1.2::ISap/slot2' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio@1.2::ISap/slot2' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio@1.3::IRadio/slot1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio@1.3::IRadio/slot1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio@1.3::IRadio/slot2' failed (error: No such file or directory)
+No IDumpstateDevice AIDL implementation
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio@1.3::IRadio/slot2' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio@1.4::IRadio/slot1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio@1.4::IRadio/slot1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.radio@1.4::IRadio/slot2' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.radio@1.4::IRadio/slot2' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.sensors@1.0::ISensors/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.sensors@1.0::ISensors/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.soundtrigger@2.0::ISoundTriggerHw/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.soundtrigger@2.0::ISoundTriggerHw/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.soundtrigger@2.1::ISoundTriggerHw/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.soundtrigger@2.1::ISoundTriggerHw/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.soundtrigger@2.2::ISoundTriggerHw/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.soundtrigger@2.2::ISoundTriggerHw/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.soundtrigger@2.3::ISoundTriggerHw/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.soundtrigger@2.3::ISoundTriggerHw/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.tetheroffload.config@1.0::IOffloadConfig/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.tetheroffload.config@1.0::IOffloadConfig/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.tetheroffload.control@1.0::IOffloadControl/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.tetheroffload.control@1.0::IOffloadControl/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.tetheroffload.control@1.1::IOffloadControl/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.tetheroffload.control@1.1::IOffloadControl/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.usb@1.0::IUsb/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.usb@1.0::IUsb/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.usb@1.1::IUsb/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.usb@1.1::IUsb/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.usb@1.2::IUsb/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.usb@1.2::IUsb/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hardware.usb@1.3::IUsb/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hardware.usb@1.3::IUsb/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.allocator@1.0::IAllocator/ashmem' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.allocator@1.0::IAllocator/ashmem' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/Uim0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/Uim0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/Uim1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/Uim1' failed: exit code 1
+No IDumpstateDevice HIDL implementation
+Could not find IDumpstateDevice implementation
+Failed to unlink file (/data/user_de/0/com.android.shell/files/bugreports/dumpstate_board.bin): No such file or directory
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/UimLpa0' failed (error: No such file or directory)
+Failed to unlink file (/data/user_de/0/com.android.shell/files/bugreports/dumpstate_board.txt): No such file or directory
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/UimLpa0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/UimLpa1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/UimLpa1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/ashmem' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/ashmem' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/com.qualcomm.qti.uceservice' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/com.qualcomm.qti.uceservice' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/dpmQmiService' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/dpmQmiService' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/gnss_vendor' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/gnss_vendor' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/imsradio0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/imsradio0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/imsradio1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/imsradio1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/imsrtpservice' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/imsrtpservice' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/legacy/0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/legacy/0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/oemhook0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/oemhook0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/oemhook1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/oemhook1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/qti.ims.connectionmanagerservice' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/qti.ims.connectionmanagerservice' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/slot1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/slot1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/slot2' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/slot2' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/software' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/software' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/uimRemoteClient0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/uimRemoteClient0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/uimRemoteClient1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/uimRemoteClient1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/uimRemoteServer0' failed (error: No such file or directory)
+section 1000 status 1
+section 1000 status 2
+section 1002 status 1
+section 1002 status 2
+section 1109 status 1
+section 1109 status 2
+section 1110 status 1
+section 1110 status 2
+section 1111 status 1
+section 1111 status 2
+section 1112 status 1
+section 1112 status 2
+section 1113 status 1
+section 1113 status 2
+section 1114 status 1
+section 1114 status 2
+section 1115 status 1
+section 1115 status 2
+section 1116 status 1
+Duration of 'CHECKIN BATTERYSTATS': 1.69s
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/uimRemoteServer0' timed out after 2.000s (killing pid 14216)
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/uimRemoteServer1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/uimRemoteServer1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/widevine' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.base@1.0::IBase/widevine' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.manager@1.0::IServiceManager/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.manager@1.0::IServiceManager/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.manager@1.1::IServiceManager/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.manager@1.1::IServiceManager/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.manager@1.2::IServiceManager/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.manager@1.2::IServiceManager/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.hidl.token@1.0::ITokenManager/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.hidl.token@1.0::ITokenManager/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.system.net.netd@1.0::INetd/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.system.net.netd@1.0::INetd/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.system.net.netd@1.1::INetd/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.system.net.netd@1.1::INetd/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.system.suspend@1.0::ISystemSuspend/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.system.suspend@1.0::ISystemSuspend/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E android.system.wifi.keystore@1.0::IKeystore/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E android.system.wifi.keystore@1.0::IKeystore/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E com.qualcomm.qti.dpm.api@1.0::IdpmQmi/dpmQmiService' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E com.qualcomm.qti.dpm.api@1.0::IdpmQmi/dpmQmiService' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E com.qualcomm.qti.imscmservice@2.0::IImsCmService/qti.ims.connectionmanagerservice' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E com.qualcomm.qti.imscmservice@2.0::IImsCmService/qti.ims.connectionmanagerservice' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E com.qualcomm.qti.imscmservice@2.1::IImsCmService/qti.ims.connectionmanagerservice' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E com.qualcomm.qti.imscmservice@2.1::IImsCmService/qti.ims.connectionmanagerservice' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E com.qualcomm.qti.imscmservice@2.2::IImsCmService/qti.ims.connectionmanagerservice' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E com.qualcomm.qti.imscmservice@2.2::IImsCmService/qti.ims.connectionmanagerservice' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E com.qualcomm.qti.uceservice@2.0::IUceService/com.qualcomm.qti.uceservice' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E com.qualcomm.qti.uceservice@2.0::IUceService/com.qualcomm.qti.uceservice' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E com.qualcomm.qti.uceservice@2.1::IUceService/com.qualcomm.qti.uceservice' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E com.qualcomm.qti.uceservice@2.1::IUceService/com.qualcomm.qti.uceservice' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.display.color@1.0::IDisplayColor/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.display.color@1.0::IDisplayColor/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.display.config@1.0::IDisplayConfig/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.display.config@1.0::IDisplayConfig/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.display.config@1.1::IDisplayConfig/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.display.config@1.1::IDisplayConfig/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.display.config@1.2::IDisplayConfig/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.display.config@1.2::IDisplayConfig/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.display.config@1.3::IDisplayConfig/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.display.config@1.3::IDisplayConfig/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.display.config@1.4::IDisplayConfig/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.display.config@1.4::IDisplayConfig/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.display.config@1.5::IDisplayConfig/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.display.config@1.5::IDisplayConfig/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.display.config@1.6::IDisplayConfig/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.display.config@1.6::IDisplayConfig/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.display.config@1.7::IDisplayConfig/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.display.config@1.7::IDisplayConfig/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.display.config@1.8::IDisplayConfig/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.display.config@1.8::IDisplayConfig/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.display.config@1.9::IDisplayConfig/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.display.config@1.9::IDisplayConfig/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.display.postproc@1.0::IDisplayPostproc/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.display.postproc@1.0::IDisplayPostproc/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.lineage.livedisplay@2.0::IPictureAdjustment/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.lineage.livedisplay@2.0::IPictureAdjustment/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.data.factory@2.0::IFactory/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.data.factory@2.0::IFactory/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.gnss@1.0::ILocHidlGnss/gnss_vendor' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.gnss@1.0::ILocHidlGnss/gnss_vendor' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.gnss@1.1::ILocHidlGnss/gnss_vendor' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.gnss@1.1::ILocHidlGnss/gnss_vendor' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.gnss@1.2::ILocHidlGnss/gnss_vendor' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.gnss@1.2::ILocHidlGnss/gnss_vendor' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.gnss@2.0::ILocHidlGnss/gnss_vendor' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.gnss@2.0::ILocHidlGnss/gnss_vendor' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.gnss@2.1::ILocHidlGnss/gnss_vendor' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.gnss@2.1::ILocHidlGnss/gnss_vendor' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.gnss@3.0::ILocHidlGnss/gnss_vendor' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.gnss@3.0::ILocHidlGnss/gnss_vendor' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.bluetooth_sar@1.0::IBluetoothSar/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.bluetooth_sar@1.0::IBluetoothSar/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.btconfigstore@1.0::IBTConfigStore/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.btconfigstore@1.0::IBTConfigStore/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.data.connection@1.0::IDataConnection/slot1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.data.connection@1.0::IDataConnection/slot1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.data.connection@1.0::IDataConnection/slot2' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.data.connection@1.0::IDataConnection/slot2' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.data.connection@1.1::IDataConnection/slot1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.data.connection@1.1::IDataConnection/slot1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.data.connection@1.1::IDataConnection/slot2' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.data.connection@1.1::IDataConnection/slot2' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.data.iwlan@1.0::IIWlan/slot1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.data.iwlan@1.0::IIWlan/slot1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.data.iwlan@1.0::IIWlan/slot2' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.data.iwlan@1.0::IIWlan/slot2' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.data.latency@1.0::ILinkLatency/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.data.latency@1.0::ILinkLatency/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.perf@2.0::IPerf/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.perf@2.0::IPerf/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.am@1.0::IQcRilAudio/slot1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.am@1.0::IQcRilAudio/slot1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.am@1.0::IQcRilAudio/slot2' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.am@1.0::IQcRilAudio/slot2' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.0::IImsRadio/imsradio0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.0::IImsRadio/imsradio0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.0::IImsRadio/imsradio1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.0::IImsRadio/imsradio1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.1::IImsRadio/imsradio0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.1::IImsRadio/imsradio0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.1::IImsRadio/imsradio1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.1::IImsRadio/imsradio1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.2::IImsRadio/imsradio0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.2::IImsRadio/imsradio0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.2::IImsRadio/imsradio1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.2::IImsRadio/imsradio1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.3::IImsRadio/imsradio0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.3::IImsRadio/imsradio0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.3::IImsRadio/imsradio1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.3::IImsRadio/imsradio1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.4::IImsRadio/imsradio0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.4::IImsRadio/imsradio0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.4::IImsRadio/imsradio1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.4::IImsRadio/imsradio1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.5::IImsRadio/imsradio0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.5::IImsRadio/imsradio0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.5::IImsRadio/imsradio1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.ims@1.5::IImsRadio/imsradio1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.lpa@1.0::IUimLpa/UimLpa0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.lpa@1.0::IUimLpa/UimLpa0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.lpa@1.0::IUimLpa/UimLpa1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.lpa@1.0::IUimLpa/UimLpa1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.qcrilhook@1.0::IQtiOemHook/oemhook0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.qcrilhook@1.0::IQtiOemHook/oemhook0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.qcrilhook@1.0::IQtiOemHook/oemhook1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.qcrilhook@1.0::IQtiOemHook/oemhook1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim@1.0::IUim/Uim0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim@1.0::IUim/Uim0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim@1.0::IUim/Uim1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim@1.0::IUim/Uim1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim@1.1::IUim/Uim0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim@1.1::IUim/Uim0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim@1.1::IUim/Uim1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim@1.1::IUim/Uim1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim@1.2::IUim/Uim0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim@1.2::IUim/Uim0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim@1.2::IUim/Uim1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim@1.2::IUim/Uim1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim_remote_client@1.0::IUimRemoteServiceClient/uimRemoteClient0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim_remote_client@1.0::IUimRemoteServiceClient/uimRemoteClient0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim_remote_client@1.0::IUimRemoteServiceClient/uimRemoteClient1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim_remote_client@1.0::IUimRemoteServiceClient/uimRemoteClient1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim_remote_server@1.0::IUimRemoteServiceServer/uimRemoteServer0' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim_remote_server@1.0::IUimRemoteServiceServer/uimRemoteServer0' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim_remote_server@1.0::IUimRemoteServiceServer/uimRemoteServer1' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.radio.uim_remote_server@1.0::IUimRemoteServiceServer/uimRemoteServer1' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.hardware.tui_comm@1.0::ITuiComm/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.hardware.tui_comm@1.0::ITuiComm/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.ims.callinfo@1.0::IService/default' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.ims.callinfo@1.0::IService/default' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.imsrtpservice@2.0::IRTPService/imsrtpservice' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.imsrtpservice@2.0::IRTPService/imsrtpservice' failed: exit code 1
+execvp on command '/system/xbin/su root lshal debug -E vendor.qti.imsrtpservice@2.1::IRTPService/imsrtpservice' failed (error: No such file or directory)
+*** command '/system/xbin/su root lshal debug -E vendor.qti.imsrtpservice@2.1::IRTPService/imsrtpservice' failed: exit code 1
+Duration of 'DUMP HALS': 2.09s
+Duration of 'CPU INFO': 2.09s
+execvp on command '/system/xbin/su root bugreport_procdump' failed (error: No such file or directory)
+*** command '/system/xbin/su root bugreport_procdump' failed: exit code 1
+Duration of 'DUMP CHECKINS': 2.40s
+execvp on command '/system/xbin/su root sh -c cat /proc/modules | cut -d' ' -f1 |     while read MOD ; do echo modinfo:$MOD ; modinfo $MOD ; done' failed (error: No such file or directory)
+*** command '/system/xbin/su root sh -c cat /proc/modules | cut -d' ' -f1 |     while read MOD ; do echo modinfo:$MOD ; modinfo $MOD ; done' failed: exit code 1
+Adding dir /system/etc/vintf/ (recursive: 1)
+Adding dir /vendor/etc/vintf/ (recursive: 1)
+Adding dir /system_ext/etc/vintf/ (recursive: 1)
+execvp on command '/system/xbin/su root lsof' failed (error: No such file or directory)
+*** command '/system/xbin/su root lsof' failed: exit code 1
+Adding dir /data/misc/nfc/logs (recursive: 1)
+AddAnrTraceDir(): dump_traces_file=/data/user_de/0/com.android.shell/files/bugreports/dumptrace_UsVMiS, anr_traces_dir=/data/anr
+Dumping current ANR traces (/data/user_de/0/com.android.shell/files/bugreports/dumptrace_UsVMiS) to the main bugreport entry
+No system traces found. Check for previously uploaded traces by looking for go/trace-uuid in logcatsection 1116 status 2
+section 2001 status 1
+section 2001 status 2
+section 2002 status 1
+section 2002 status 2
+section 2003 status 1
+section 2003 status 2
+section 2004 status 1
+section 2004 status 2
+section 2005 status 1
+section 2005 status 2
+section 2006 status 1
+section 2006 status 2
+section 2007 status 1
+section 2007 status 2
+section 3000 status 1
+section 3000 status 2
+section 3002 status 1
+section 3002 status 2
+section 3004 status 1
+section 3004 status 2
+section 3005 status 1
+section 3005 status 2
+section 3006 status 1
+section 3006 status 2
+section 3007 status 1
+section 3007 status 2
+section 3008 status 1
+section 3008 status 2
+section 3009 status 1
+section 3009 status 2
+section 3010 status 1
+section 3010 status 2
+section 3011 status 1
+section 3011 status 2
+section 3012 status 1
+section 3012 status 2
+section 3013 status 1
+section 3013 status 2
+section 3014 status 1
+section 3014 status 2
+section 3015 status 1
+section 3015 status 2
+section 3016 status 1
+section 3016 status 2
+section 3017 status 1
+section 3017 status 2
+section 3019 status 1
+section 3019 status 2
+section 3020 status 1
+section 3020 status 2
+section 3021 status 1
+section 3021 status 2
+section 3022 status 1
+section 3022 status 2
+section 3023 status 1
+section 3023 status 2
+section 3027 status 1
+section 3027 status 2
+section 3028 status 1
+section 3028 status 2
+section 3029 status 1
+section 3029 status 2
+section 3030 status 1
+section 3030 status 2
+section 3031 status 1
+section 3031 status 2
+section 3032 status 1
+section 3032 status 2
+section 3033 status 1
+section 3033 status 2
+section 3034 status 1
+section 3034 status 2
+section 3035 status 1
+section 3035 status 2
+section 3036 status 1
+section 3036 status 2
+section 3037 status 1
+section 3037 status 2
+section 3038 status 1
+section 3038 status 2
+section 3039 status 1
+section 3039 status 2
+section 3040 status 1
+section 3040 status 2
+section 3041 status 1
+section 3041 status 2
+section 3042 status 1
+section 3042 status 2
+section 3043 status 1
+section 3043 status 2
+section 3044 status 1
+section 3044 status 2
+section 3045 status 1
+section 3045 status 2
+section 3046 status 1
+section 3046 status 2
+section 3047 status 1
+section 3047 status 2
+section 3049 status 1
+section 3049 status 2
+section 3050 status 1
+section 3050 status 2
+section 3051 status 1
+section 3051 status 2
+section 3052 status 1
+section 3052 status 2
+section 3053 status 1
+section 3053 status 2
+section 3054 status 1
+section 3054 status 2
+section 3055 status 1
+section 3055 status 2
+section 3056 status 1
+section 3056 status 2
+section 4000 status 1
+section 4000 status 2
+section 4001 status 1
+section 4001 status 2
+done
+Duration of 'INCIDENT REPORT': 11.46s
+Duration of 'DUMPSYS HIGH': 21.93s
+drop_root_user(): already running as Shell
+warning: failed to read /system_ext/etc/aconfig_flags.pb
+warning: failed to read /product/etc/aconfig_flags.pb
+warning: failed to read //apex/apex-info-list.xml/etc/aconfig_flags.pb
+warning: failed to read //apex/.default-apex-info-list.xml/etc/aconfig_flags.pb
+warning: failed to read //apex/com.android.resolv/etc/aconfig_flags.pb
+warning: failed to read //apex/com.android.neuralnetworks/etc/aconfig_flags.pb
+warning: failed to read //apex/com.android.extservices/etc/aconfig_flags.pb
+warning: failed to read //apex/com.android.adbd/etc/aconfig_flags.pb
+warning: failed to read //apex/com.android.scheduling/etc/aconfig_flags.pb
+warning: failed to read //apex/com.android.nfcservices/etc/aconfig_flags.pb
+warning: failed to read //apex/com.android.sdkext/etc/aconfig_flags.pb
+warning: failed to read //apex/com.android.apex.cts.shim/etc/aconfig_flags.pb
+warning: failed to read //apex/com.android.i18n/etc/aconfig_flags.pb
+warning: failed to read //apex/com.android.virt/etc/aconfig_flags.pb
+warning: failed to read //apex/com.android.rkpd/etc/aconfig_flags.pb
+warning: failed to read //apex/com.android.tzdata/etc/aconfig_flags.pb
+warning: failed to read //apex/com.android.runtime/etc/aconfig_flags.pb
+execvp on command '/system/xbin/su root /system/bin/aflags list' failed (error: No such file or directory)
+*** command '/system/xbin/su root /system/bin/aflags list' failed: exit code 1
+execvp on command '/system/xbin/su root /system/bin/aflags which-backing' failed (error: No such file or directory)
+*** command '/system/xbin/su root /system/bin/aflags which-backing' failed: exit code 1
+Adding dir /data/misc/snapshotctl_log (recursive: 0)
+execvp on command '/system/xbin/su root typec_connector_class' failed (error: No such file or directory)
+*** command '/system/xbin/su root typec_connector_class' failed: exit code 1
+execvp on command '/system/xbin/su root lsusb' failed (error: No such file or directory)
+*** command '/system/xbin/su root lsusb' failed: exit code 1
+Can't find service: android.hardware.ir.IConsumerIr/default
+Failed to start dump thread for service: android.hardware.ir.IConsumerIr/default, status: -2Can't find service: android.hardware.wifi.supplicant.ISupplicant/default
+Failed to start dump thread for service: android.hardware.wifi.supplicant.ISupplicant/default, status: -2Can't find service: android.service.gatekeeper.IGateKeeperService
+Failed to start dump thread for service: android.service.gatekeeper.IGateKeeperService, status: -2Can't find service: vold
+Failed to start dump thread for service: vold, status: -2Duration of 'DUMPSYS': 33.13s
+Adding dir /data/misc/bluetooth/logs (recursive: 1)
+Duration of 'APP SERVICES PLATFORM': 1.43s
+Duration of 'APP SERVICES NON-PLATFORM': 2.24s
+Duration of 'APP PROVIDERS PLATFORM': 1.87s
+Duration of 'APP PROVIDERS NON-PLATFORM': 4.79s
+Can't find service: stats
+Adding dir /linkerconfig (recursive: 1)
+Adding frozen processes from /sys/fs/cgroup
+Adding dir /data/misc/wmtrace (recursive: 0)
+/data/misc/wmtrace: Permission denied
+Duration of 'DUMPSTATE': 71.35s
+Adding main entry (bugreport-lineage_ysl-BP1A.250405.007-2026-06-03-02-59-50.txt) from /data/user_de/0/com.android.shell/files/bugreports/bugreport-lineage_ysl-BP1A.250405.007-2026-06-03-02-59-50.tmp to .zip bugreport
+dumpstate id 1 finished around 2026/06/03 03:01:13 (83 s)
+Adding zip text entry main_entry.txt
+dumpstate_log.txt entry on zip file logged up to here

@@ -1,0 +1,1 @@
+*** command '/system/xbin/su root lshal debug -E com.qualcomm.qti.uceservice@2.0::IUceService/com.qualcomm.qti.uceservice' failed: exit code 1

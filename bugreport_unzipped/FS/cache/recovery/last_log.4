@@ -1,0 +1,1309 @@
+__bionic_open_tzdata: couldn't find any tzdata when looking for GMT!
+Starting TWRP 3.2.1-0-ysl- on Tue Feb  2 13:37:21 1971
+ (pid 377)
+I:=> product model: 'Xiaomi Redmi S2'
+I:=> using device id: 'Xiaomi_Redmi_S2'
+RECOVERY_SDCARD_ON_DATA := true
+I:Lun file '/sys/devices/soc/7000000.ssusb/7000000.dwc3/gadget/lun0/file'
+TW_INCLUDE_CRYPTO := true
+I:TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+I:Found brightness file at '/sys/class/leds/lcd-backlight/brightness'
+I:Got max brightness 4095 from '/sys/class/leds/lcd-backlight/max_brightness'
+I:TWFunc::Set_Brightness: Setting brightness control to 4095
+I:LANG: en
+Starting the UI...
+setting DRM_FORMAT_RGBX8888 and GGL_PIXEL_FORMAT_RGBX_8888
+cannot find/open a drm device: No such file or directory
+fb0 reports (possibly inaccurate):
+  vi.bits_per_pixel = 32
+  vi.red.offset   =   0   .length =   8
+  vi.green.offset =   8   .length =   8
+  vi.blue.offset  =  16   .length =   8
+setting GGL_PIXEL_FORMAT_RGBA_8888
+double buffered
+framebuffer: 0 (720 x 1440)
+Using fbdev graphics.
+I:TWFunc::Set_Brightness: Setting brightness control to 4095
+I:Loading package: splash (/twres/splash.xml)
+I:Load XML directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/splash.xml' directly
+I:Checking resolution...
+I:Scaling theme width 0.666667x and height 0.750000x, offsets x: 0 y: 0 w: 0 h: 0
+I:Loading resources...
+I:Loading variables...
+I:Loading mouse cursor...
+I:Loading pages...
+I:Loading page splash
+I:Switching packages (splash)
+=> Linking mtab
+=> Processing /etc/recovery.fstab
+I:Reading /etc/recovery.fstab
+I:Processing '/cache'
+I:Processing '/boot'
+I:Processing '/system'
+I:Processing '/vendor'
+I:Processing '/vendor_image'
+I:Processing '/data'
+I:Processing '/recovery'
+I:Processing '/modem_image'
+I:Processing '/cust'
+I:Created '/cust' folder.
+I:Processing '/cust_image'
+I:Processing '/misc'
+I:Processing '/modem'
+I:Created '/modem' folder.
+I:Processing '/efs1'
+I:Processing '/efs2'
+I:Processing '/fsg'
+I:Processing '/fsc'
+I:Processing '/persist'
+I:Attempt to load settings from /persist settings file...
+I:InfoManager loading from '/persist/.twrps'.
+__bionic_open_tzdata: couldn't find any tzdata when looking for SAUST-3;SAUDT!
+__bionic_open_tzdata: couldn't find any tzdata when looking for posixrules!
+I:TWFunc::Set_Brightness: Setting brightness control to 409
+I:TWFunc::Fixup_Time: Pre-fix date and time: 1971-02-02--16-37-21
+I:TWFunc::Fixup_Time: Setting time offset from file /sys/class/rtc/rtc0/since_epoch
+I:TWFunc::Fixup_Time: will attempt to use the ats files now.
+I:TWFunc::Fixup_Time: Setting time offset from file /persist/time/ats_2, offset 1740123059569
+I:TWFunc::Fixup_Time: Date and time corrected: 2026-03-26--00-08-19
+I:Processing '/persist_image'
+I:Processing '/splash'
+I:Processing '/aboot'
+I:Processing '/cmnlib'
+I:Processing '/cmnlib64'
+I:Processing '/devcfg'
+I:Processing '/keymaster'
+I:Processing '/lksecapp'
+I:Processing '/rpm'
+I:Processing '/sbl1'
+I:Processing '/tz'
+I:Processing '/dsp'
+I:Processing '/config'
+I:Processing '/DDR'
+I:Processing '/apdp'
+I:Processing '/devbk1'
+I:Processing '/devinfo'
+I:Processing '/dip'
+I:Processing '/dpo'
+I:Processing '/keystore'
+I:Processing '/limits'
+I:Processing '/logdump'
+I:Processing '/mcfg'
+I:Processing '/mdtp'
+I:Processing '/mota'
+I:Processing '/msadp'
+I:Processing '/oem'
+I:Processing '/oops'
+I:Processing '/sec'
+I:Processing '/ssd'
+I:Processing '/syscfg'
+I:Processing '/switch'
+I:Processing '/logo'
+I:Processing '/miuidump'
+I:Processing '/usb_otg'
+I:Created '/usb_otg' folder.
+I:Processing '/external_sd'
+I:Created '/external_sd' folder.
+I:Done processing fstab files
+I:Setting up '/data' as data/media emulated storage.
+I:mount -o bind '/data/media' '/sdcard' process ended with RC=0
+I:Setting up '/data' as data/media emulated storage.
+I:mount -o bind '/data/media' '/sdcard' process ended with RC=0
+I:Backup folder set to '/data/media/TWRP/BACKUPS/Xiaomi_Redmi_S2'
+I:DataManager::SetBackupFolder zip path was /external_sd changing to /sdcard, /external_sd
+I:Settings storage is '/data/media'
+I:Decrypt adopted storage starting
+I:PageManager::LoadFileToBuffer loading filename: '/data/system/storage.xml' directly
+I:No /data/system/storage.xml for adopted storage
+Updating partition details...
+I:Data backup size is 0MB, free: 23384MB.
+I:Unable to mount '/usb_otg'
+I:Actual block device: '', current file system: 'vfat'
+...done
+I:Unmounting main partitions...
+
+
+Partition Logs:
+/cache | /dev/block/mmcblk0p52 | Size: 247MB Used: 0MB Free: 247MB Backup Size: 0MB
+   Flags: Can_Be_Mounted Can_Be_Wiped Can_Be_Backed_Up Wipe_During_Factory_Reset Wipe_Available_in_GUI IsPresent 
+   Primary_Block_Device: /dev/block/mmcblk0p52
+   Display_Name: Cache
+   Storage_Name: Cache
+   Backup_Path: /cache
+   Backup_Name: cache
+   Backup_Display_Name: Cache
+   Storage_Path: /cache
+   Current_File_System: ext4
+   Fstab_File_System: ext4
+   Backup_Method: files
+
+/boot | /dev/block/mmcblk0p47 | Size: 64MB
+   Flags: Can_Be_Backed_Up IsPresent Can_Flash_Img 
+   Primary_Block_Device: /dev/block/mmcblk0p47
+   Display_Name: Boot
+   Storage_Name: Boot
+   Backup_Path: /boot
+   Backup_Name: boot
+   Backup_Display_Name: Boot
+   Storage_Path: /boot
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/system | /dev/block/mmcblk0p56 | Size: 2975MB Used: 4MB Free: 2971MB Backup Size: 4MB
+   Flags: Can_Be_Mounted Can_Be_Wiped Can_Be_Backed_Up Wipe_Available_in_GUI IsPresent Mount_Read_Only 
+   Primary_Block_Device: /dev/block/mmcblk0p56
+   Display_Name: System
+   Storage_Name: System
+   Backup_Path: /system
+   Backup_Name: system
+   Backup_Display_Name: System
+   Storage_Path: /system
+   Current_File_System: ext4
+   Fstab_File_System: ext4
+   Backup_Method: files
+
+/vendor | /dev/block/mmcblk0p55 | Size: 991MB Used: 1MB Free: 990MB Backup Size: 1MB
+   Flags: Can_Be_Mounted Can_Be_Wiped Can_Be_Backed_Up Wipe_Available_in_GUI IsPresent Mount_Read_Only 
+   Primary_Block_Device: /dev/block/mmcblk0p55
+   Display_Name: Vendor
+   Storage_Name: Vendor
+   Backup_Path: /vendor
+   Backup_Name: vendor
+   Backup_Display_Name: Vendor
+   Storage_Path: /vendor
+   Current_File_System: ext4
+   Fstab_File_System: ext4
+   Backup_Method: files
+
+/vendor_image | /dev/block/mmcblk0p55 | Size: 1024MB
+   Flags: IsPresent Can_Flash_Img 
+   Primary_Block_Device: /dev/block/mmcblk0p55
+   Display_Name: Vendor (Image)
+   Storage_Name: Vendor (Image)
+   Backup_Path: /vendor_image
+   Backup_Name: vendor_image
+   Backup_Display_Name: Vendor (Image)
+   Storage_Path: /vendor_image
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/data | /dev/block/mmcblk0p57 | Size: 23428MB Used: 0MB Free: 23384MB Backup Size: 0MB
+   Flags: Can_Be_Mounted Can_Be_Wiped Can_Be_Backed_Up Wipe_During_Factory_Reset Wipe_Available_in_GUI IsPresent Can_Be_Encrypted Has_Data_Media Can_Encrypt_Backup Use_Userdata_Encryption Is_Storage Is_Settings_Storage 
+   Symlink_Path: /data/media
+   Symlink_Mount_Point: /sdcard
+   Primary_Block_Device: /dev/block/mmcblk0p57
+   Length: -16384
+   Display_Name: Data
+   Storage_Name: Internal Storage
+   Backup_Path: /data
+   Backup_Name: data
+   Backup_Display_Name: Data
+   Storage_Path: /data/media
+   Current_File_System: ext4
+   Fstab_File_System: ext4
+   Backup_Method: files
+   MTP_Storage_ID: 65537
+
+/recovery | /dev/block/mmcblk0p48 | Size: 64MB
+   Flags: Can_Be_Backed_Up IsPresent Can_Flash_Img 
+   Primary_Block_Device: /dev/block/mmcblk0p48
+   Display_Name: Recovery
+   Storage_Name: Recovery
+   Backup_Path: /recovery
+   Backup_Name: recovery
+   Backup_Display_Name: Recovery
+   Storage_Path: /recovery
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/modem_image | /dev/block/mmcblk0p49 | Size: 84MB
+   Flags: Can_Be_Backed_Up IsPresent Can_Flash_Img 
+   Primary_Block_Device: /dev/block/mmcblk0p49
+   Display_Name: Modem (Image)
+   Storage_Name: Modem (Image)
+   Backup_Path: /modem_image
+   Backup_Name: modem_image
+   Backup_Display_Name: Modem (Image)
+   Storage_Path: /modem_image
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/cust | /dev/block/mmcblk0p54 | Size: 495MB Used: 184MB Free: 311MB Backup Size: 184MB
+   Flags: Can_Be_Mounted Can_Be_Wiped Can_Be_Backed_Up Wipe_Available_in_GUI IsPresent 
+   Primary_Block_Device: /dev/block/mmcblk0p54
+   Display_Name: Cust
+   Storage_Name: Cust
+   Backup_Path: /cust
+   Backup_Name: cust
+   Backup_Display_Name: Cust
+   Storage_Path: /cust
+   Current_File_System: ext4
+   Fstab_File_System: ext4
+   Backup_Method: files
+
+/cust_image | /dev/block/mmcblk0p54 | Size: 512MB
+   Flags: IsPresent Can_Flash_Img 
+   Primary_Block_Device: /dev/block/mmcblk0p54
+   Display_Name: Cust (Image)
+   Storage_Name: Cust (Image)
+   Backup_Path: /cust_image
+   Backup_Name: cust_image
+   Backup_Display_Name: Cust (Image)
+   Storage_Path: /cust_image
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/misc | /dev/block/mmcblk0p20 | Size: 1MB
+   Flags: Can_Be_Backed_Up IsPresent 
+   Primary_Block_Device: /dev/block/mmcblk0p20
+   Display_Name: Misc
+   Storage_Name: Misc
+   Backup_Path: /misc
+   Backup_Name: misc
+   Backup_Display_Name: Misc
+   Storage_Path: /misc
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/modem | /dev/block/mmcblk0p49 | Size: 83MB Used: 82MB Free: 1MB Backup Size: 82MB
+   Flags: Can_Be_Mounted Can_Be_Wiped IsPresent Mount_To_Decrypt Mount_Read_Only 
+   Primary_Block_Device: /dev/block/mmcblk0p49
+   Display_Name: Firmware
+   Storage_Name: Firmware
+   Backup_Path: /modem
+   Backup_Name: modem
+   Backup_Display_Name: Firmware
+   Storage_Path: /modem
+   Current_File_System: vfat
+   Fstab_File_System: vfat
+   Backup_Method: files
+
+/efs1 | /dev/block/mmcblk0p36 | Size: 8MB
+   Flags: Can_Be_Backed_Up Has_SubPartition IsPresent 
+   Primary_Block_Device: /dev/block/mmcblk0p36
+   Display_Name: EFS
+   Storage_Name: EFS
+   Backup_Path: /efs1
+   Backup_Name: efs1
+   Backup_Display_Name: EFS
+   Storage_Path: /efs1
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/efs2 | /dev/block/mmcblk0p37 | Size: 8MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /efs1
+   Primary_Block_Device: /dev/block/mmcblk0p37
+   Display_Name: efs2
+   Storage_Name: efs2
+   Backup_Path: /efs2
+   Backup_Name: efs2
+   Backup_Display_Name: efs2
+   Storage_Path: /efs2
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/fsg | /dev/block/mmcblk0p32 | Size: 2MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /efs1
+   Primary_Block_Device: /dev/block/mmcblk0p32
+   Display_Name: fsg
+   Storage_Name: fsg
+   Backup_Path: /fsg
+   Backup_Name: fsg
+   Backup_Display_Name: fsg
+   Storage_Path: /fsg
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/fsc | /dev/block/mmcblk0p1 | Size: 0MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /efs1
+   Primary_Block_Device: /dev/block/mmcblk0p1
+   Display_Name: fsc
+   Storage_Name: fsc
+   Backup_Path: /fsc
+   Backup_Name: fsc
+   Backup_Display_Name: fsc
+   Storage_Path: /fsc
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/persist | /dev/block/mmcblk0p43 | Size: 58MB Used: 1MB Free: 57MB Backup Size: 1MB
+   Flags: Can_Be_Mounted Can_Be_Wiped Can_Be_Backed_Up IsPresent 
+   Primary_Block_Device: /dev/block/mmcblk0p43
+   Display_Name: Persist
+   Storage_Name: Persist
+   Backup_Path: /persist
+   Backup_Name: persist
+   Backup_Display_Name: Persist
+   Storage_Path: /persist
+   Current_File_System: ext4
+   Fstab_File_System: ext4
+   Backup_Method: files
+
+/persist_image | /dev/block/mmcblk0p43 | Size: 64MB
+   Flags: IsPresent Can_Flash_Img 
+   Primary_Block_Device: /dev/block/mmcblk0p43
+   Display_Name: Persist (Image)
+   Storage_Name: Persist (Image)
+   Backup_Path: /persist_image
+   Backup_Name: persist_image
+   Backup_Display_Name: Persist (Image)
+   Storage_Path: /persist_image
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/splash | /dev/block/mmcblk0p42 | Size: 32MB
+   Flags: Can_Be_Backed_Up IsPresent Can_Flash_Img 
+   Primary_Block_Device: /dev/block/mmcblk0p42
+   Display_Name: Splash
+   Storage_Name: Splash
+   Backup_Path: /splash
+   Backup_Name: splash
+   Backup_Display_Name: Splash
+   Storage_Path: /splash
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/aboot | /dev/block/mmcblk0p30 | Size: 2MB
+   Flags: Can_Be_Backed_Up Has_SubPartition IsPresent 
+   Primary_Block_Device: /dev/block/mmcblk0p30
+   Display_Name: Bootloader
+   Storage_Name: Bootloader
+   Backup_Path: /aboot
+   Backup_Name: aboot
+   Backup_Display_Name: Bootloader
+   Storage_Path: /aboot
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/cmnlib | /dev/block/mmcblk0p24 | Size: 1MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /aboot
+   Primary_Block_Device: /dev/block/mmcblk0p24
+   Display_Name: cmnlib
+   Storage_Name: cmnlib
+   Backup_Path: /cmnlib
+   Backup_Name: cmnlib
+   Backup_Display_Name: cmnlib
+   Storage_Path: /cmnlib
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/cmnlib64 | /dev/block/mmcblk0p26 | Size: 1MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /aboot
+   Primary_Block_Device: /dev/block/mmcblk0p26
+   Display_Name: cmnlib64
+   Storage_Name: cmnlib64
+   Backup_Path: /cmnlib64
+   Backup_Name: cmnlib64
+   Backup_Display_Name: cmnlib64
+   Storage_Path: /cmnlib64
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/devcfg | /dev/block/mmcblk0p11 | Size: 0MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /aboot
+   Primary_Block_Device: /dev/block/mmcblk0p11
+   Display_Name: devcfg
+   Storage_Name: devcfg
+   Backup_Path: /devcfg
+   Backup_Name: devcfg
+   Backup_Display_Name: devcfg
+   Storage_Path: /devcfg
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/keymaster | /dev/block/mmcblk0p28 | Size: 1MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /aboot
+   Primary_Block_Device: /dev/block/mmcblk0p28
+   Display_Name: keymaster
+   Storage_Name: keymaster
+   Backup_Path: /keymaster
+   Backup_Name: keymaster
+   Backup_Display_Name: keymaster
+   Storage_Path: /keymaster
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/lksecapp | /dev/block/mmcblk0p9 | Size: 0MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /aboot
+   Primary_Block_Device: /dev/block/mmcblk0p9
+   Display_Name: lksecapp
+   Storage_Name: lksecapp
+   Backup_Path: /lksecapp
+   Backup_Name: lksecapp
+   Backup_Display_Name: lksecapp
+   Storage_Path: /lksecapp
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/rpm | /dev/block/mmcblk0p15 | Size: 0MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /aboot
+   Primary_Block_Device: /dev/block/mmcblk0p15
+   Display_Name: rpm
+   Storage_Name: rpm
+   Backup_Path: /rpm
+   Backup_Name: rpm
+   Backup_Display_Name: rpm
+   Storage_Path: /rpm
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/sbl1 | /dev/block/mmcblk0p22 | Size: 1MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /aboot
+   Primary_Block_Device: /dev/block/mmcblk0p22
+   Display_Name: sbl1
+   Storage_Name: sbl1
+   Backup_Path: /sbl1
+   Backup_Name: sbl1
+   Backup_Display_Name: sbl1
+   Storage_Path: /sbl1
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/tz | /dev/block/mmcblk0p33 | Size: 4MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /aboot
+   Primary_Block_Device: /dev/block/mmcblk0p33
+   Display_Name: tz
+   Storage_Name: tz
+   Backup_Path: /tz
+   Backup_Name: tz
+   Backup_Display_Name: tz
+   Storage_Path: /tz
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/dsp | /dev/block/mmcblk0p40 | Size: 16MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /aboot
+   Primary_Block_Device: /dev/block/mmcblk0p40
+   Display_Name: dsp
+   Storage_Name: dsp
+   Backup_Path: /dsp
+   Backup_Name: dsp
+   Backup_Display_Name: dsp
+   Storage_Path: /dsp
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/config | /dev/block/mmcblk0p7 | Size: 0MB
+   Flags: Can_Be_Backed_Up Has_SubPartition IsPresent 
+   Primary_Block_Device: /dev/block/mmcblk0p7
+   Display_Name: OEM
+   Storage_Name: OEM
+   Backup_Path: /config
+   Backup_Name: config
+   Backup_Display_Name: OEM
+   Storage_Path: /config
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/DDR | /dev/block/mmcblk0p6 | Size: 0MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p6
+   Display_Name: DDR
+   Storage_Name: DDR
+   Backup_Path: /DDR
+   Backup_Name: DDR
+   Backup_Display_Name: DDR
+   Storage_Path: /DDR
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/apdp | /dev/block/mmcblk0p13 | Size: 0MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p13
+   Display_Name: apdp
+   Storage_Name: apdp
+   Backup_Path: /apdp
+   Backup_Name: apdp
+   Backup_Display_Name: apdp
+   Storage_Path: /apdp
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/devbk1 | /dev/block/mmcblk0p39 | Size: 8MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p39
+   Display_Name: devbk1
+   Storage_Name: devbk1
+   Backup_Path: /devbk1
+   Backup_Name: devbk1
+   Backup_Display_Name: devbk1
+   Storage_Path: /devbk1
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/devinfo | /dev/block/mmcblk0p38 | Size: 8MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p38
+   Display_Name: devinfo
+   Storage_Name: devinfo
+   Backup_Path: /devinfo
+   Backup_Name: devinfo
+   Backup_Display_Name: devinfo
+   Storage_Path: /devinfo
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/dip | /dev/block/mmcblk0p21 | Size: 1MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p21
+   Display_Name: dip
+   Storage_Name: dip
+   Backup_Path: /dip
+   Backup_Name: dip
+   Backup_Display_Name: dip
+   Storage_Path: /dip
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/dpo | /dev/block/mmcblk0p3 | Size: 0MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p3
+   Display_Name: dpo
+   Storage_Name: dpo
+   Backup_Path: /dpo
+   Backup_Name: dpo
+   Backup_Display_Name: dpo
+   Storage_Path: /dpo
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/keystore | /dev/block/mmcblk0p18 | Size: 0MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p18
+   Display_Name: keystore
+   Storage_Name: keystore
+   Backup_Path: /keystore
+   Backup_Name: keystore
+   Backup_Display_Name: keystore
+   Storage_Path: /keystore
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/limits | /dev/block/mmcblk0p8 | Size: 0MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p8
+   Display_Name: limits
+   Storage_Name: limits
+   Backup_Path: /limits
+   Backup_Name: limits
+   Backup_Display_Name: limits
+   Storage_Path: /limits
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/logdump | /dev/block/mmcblk0p46 | Size: 96MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p46
+   Display_Name: logdump
+   Storage_Name: logdump
+   Backup_Path: /logdump
+   Backup_Name: logdump
+   Backup_Display_Name: logdump
+   Storage_Path: /logdump
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/mcfg | /dev/block/mmcblk0p35 | Size: 4MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p35
+   Display_Name: mcfg
+   Storage_Name: mcfg
+   Backup_Path: /mcfg
+   Backup_Name: mcfg
+   Backup_Display_Name: mcfg
+   Storage_Path: /mcfg
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/mdtp | /dev/block/mmcblk0p45 | Size: 32MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p45
+   Display_Name: mdtp
+   Storage_Name: mdtp
+   Backup_Path: /mdtp
+   Backup_Name: mdtp
+   Backup_Display_Name: mdtp
+   Storage_Path: /mdtp
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/mota | /dev/block/mmcblk0p17 | Size: 0MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p17
+   Display_Name: mota
+   Storage_Name: mota
+   Backup_Path: /mota
+   Backup_Name: mota
+   Backup_Display_Name: mota
+   Storage_Path: /mota
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/msadp | /dev/block/mmcblk0p14 | Size: 0MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p14
+   Display_Name: msadp
+   Storage_Name: msadp
+   Backup_Path: /msadp
+   Backup_Name: msadp
+   Backup_Display_Name: msadp
+   Storage_Path: /msadp
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/oem | /dev/block/mmcblk0p53 | Size: 256MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p53
+   Display_Name: oem
+   Storage_Name: oem
+   Backup_Path: /oem
+   Backup_Name: oem
+   Backup_Display_Name: oem
+   Storage_Path: /oem
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/oops | /dev/block/mmcblk0p41 | Size: 16MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p41
+   Display_Name: oops
+   Storage_Name: oops
+   Backup_Path: /oops
+   Backup_Name: oops
+   Backup_Display_Name: oops
+   Storage_Path: /oops
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/sec | /dev/block/mmcblk0p5 | Size: 0MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p5
+   Display_Name: sec
+   Storage_Name: sec
+   Backup_Path: /sec
+   Backup_Name: sec
+   Backup_Display_Name: sec
+   Storage_Path: /sec
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/ssd | /dev/block/mmcblk0p2 | Size: 0MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p2
+   Display_Name: ssd
+   Storage_Name: ssd
+   Backup_Path: /ssd
+   Backup_Name: ssd
+   Backup_Display_Name: ssd
+   Storage_Path: /ssd
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/syscfg | /dev/block/mmcblk0p19 | Size: 0MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p19
+   Display_Name: syscfg
+   Storage_Name: syscfg
+   Backup_Path: /syscfg
+   Backup_Name: syscfg
+   Backup_Display_Name: syscfg
+   Storage_Path: /syscfg
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/switch | /dev/block/mmcblk0p4 | Size: 0MB
+   Flags: Can_Be_Backed_Up Is_SubPartition IsPresent 
+   SubPartition_Of: /config
+   Primary_Block_Device: /dev/block/mmcblk0p4
+   Display_Name: switch
+   Storage_Name: switch
+   Backup_Path: /switch
+   Backup_Name: switch
+   Backup_Display_Name: switch
+   Storage_Path: /switch
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/logo | /dev/block/mmcblk0p50 | Size: 44MB
+   Flags: Can_Be_Backed_Up IsPresent 
+   Primary_Block_Device: /dev/block/mmcblk0p50
+   Display_Name: Logo
+   Storage_Name: Logo
+   Backup_Path: /logo
+   Backup_Name: logo
+   Backup_Display_Name: Logo
+   Storage_Path: /logo
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/miuidump | /dev/block/mmcblk0p51 | Size: 128MB
+   Flags: Can_Be_Backed_Up IsPresent 
+   Primary_Block_Device: /dev/block/mmcblk0p51
+   Display_Name: MIUIdump
+   Storage_Name: MIUIdump
+   Backup_Path: /miuidump
+   Backup_Name: miuidump
+   Backup_Display_Name: MIUIdump
+   Storage_Path: /miuidump
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/usb_otg |  | Size: 0MB Used: 0MB Free: 0MB Backup Size: 0MB
+   Flags: Can_Be_Mounted Can_Be_Wiped Wipe_Available_in_GUI Removable Is_Storage 
+   Primary_Block_Device: /dev/block/sda1
+   Alternate_Block_Device: /dev/block/sda
+   Display_Name: USB-OTG
+   Storage_Name: USB-OTG
+   Backup_Path: /usb_otg
+   Backup_Name: usb_otg
+   Backup_Display_Name: USB-OTG
+   Storage_Path: /usb_otg
+   Current_File_System: vfat
+   Fstab_File_System: vfat
+   Backup_Method: files
+   Mount_Flags: 0, Mount_Options: utf8
+   MTP_Storage_ID: 65538
+
+/external_sd | /dev/block/mmcblk1 | Size: 15104MB Used: 14MB Free: 15090MB Backup Size: 14MB
+   Flags: Can_Be_Mounted Can_Be_Wiped Wipe_Available_in_GUI Removable IsPresent Is_Storage 
+   Primary_Block_Device: /dev/block/mmcblk1p1
+   Alternate_Block_Device: /dev/block/mmcblk1
+   Display_Name: SDcard
+   Storage_Name: SDcard
+   Backup_Path: /external_sd
+   Backup_Name: external_sd
+   Backup_Display_Name: SDcard
+   Storage_Path: /external_sd
+   Current_File_System: vfat
+   Fstab_File_System: vfat
+   Backup_Method: files
+   Mount_Flags: 0, Mount_Options: utf8
+   MTP_Storage_ID: 65539
+
+I:Loading package: TWRP (/data/media/TWRP/theme/ui.zip)
+I:Loading zip theme
+I:Loading package: TWRP (/twres/ui.xml)
+I:Load XML directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/uk.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/tr.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/sv.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/sl.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/sk.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/ru.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/pt_PT.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/pt_BR.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/pl.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/nl.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/it.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/hu.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/fr.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/es.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/en.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/el.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/de.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/cz.xml' directly
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/en.xml' directly
+parsing languageFile
+parsing languageFile done
+I:PageManager::LoadFileToBuffer loading filename: '/twres/ui.xml' directly
+I:Checking resolution...
+I:Scaling theme width 0.666667x and height 0.750000x, offsets x: 0 y: 0 w: 0 h: 0
+I:Loading resources...
+I:Failed to load image from indeterminate013, error -1
+I:Loading variables...
+I:Loading mouse cursor...
+I:Loading pages...
+I:Including file: /twres/portrait.xml...
+I:PageManager::LoadFileToBuffer loading filename: '/twres/portrait.xml' directly
+I:Loading resources...
+I:Loading variables...
+I:Loading mouse cursor...
+I:Loading pages...
+I:Loading page main
+I:Loading page main2
+I:Loading page install
+I:Loading page flash_confirm
+I:Loading page flash_zip
+I:Loading page flash_done
+I:Loading page flash_sleep_and_reboot
+I:Loading page flashimage_confirm
+I:Loading page clear_vars
+I:Loading page reboot_system_routine
+I:Loading page confirm_action
+I:Loading page action_page
+I:Loading page singleaction_page
+I:Loading page action_complete
+I:Loading page filecheck
+I:Loading page rebootcheck
+I:Loading page wipe
+I:Loading page advancedwipe
+I:Loading page formatdata
+I:Loading page formatdata_confirm
+I:Loading page checkpartitionlist
+I:Loading page partitionoptions
+I:Loading page refreshfilesystem
+I:Loading page selectfilesystem
+I:Loading page backup
+I:Loading page backup_options
+I:Loading page backupname1
+I:Loading page backupname2
+I:Loading page backupencryption
+I:Loading page backupencryption2
+I:Loading page checkbackuppassword
+I:Loading page backup_run
+I:Loading page restore
+I:Unable to open '/data/media/TWRP/BACKUPS/Xiaomi_Redmi_S2'
+I:Loading page restore_read
+I:Loading page restore_decrypt
+I:Loading page try_restore_decrypt
+I:Loading page restore_select
+I:Loading page renamebackup
+I:Loading page restore_run
+I:Loading page mount
+I:Loading page usb_mount
+I:Loading page usb_umount
+I:Loading page system_readonly_check
+I:Loading page reboot
+I:Loading page system_readonly
+I:Loading page settings
+I:Loading page settings_timezone
+I:Loading page settings_screen
+I:Loading page settings_vibration
+I:Loading page settings_language
+I:Loading page copylog
+I:Loading page advanced
+I:Loading page partsdcardsel
+I:Loading page partsdcardcheck
+I:Loading page partsdcard
+I:Loading page htcdumlock
+I:Loading page lock
+I:Loading page filemanagerlist
+I:Loading page filemanageroptions
+I:Loading page choosedestinationfolder
+I:Loading page filemanagerrenamefile
+I:Loading page filemanagerrenamefolder
+I:Loading page filemanagerchmod
+I:Loading page filemanagerconfirm
+I:Loading page filemanageraction
+I:Loading page decrypt
+I:Loading page decrypt_pattern
+I:Loading page trydecrypt
+I:Loading page terminalcommand
+I:Loading page sideload
+I:Loading page fixcontexts
+I:Loading page installsu
+I:Loading page slideout
+I:Loading page select_storage
+I:Loading page select_language
+I:Set page: 'clear_vars'
+I:Set page: 'main2'
+I:Switching packages (TWRP)
+SELinux contexts loaded from /file_contexts
+Full SELinux support is present.
+Startup Commands: 
+ro.dalvik.vm.native.bridge=0
+dalvik.vm.isa.arm.variant=cortex-a53
+dalvik.vm.isa.arm.features=default
+dalvik.vm.usejit=true
+dalvik.vm.lockprof.threshold=500
+dalvik.vm.dex2oat-Xms=64m
+dalvik.vm.dex2oat-Xmx=512m
+dalvik.vm.appimageformat=lz4
+dalvik.vm.usejitprofiles=true
+dalvik.vm.stack-trace-file=/data/anr/traces.txt
+dalvik.vm.image-dex2oat-Xms=64m
+dalvik.vm.image-dex2oat-Xmx=64m
+dalvik.vm.image-dex2oat-filter=verify-at-runtime
+ro.config.ringtone=omni_ringtone1.ogg
+ro.config.alarm_alert=omni_alarm1.ogg
+ro.config.notification_sound=omni_notification1.ogg
+ro.build.fingerprint=Xiaomi/omni_ysl/ysl:7.1.2/NJH47F/brigud06111313:eng/test-keys
+pm.dexopt.boot=verify-at-runtime
+pm.dexopt.ab-ota=speed-profile
+pm.dexopt.install=interpret-only
+pm.dexopt.core-app=speed
+pm.dexopt.bg-dexopt=speed-profile
+pm.dexopt.first-boot=verify-at-runtime
+pm.dexopt.shared-apk=speed
+pm.dexopt.nsys-library=speed
+pm.dexopt.forced-dexopt=speed
+ro.adb.secure=0
+ro.com.google.clientidbase=android-google
+ro.com.android.dataroaming=false
+ro.com.android.wifi-watchlist=GoogleGuest
+ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html
+ro.boot.dp=0x0
+ro.boot.emmc=true
+ro.boot.cpuid=0xf3a2524
+ro.boot.console=ttyHSL0
+ro.boot.hwlevel=MP
+ro.boot.selinux=permissive
+ro.boot.baseband=msm
+ro.boot.fpsensor=goodix
+ro.boot.hardware=qcom
+ro.boot.serialno=31a3f47d
+ro.boot.hwcountry=GLOBAL
+ro.boot.hwversion=1.21.0
+ro.boot.keymaster=1
+ro.boot.bootdevice=7824900.sdhci
+ro.boot.secureboot=1
+ro.boot.veritymode=enforcing
+ro.boot.verifiedbootstate=orange
+ro.omni.device=ysl
+ro.omni.version=7.1.2-20180611-ysl-HOMEMADE
+ro.twrp.boot=1
+ro.twrp.version=3.2.1-0-ysl
+ro.wifi.channels=
+ro.allow.mock.location=1
+ro.board.platform=msm8953
+ro.build.id=NJH47F
+ro.build.date=Пн июн 11 13:13:11 +10 2018
+ro.build.date.utc=0
+ro.build.host=twrp
+ro.build.tags=test-keys
+ro.build.type=eng
+ro.build.user=brigudav
+ro.build.flavor=omni_ysl-eng
+ro.build.display.id=omni_ysl-eng 7.1.2 NJH47F eng.brigud.20180611.131311 test-keys
+ro.build.product=ysl
+ro.build.selinux=1
+ro.build.version.sdk=25
+ro.build.version.base_os=
+ro.build.version.release=7.1.2
+ro.build.version.codename=REL
+ro.build.version.incremental=eng.brigud.20180611.131311
+ro.build.version.preview_sdk=0
+ro.build.version.all_codenames=REL
+ro.build.version.security_patch=2017-11-06
+ro.build.description=omni_ysl-eng 7.1.2 NJH47F eng.brigud.20180611.131311 test-keys
+ro.build.characteristics=default
+ro.kernel.android.checkjni=1
+ro.secure=0
+ro.zygote=zygote32
+ro.carrier=unknown
+ro.product.cpu.abi=armeabi-v7a
+ro.product.cpu.abi2=armeabi
+ro.product.cpu.abilist=armeabi-v7a,armeabi
+ro.product.cpu.abilist32=armeabi-v7a,armeabi
+ro.product.cpu.abilist64=
+ro.product.name=ysl
+ro.product.board=MSM8953
+ro.product.brand=Xiaomi
+ro.product.model=Xiaomi Redmi S2
+ro.product.device=ysl
+ro.product.locale=en-US
+ro.product.mod_device=ysl_global
+ro.product.manufacturer=Xiaomi
+ro.baseband=msm
+ro.bootmode=unknown
+ro.hardware=qcom
+ro.revision=0
+ro.serialno=31a3f47d
+ro.bootimage.build.date=Пн июн 11 13:13:11 +10 2018
+ro.bootimage.build.date.utc=1528686791
+ro.bootimage.build.fingerprint=Xiaomi/omni_ysl/ysl:7.1.2/NJH47F/brigud06111313:eng/test-keys
+ro.bootloader=unknown
+ro.debuggable=1
+ro.modversion=OmniROM-7.1.2-20180611-ysl-HOMEMADE
+ro.setupwizard.enterprise_mode=1
+init.svc.adbd=stopping
+init.svc.ueventd=running
+init.svc.recovery=running
+init.svc.set_permissive=stopped
+twrp.crash_counter=0
+twrp.action_complete=0
+keyguard.no_require_sim=true
+service.adb.root=1
+debug.atrace.tags.enableflags=0
+sys.usb.ffs.ready=1
+net.bt.name=Android
+net.change=net.bt.name
+sys.usb.state=adb
+persist.sys.usb.config=adb
+persist.sys.dalvik.vm.lib.2=libart.so
+sys.usb.config=adb
+sys.usb.configfs=1
+
+I:Copying file /cache/recovery/log to /cache/recovery/last_log
+tw_get_context got selinux context: u:object_r:system_data_file:s0
+I:Got default contexts and file mode for storage files.
+I:Attempt to load settings from settings file...
+I:InfoManager loading from '/data/media/TWRP/.twrps'.
+I:Backup folder set to '/external_sd/TWRP/BACKUPS/Xiaomi_Redmi_S2'
+I:Copying file /etc/recovery.fstab to /cache/recovery/recovery.fstab
+I:Version number saved to '/cache/recovery/.version'
+I:Unable to mount '/usb_otg'
+I:Actual block device: '', current file system: 'vfat'
+I:TWFunc::Set_Brightness: Setting brightness control to 409
+I:PageManager::LoadFileToBuffer loading filename: '/twres/languages/en.xml' directly
+parsing languageFile
+parsing languageFile done
+I:Translating partition display names
+I:Backup folder set to '/external_sd/TWRP/BACKUPS/Xiaomi_Redmi_S2'
+I:Starting MTP
+I:[MTP] Starting MTP
+I:sending message to add 65537 '/data/media' 'Internal Storage'
+I:Message sent, add storage ID: 65537 '/data/media'
+I:sending message to add 65539 '/external_sd' 'Micro SD card'
+I:Message sent, add storage ID: 65539 '/external_sd'
+MTP Enabled
+I:Check_Lifetime_Writes result: '41116'
+I:Switching packages (TWRP)
+I:Starting Adb Backup FIFO
+I:Set page: 'main'
+I:Set page: 'clear_vars'
+I:Set page: 'main2'
+I:[MTP] created new mtpserver object
+I:[MTP] MtpServer::run fd: 17
+I:[MTP] mtppipe add storage 65537 '/data/media'
+I:[MTP] MtpStorage id: 65537 path: /data/media
+I:[MTP] mtppipe add storage 65539 '/external_sd'
+I:[MTP] MtpStorage id: 65539 path: /external_sd
+I:Set overlay: 'slideout'
+I:Set overlay: ''
+I:Set page: 'wipe'
+I:Set page: 'action_page'
+I:operation_start: 'Format'
+Formatting Cache using make_ext4fs...
+Creating filesystem with parameters:
+    Size: 268435456
+    Block size: 4096
+    Blocks per group: 32768
+    Inodes per group: 8192
+    Inode size: 256
+    Journal blocks: 1024
+    Label: 
+    Blocks: 65536
+    Block groups: 2
+    Reserved block group size: 15
+Created filesystem with 11/16384 inodes and 2089/65536 blocks
+I:Recreating /cache/recovery folder.
+I:Copying file /etc/recovery.fstab to /cache/recovery/recovery.fstab
+I:Version number saved to '/cache/recovery/.version'
+Wiping data without wiping /data/media ...
+I:skipped '/data/lost+found'
+I:skipped '/data/media'
+Done.
+I:sending message to add 65537 '/data/media' 'Internal Storage'
+I:Message sent, add storage ID: 65537 '/data/media'
+I:[MTP] mtppipe add storage 65537 '/data/media'
+Updating partition details...
+I:[MTP] MtpStorage id: 65537 path: /data/media
+E:[MTP] MtpServer::addStorage Storage for storage ID 65537 already exists.
+I:Data backup size is 0MB, free: 23384MB.
+I:Unable to mount '/usb_otg'
+I:Actual block device: '', current file system: 'vfat'
+...done
+I:Set page: 'action_complete'
+I:operation_end - status=0
+I:Set page: 'clear_vars'
+I:Set page: 'wipe'
+I:Set page: 'formatdata'
+I:Set page: 'formatdata_confirm'
+I:Set page: 'action_page'
+I:operation_start: 'Format'
+I:sending message to remove 65537
+I:Message sent, remove storage ID: 65537
+I:[MTP] mtppipe remove storage 65537
+I:Successfully wiped crypto footer.
+Formatting Data using make_ext4fs...
+Creating filesystem with parameters:
+    Size: 25094483968
+    Block size: 4096
+    Blocks per group: 32768
+    Inodes per group: 8192
+    Inode size: 256
+    Journal blocks: 32768
+    Label: 
+    Blocks: 6126583
+    Block groups: 187
+    Reserved block group size: 1024
+Created filesystem with 11/1531904 inodes and 140186/6126583 blocks
+I:sending message to add 65537 '/data/media' 'Internal Storage'
+I:Message sent, add storage ID: 65537 '/data/media'
+I:[MTP] mtppipe add storage 65537 '/data/media'
+I:Recreating /data/media folder.
+I:[MTP] MtpStorage id: 65537 path: /data/media
+E:[MTP] error opening '/data/media' -- error: No such file or directory
+I:sending message to remove 65537
+I:Message sent, remove storage ID: 65537
+I:[MTP] mtppipe remove storage 65537
+I:mount -o bind '/data/media' '/sdcard' process ended with RC=0
+I:sending message to add 65537 '/data/media' 'Internal Storage'
+I:Message sent, add storage ID: 65537 '/data/media'
+I:[MTP] mtppipe add storage 65537 '/data/media'
+I:[MTP] MtpStorage id: 65537 path: /data/media
+You may need to reboot recovery to be able to use /data again.
+Updating partition details...
+I:Data backup size is 0MB, free: 23384MB.
+I:Unable to mount '/usb_otg'
+I:Actual block device: '', current file system: 'vfat'
+...done
+I:Set page: 'action_complete'
+I:operation_end - status=0
+I:Set page: 'clear_vars'
+I:Set page: 'formatdata'
+I:Set page: 'wipe'
+I:Set page: 'advancedwipe'
+I:Set page: 'action_page'
+I:operation_start: 'Format'
+I:wipe list 'DALVIK;/cache;/system;/data;INTERNAL;'
+I:wipe_path 'DALVIK'
+Wiping Dalvik Cache Directories...
+-- Dalvik Cache Directories Wipe Complete!
+I:wipe_path '/cache'
+Formatting cache using make_ext4fs...
+Creating filesystem with parameters:
+    Size: 268435456
+    Block size: 4096
+    Blocks per group: 32768
+    Inodes per group: 8192
+    Inode size: 256
+    Journal blocks: 1024
+    Label: 
+    Blocks: 65536
+    Block groups: 2
+    Reserved block group size: 15
+Created filesystem with 11/16384 inodes and 2089/65536 blocks
+I:Recreating /cache/recovery folder.
+I:Copying file /etc/recovery.fstab to /cache/recovery/recovery.fstab
+I:Version number saved to '/cache/recovery/.version'
+I:wipe_path '/system'
+Formatting System using make_ext4fs...
+Creating filesystem with parameters:
+    Size: 3221225472
+    Block size: 4096
+    Blocks per group: 32768
+    Inodes per group: 8192
+    Inode size: 256
+    Journal blocks: 12288
+    Label: 
+    Blocks: 786432
+    Block groups: 24
+    Reserved block group size: 191
+Created filesystem with 11/196608 inodes and 25785/786432 blocks
+I:wipe_path '/data'
+Wiping data without wiping /data/media ...
+I:skipped '/data/lost+found'
+I:skipped '/data/media'
+Done.
+I:sending message to add 65537 '/data/media' 'Internal Storage'
+I:Message sent, add storage ID: 65537 '/data/media'
+I:[MTP] mtppipe add storage 65537 '/data/media'
+I:wipe_path 'INTERNAL'
+I:[MTP] MtpStorage id: 65537 path: /data/media
+Wiping internal storage -- /data/media...
+E:[MTP] MtpServer::addStorage Storage for storage ID 65537 already exists.
+I:sending message to remove 65537
+I:Message sent, remove storage ID: 65537
+I:[MTP] mtppipe remove storage 65537
+I:Recreating /data/media folder.
+I:sending message to remove 65537
+I:Message sent, remove storage ID: 65537
+I:[MTP] mtppipe remove storage 65537
+I:mount -o bind '/data/media' '/sdcard' process ended with RC=0
+I:sending message to add 65537 '/data/media' 'Internal Storage'
+I:Message sent, add storage ID: 65537 '/data/media'
+I:[MTP] mtppipe add storage 65537 '/data/media'
+I:[MTP] MtpStorage id: 65537 path: /data/media
+Updating partition details...
+I:Data backup size is 0MB, free: 23384MB.
+I:Unable to mount '/usb_otg'
+I:Actual block device: '', current file system: 'vfat'
+...done
+I:Set page: 'action_complete'
+I:operation_end - status=0
+I:Set page: 'clear_vars'
+I:Set page: 'advancedwipe'
+I:Set page: 'wipe'
+I:Set page: 'main'
+I:Set page: 'clear_vars'
+I:Set page: 'main2'
+I:Set page: 'reboot'
+I:Set page: 'reboot_system_routine'
+I:Set page: 'rebootcheck'
+I:Set page: 'confirm_action'
+I:Set page: 'action_page'
+I:Cannot find file /system/system/build.prop
+I:Unable to open /system/build.prop for getting 'ro.build.version.sdk'.
+I:Copying file /cache/recovery/log to /cache/recovery/last_log
+Rebooting...
+I:InfoManager saving '/persist/.twrps'
+I:Saved settings file values to /persist/.twrps
+I:InfoManager saving '/data/media/TWRP/.twrps'
+I:Saved settings file values to '/data/media/TWRP/.twrps'

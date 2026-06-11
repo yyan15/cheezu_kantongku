@@ -1,0 +1,8 @@
+isPrevious: true
+Build: xiaomi/ysl/ysl:9/PKQ1.181203.001/V12.0.2.0.PEFMIXM:user/release-keys
+Hardware: MSM8953
+Revision: 0
+Bootloader: unknown
+Radio: null
+Kernel: Linux version 4.9.337-perf-gdcaf331bd84a (nobody@android-build) (Android (12328485, +pgo, +bolt, +lto, +mlgo, based on r530567) clang version 19.0.0 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)) #1 SMP PREEMPT Sun Apr 20 06:31:04 UTC 2025
+

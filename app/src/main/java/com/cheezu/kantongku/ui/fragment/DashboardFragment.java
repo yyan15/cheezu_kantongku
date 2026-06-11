@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import com.bumptech.glide.Glide;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +45,7 @@ public class DashboardFragment extends Fragment {
 
     private TextView tvSaldo, tvPemasukan, tvPengeluaran, tvBudgetAmount, tvBudgetStatus;
     private TextView tvGreeting, tvUsername;
+    private ImageView ivAvatar;
     private ProgressBar progressBudget;
     private RecyclerView rvTransaksi;
     private TransaksiAdapter adapter;
@@ -73,6 +76,7 @@ public class DashboardFragment extends Fragment {
         tvBudgetStatus  = view.findViewById(R.id.tv_budget_status);
         progressBudget  = view.findViewById(R.id.progress_budget);
         rvTransaksi     = view.findViewById(R.id.rv_transaksi);
+        ivAvatar        = view.findViewById(R.id.iv_dashboard_avatar);
 
         // Set nama bulan
         TextView tvBulan = view.findViewById(R.id.tv_bulan);
@@ -207,7 +211,21 @@ public class DashboardFragment extends Fragment {
         // 1. Ambil Nama User dari SharedPreferences
         SharedPreferences kantongkuPrefs = requireContext().getSharedPreferences("KantongkuPrefs", Context.MODE_PRIVATE);
         String name = kantongkuPrefs.getString("user_name", "Pengguna");
+        String photoUrl = kantongkuPrefs.getString("user_photo", null);
         tvUsername.setText("Halo, " + name + "!");
+
+        if (photoUrl != null && ivAvatar != null && isAdded()) {
+            Glide.with(this)
+                    .load(photoUrl)
+                    .circleCrop()
+                    .placeholder(R.drawable.ic_other)
+                    .into(ivAvatar);
+            ivAvatar.setImageTintList(null); // Hapus tint putih agar foto asli muncul
+            ivAvatar.setPadding(0, 0, 0, 0); // Hapus padding agar foto penuh
+        } else if (ivAvatar != null) {
+            ivAvatar.setImageResource(R.drawable.ic_other);
+            ivAvatar.setPadding(8, 8, 8, 8); // Beri padding untuk ikon default
+        }
 
         // 2. Logika Jam untuk Salam
         Calendar calendar = Calendar.getInstance();

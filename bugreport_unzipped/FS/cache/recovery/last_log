@@ -1,0 +1,792 @@
+[    0.001691] I:[libfstab] Using Android DT directory /proc/device-tree/firmware/android/
+[    0.001767] recovery filesystem table
+[    0.001774] =========================
+[    0.001778]   0 /boot  emmc /dev/block/bootdevice/by-name/boot 0
+[    0.058493]   1 /recovery  emmc /dev/block/bootdevice/by-name/recovery 0
+[    0.067050]   2 /system  ext4 /dev/block/by-name/system 0
+[    0.071358]   3 /vendor  ext4 /dev/block/by-name/vendor 0
+[    0.075422]   4 /data  f2fs /dev/block/bootdevice/by-name/userdata 0
+[    0.084013]   5 /data  ext4 /dev/block/bootdevice/by-name/userdata 0
+[    0.084026]   6 /cache  f2fs /dev/block/bootdevice/by-name/cache 0
+[    0.092436]   7 /cache  ext4 /dev/block/bootdevice/by-name/cache 0
+[    0.092605]   8 /mnt/vendor/persist  ext4 /dev/block/bootdevice/by-name/persist 0
+[    0.096614]   9 /vendor/dsp  ext4 /dev/block/bootdevice/by-name/dsp 0
+[    0.100680]   10 /vendor/firmware_mnt  vfat /dev/block/bootdevice/by-name/modem 0
+[    0.105020]   11 /misc  emmc /dev/block/bootdevice/by-name/misc 0
+[    0.113611]   12 /frp  emmc /dev/block/bootdevice/by-name/config 0
+[    0.116210]   13 auto  auto /devices/platform/soc/7864900.sdhci/mmc_host* 0
+[    0.116543]   14 auto  auto /devices/platform/soc/7000000.ssusb/7000000.dwc3/xhci-hcd.0.auto* 0
+[    0.116708]   15 /tmp  ramdisk ramdisk 0
+[    0.116884]
+[    0.118459] I:Boot command: boot-recovery
+[    0.120707] I:[libfs_mgr] Running /system/bin/fsck.f2fs -a -c 10000 --debug-cache /dev/block/mmcblk0p52
+[    0.219718] I:[libfs_mgr] __mount(source=/dev/block/bootdevice/by-name/cache,target=/cache,type=f2fs)=0: Success
+[    0.222600] I:Writing BCB boot-recovery recovery
+[    0.222625]
+[    0.225728] Loading make_device from librecovery_ui_ext.so
+[    0.226233] I:vkeys: could not open /sys/board_properties/virtualkeys.fts_ts
+[    0.226748] I:Brightness: 127 (50%)
+[    0.228923] Failed to find/open a drm device: No such file or directory
+[    0.229174] fb0 reports (possibly inaccurate):
+[    0.229181]   vi.bits_per_pixel = 32
+[    0.229185]   vi.red.offset   =   0   .length =   8
+[    0.229190]   vi.green.offset =   8   .length =   8
+[    0.229194]   vi.blue.offset  =  16   .length =   8
+[    0.235602] framebuffer: 7 (720 x 1440)
+[    0.273239]           erasing_text: en (68 x 29 @ 1050)
+[    0.275147]        no_command_text: en (124 x 29 @ 1050)
+[    0.276766]             error_text: en (49 x 29 @ 1050)
+[    0.432915] I:Starting recovery (pid 425) on Tue Feb  2 15:06:28 1971
+[    0.432948]
+[    0.432994] I:locale is [en-US]
+[    0.437533] SELinux: Loaded file context from:
+[    0.437576] 		/plat_file_contexts
+[    0.437598] 		/system_ext_file_contexts
+[    0.437619] 		/product_file_contexts
+[    0.437639] 		/vendor_file_contexts
+[    0.437660] 		/odm_file_contexts
+[    0.460040] stage is []
+[    0.460071] reason is []
+[    0.934692] VolumeClient::handleEvent: code=643, argv=<>
+[    0.934730] I:VolumeManager initialized
+[    0.934735]        installing_text: en (228 x 29 @ 1050)
+[    0.949919] Command: "/system/bin/recovery"
+[    0.949959]
+[    0.950692] af.fast_track_multiplier=1
+[    0.950720] audio.offload.min.duration.secs=30
+[    0.950742] audio.offload.video=true
+[    0.950762] audio.deep_buffer.media=true
+[    0.951124] bluetooth.sco.disable_enhanced_connection=true
+[    0.951147] bluetooth.device.class_of_device=90,2,12
+[    0.951169] bluetooth.profile.bas.client.enabled=true
+[    0.951190] bluetooth.profile.hfp.ag.enabled=true
+[    0.951212] bluetooth.profile.hid.host.enabled=true
+[    0.951233] bluetooth.profile.hid.device.enabled=true
+[    0.951254] bluetooth.profile.map.server.enabled=true
+[    0.951275] bluetooth.profile.opp.enabled=true
+[    0.951296] bluetooth.profile.pan.nap.enabled=true
+[    0.951317] bluetooth.profile.pan.panu.enabled=true
+[    0.951338] bluetooth.profile.sap.server.enabled=true
+[    0.951360] bluetooth.profile.a2dp.source.enabled=true
+[    0.951381] bluetooth.profile.asha.central.enabled=true
+[    0.951402] bluetooth.profile.gatt.enabled=true
+[    0.951423] bluetooth.profile.pbap.server.enabled=true
+[    0.951444] bluetooth.profile.avrcp.target.enabled=true
+[    0.951481] bluetooth.hardware.power.operating_voltage_mv=3300
+[    0.951611] persist.vendor.btstack.enable.splita2dp=false
+[    0.951634] bluetooth.hfp.client=1
+[    0.951821] ro.boot.dp=0x0
+[    0.951844] ro.boot.emmc=true
+[    0.951866] ro.boot.cpuid=0xf3a2524
+[    0.951887] ro.boot.hwlevel=MP
+[    0.951908] ro.boot.baseband=msm
+[    0.951928] ro.boot.fpsensor=goodix
+[    0.951949] ro.boot.hardware=qcom
+[    0.951970] ro.boot.hardware.cpu.pagesize=4096
+[    0.951991] ro.boot.hwcountry=GLOBAL
+[    0.952012] ro.boot.hwversion=1.21.0
+[    0.952032] ro.boot.keymaster=1
+[    0.952053] ro.boot.bootdevice=7824900.sdhci
+[    0.952074] ro.boot.secureboot=1
+[    0.952094] ro.boot.veritymode=enforcing
+[    0.952115] ro.boot.boot_devices=soc/7824900.sdhci
+[    0.952136] ro.boot.verifiedbootstate=orange
+[    0.952156] ro.baseband=msm
+[    0.952177] ro.bootmode=unknown
+[    0.952197] ro.hardware=qcom
+[    0.952218] ro.revision=0
+[    0.952238] ro.bootloader=unknown
+[    0.952315] ro.boottime.adbd=8429858121
+[    0.952337] ro.boottime.init=4406116872
+[    0.952359] ro.boottime.init.fsck.cache=84
+[    0.952380] ro.boottime.init.mount.cache=13
+[    0.952401] ro.boottime.init.selinux=165025886
+[    0.952422] ro.boottime.init.first_stage=17695677
+[    0.952443] ro.boottime.init.cold_boot_wait=3138
+[    0.952464] ro.boottime.vendor.health-recovery=7957919111
+[    0.952485] ro.boottime.ueventd=4775798487
+[    0.952505] ro.boottime.recovery=7954851402
+[    0.952526] ro.boottime.servicemanager=7927706142
+[    0.952845] ro.odm.build.date=Sun Apr 20 06:24:27 UTC 2025
+[    0.952868] ro.odm.build.date.utc=1745130267
+[    0.952889] ro.odm.build.version.incremental=1745130267
+[    0.952910] ro.odm.build.fingerprint=xiaomi/ysl/ysl:9/PKQ1.181203.001/V12.0.2.0.PEFMIXM:user/release-keys
+[    0.952932] ro.product.odm.name=lineage_ysl
+[    0.952953] ro.product.odm.brand=Xiaomi
+[    0.952974] ro.product.odm.model=Redmi S2
+[    0.952995] ro.product.odm.device=ysl
+[    0.953015] ro.product.odm.manufacturer=Xiaomi
+[    0.953037] ro.adb.secure=1
+[    0.953058] ro.build.id=BP1A.250405.007
+[    0.953078] ro.build.date=Sun Apr 20 06:24:27 UTC 2025
+[    0.953138] ro.build.date.utc=1745130267
+[    0.953243] ro.build.host=r-0123456789abcdef-0123
+[    0.953266] ro.build.tags=release-keys
+[    0.953287] ro.build.type=userdebug
+[    0.953308] ro.build.user=android-user
+[    0.953328] ro.build.flavor=lineage_ysl-userdebug
+[    0.953349] ro.build.display.id=BP1A.250405.007
+[    0.953370] ro.build.product=ysl
+[    0.953391] ro.build.version.sdk=35
+[    0.953411] ro.build.version.base_os=
+[    0.953432] ro.build.version.release=15
+[    0.953452] ro.build.version.codename=REL
+[    0.953473] ro.build.version.incremental=1745130267
+[    0.953494] ro.build.version.preview_sdk=0
+[    0.953515] ro.build.version.all_codenames=REL
+[    0.953536] ro.build.version.security_patch=2025-04-05
+[    0.953556] ro.build.version.release_or_codename=15
+[    0.953577] ro.build.version.preview_sdk_fingerprint=REL
+[    0.953598] ro.build.version.min_supported_target_sdk=28
+[    0.953618] ro.build.description=ysl-user 9 PKQ1.181203.001 V12.0.2.0.PEFMIXM release-keys
+[    0.953639] ro.build.characteristics=default
+[    0.953660] ro.build.backported_fixes.alias_bitset.long_list=2
+[    0.953681] ro.force.debuggable=0
+[    0.953701] ro.llndk.api_level=202404
+[    0.953726] ro.system.build.id=BP1A.250405.007
+[    0.953747] ro.system.build.date=Sun Apr 20 06:24:27 UTC 2025
+[    0.953768] ro.system.build.date.utc=1745130267
+[    0.953789] ro.system.build.tags=release-keys
+[    0.953810] ro.system.build.type=userdebug
+[    0.953831] ro.system.build.version.sdk=35
+[    0.953851] ro.system.build.version.release=15
+[    0.953872] ro.system.build.version.incremental=1745130267
+[    0.953892] ro.system.build.version.release_or_codename=15
+[    0.953913] ro.system.build.fingerprint=xiaomi/ysl/ysl:9/PKQ1.181203.001/V12.0.2.0.PEFMIXM:user/release-keys
+[    0.953934] ro.treble.enabled=true
+[    0.953956] ro.product.cpu.abi=arm64-v8a
+[    0.953977] ro.product.cpu.abilist=arm64-v8a,armeabi-v7a,armeabi
+[    0.954010] ro.product.cpu.pagesize.max=4096
+[    0.954031] ro.product.cpu.abilist32=armeabi-v7a,armeabi
+[    0.954052] ro.product.cpu.abilist64=arm64-v8a
+[    0.954073] ro.product.name=lineage_ysl
+[    0.954094] ro.product.brand=Xiaomi
+[    0.954115] ro.product.build.id=BP1A.250405.007
+[    0.954136] ro.product.build.date=Sun Apr 20 06:24:27 UTC 2025
+[    0.954156] ro.product.build.date.utc=1745130267
+[    0.954177] ro.product.build.tags=release-keys
+[    0.954197] ro.product.build.type=userdebug
+[    0.954218] ro.product.build.version.sdk=35
+[    0.954238] ro.product.build.version.release=15
+[    0.954258] ro.product.build.version.incremental=1745130267
+[    0.954279] ro.product.build.version.release_or_codename=15
+[    0.954299] ro.product.build.fingerprint=xiaomi/ysl/ysl:9/PKQ1.181203.001/V12.0.2.0.PEFMIXM:user/release-keys
+[    0.954320] ro.product.model=Redmi S2
+[    0.954341] ro.product.device=ysl
+[    0.954361] ro.product.system.name=lineage_ysl
+[    0.954382] ro.product.system.brand=Xiaomi
+[    0.954403] ro.product.system.model=Redmi S2
+[    0.954423] ro.product.system.device=ysl
+[    0.954444] ro.product.system.manufacturer=Xiaomi
+[    0.954465] ro.product.product.name=lineage_ysl
+[    0.954485] ro.product.product.brand=Xiaomi
+[    0.954506] ro.product.product.model=Redmi S2
+[    0.954526] ro.product.product.device=ysl
+[    0.954547] ro.product.product.manufacturer=Xiaomi
+[    0.954568] ro.product.system_ext.name=lineage_ysl
+[    0.954589] ro.product.system_ext.brand=Xiaomi
+[    0.954609] ro.product.system_ext.model=Redmi S2
+[    0.954630] ro.product.system_ext.device=ysl
+[    0.954650] ro.product.system_ext.manufacturer=Xiaomi
+[    0.954671] ro.product.manufacturer=Xiaomi
+[    0.954692] ro.system_ext.build.id=BP1A.250405.007
+[    0.954713] ro.system_ext.build.date=Sun Apr 20 06:24:27 UTC 2025
+[    0.954734] ro.system_ext.build.date.utc=1745130267
+[    0.954754] ro.system_ext.build.tags=release-keys
+[    0.954775] ro.system_ext.build.type=userdebug
+[    0.954796] ro.system_ext.build.version.sdk=35
+[    0.954816] ro.system_ext.build.version.release=15
+[    0.954836] ro.system_ext.build.version.incremental=1745130267
+[    0.954857] ro.system_ext.build.version.release_or_codename=15
+[    0.954877] ro.system_ext.build.fingerprint=xiaomi/ysl/ysl:9/PKQ1.181203.001/V12.0.2.0.PEFMIXM:user/release-keys
+[    0.954898] ro.actionable_compatible_property.enabled=true
+[    0.954920] ro.board.api_level=202404
+[    0.954940] ro.board.api_frozen=true
+[    0.954961] ro.vendor.build.id=BP1A.250405.007
+[    0.954982] ro.vendor.build.date=Sun Apr 20 06:24:27 UTC 2025
+[    0.955002] ro.vendor.build.date.utc=1745130267
+[    0.955023] ro.vendor.build.tags=release-keys
+[    0.955044] ro.vendor.build.type=userdebug
+[    0.955065] ro.vendor.build.version.sdk=35
+[    0.955086] ro.vendor.build.version.release=15
+[    0.955106] ro.vendor.build.version.incremental=1745130267
+[    0.955127] ro.vendor.build.version.release_or_codename=15
+[    0.955147] ro.vendor.build.fingerprint=xiaomi/ysl/ysl:9/PKQ1.181203.001/V12.0.2.0.PEFMIXM:user/release-keys
+[    0.955168] ro.vendor.product.cpu.abilist=arm64-v8a,armeabi-v7a,armeabi
+[    0.955189] ro.vendor.product.cpu.abilist32=armeabi-v7a,armeabi
+[    0.955210] ro.vendor.product.cpu.abilist64=arm64-v8a
+[    0.955230] ro.vendor.api_level=27
+[    0.955251] ro.product.board=MSM8953
+[    0.955271] ro.product.vendor.name=lineage_ysl
+[    0.955291] ro.product.vendor.brand=Xiaomi
+[    0.955312] ro.product.vendor.model=Redmi S2
+[    0.955332] ro.product.vendor.device=ysl
+[    0.955352] ro.product.vendor.manufacturer=Xiaomi
+[    0.955373] ro.product.first_api_level=27
+[    0.955628] persist.camera.isp.clock.optmz=0
+[    0.955652] persist.camera.gyro.disable=0
+[    0.955673] persist.camera.stats.test=5
+[    0.955694] persist.vendor.camera.aux.camera=1
+[    0.955716] persist.vendor.camera.dual.camera=0
+[    0.955899] ro.charger.disable_init_blank=true
+[    0.956075] ro.cold_boot_done=true
+[    0.956234] ro.config.avoid_gfx_accel=true
+[    0.956341] ro.bionic.arch=arm64
+[    0.956364] ro.bionic.2nd_arch=arm
+[    0.956393] ro.bionic.cpu_variant=generic
+[    0.956414] ro.bionic.2nd_cpu_variant=cortex-a53
+[    0.957795] ro.lineage.build.version=22.2
+[    0.957820] ro.lineage.display.version=22-20250420-UNOFFICIAL-ysl
+[    0.957842] ro.lineage.version=22.2-20250420-UNOFFICIAL-ysl
+[    0.957863] ro.lineage.releasetype=UNOFFICIAL
+[    0.957922] ro.dalvik.vm.native.bridge=0
+[    0.957944] ro.dalvik.vm.enable_uffd_gc=true
+[    0.957965] ro.zygote=zygote64_32
+[    0.957987] dalvik.vm.isa.arm.variant=cortex-a53
+[    0.958008] dalvik.vm.isa.arm.features=default
+[    0.958030] dalvik.vm.isa.arm64.variant=generic
+[    0.958050] dalvik.vm.isa.arm64.features=default
+[    0.958071] dalvik.vm.dexopt.secondary=true
+[    0.958092] dalvik.vm.dexopt.thermal-cutoff=2
+[    0.958113] dalvik.vm.usejit=true
+[    0.958134] dalvik.vm.madvise.artfile.size=4294967295
+[    0.958155] dalvik.vm.madvise.odexfile.size=104857600
+[    0.958176] dalvik.vm.madvise.vdexfile.size=104857600
+[    0.958197] dalvik.vm.heapsize=512m
+[    0.958217] dalvik.vm.lockprof.threshold=500
+[    0.958238] dalvik.vm.dex2oat64.enabled=true
+[    0.958259] dalvik.vm.dex2oat-Xms=64m
+[    0.958280] dalvik.vm.dex2oat-Xmx=512m
+[    0.958301] dalvik.vm.heapmaxfree=8m
+[    0.958321] dalvik.vm.heapminfree=512k
+[    0.958341] dalvik.vm.heapstartsize=8m
+[    0.958362] dalvik.vm.minidebuginfo=true
+[    0.958384] dalvik.vm.useartservice=true
+[    0.958405] dalvik.vm.appimageformat=lz4
+[    0.958426] dalvik.vm.heapgrowthlimit=192m
+[    0.958446] dalvik.vm.enable_pr_dexopt=true
+[    0.958467] dalvik.vm.image-dex2oat-Xms=64m
+[    0.958487] dalvik.vm.image-dex2oat-Xmx=64m
+[    0.958508] dalvik.vm.usap_pool_enabled=false
+[    0.958529] dalvik.vm.usap_pool_size_max=3
+[    0.958550] dalvik.vm.usap_pool_size_min=1
+[    0.958571] dalvik.vm.dex2oat-minidebuginfo=true
+[    0.958592] dalvik.vm.heaptargetutilization=0.75
+[    0.958612] dalvik.vm.usap_refill_threshold=1
+[    0.958633] dalvik.vm.systemuicompilerfilter=speed
+[    0.958654] dalvik.vm.usap_pool_refill_delay_ms=3000
+[    0.958675] dalvik.vm.systemservercompilerfilter=speed-profile
+[    0.958696] dalvik.vm.dex2oat-max-image-block-size=524288
+[    0.958717] dalvik.vm.dex2oat-resolve-startup-strings=true
+[    0.958833] persist.sys.dalvik.vm.lib.2=libart.so
+[    0.958919] debug.sf.hw=0
+[    0.958942] debug.sf.recomputecrop=0
+[    0.958963] debug.sf.enable_hwc_vds=1
+[    0.958984] debug.sf.latch_unsignaled=1
+[    0.959006] debug.sf.enable_transaction_tracing=false
+[    0.959026] debug.sf.disable_client_composition_cache=1
+[    0.959048] debug.sf.predict_hwc_composition_strategy=0
+[    0.959068] debug.egl.hw=0
+[    0.959089] debug.atrace.tags.enableflags=0
+[    0.959110] debug.enable.sglscale=1
+[    0.959130] debug.gralloc.enable_fb_ubwc=1
+[    0.959151] debug.mdpcomp.logs=0
+[    0.959172] debug.renderengine.backend=skiaglthreaded
+[    0.959336] av.debug.disable.pers.cache=1
+[    0.959359] mm.enable.smoothstreaming=true
+[    0.959381] ro.fm.transmitter=false
+[    0.959403] ro.com.google.clientidbase=android-xiaomi
+[    0.959424] ro.com.android.mobiledata=false
+[    0.959445] ro.wifi.channels=
+[    0.959466] ro.allow.mock.location=0
+[    0.959487] ro.audio.soundfx.dirac=true
+[    0.959508] ro.build.version.sdk_minor=0
+[    0.959570] ro.build.version.known_codenames=Base,Base11,Cupcake,Donut,Eclair,Eclair01,EclairMr1,Froyo,Gingerbread,GingerbreadMr1,Honeycomb,HoneycombMr1,HoneycombMr2,IceCreamSandwich,IceCreamSandwichMr1,JellyBean,JellyBeanMr1,JellyBeanMr2,Kitkat,KitkatWatch,Lollipop,LollipopMr1,M,N,NMr1,O,OMr1,P,Q,R,S,Sv2,Tiramisu,UpsideDownCake,VanillaIceCream,Baklava
+[    0.959593] ro.build.version.release_or_preview_display=15
+[    0.959615] ro.kernel.version=4.9
+[    0.959636] ro.system.build.version.sdk_minor=0
+[    0.959657] ro.system.product.cpu.abilist=arm64-v8a,armeabi-v7a,armeabi
+[    0.959678] ro.system.product.cpu.abilist32=armeabi-v7a,armeabi
+[    0.959698] ro.system.product.cpu.abilist64=arm64-v8a
+[    0.959719] ro.lineage.device=ysl
+[    0.959740] ro.product.build.version.sdk_minor=0
+[    0.959761] ro.product.locale=en-US
+[    0.959789] ro.qualcomm.bt.hci_transport=smd
+[    0.959810] ro.qualcomm.cabl=2
+[    0.959831] ro.bluetooth.hfp.ver=1.7
+[    0.959853] ro.telephony.block_binder_thread_on_incoming_calls=false
+[    0.959874] ro.system_ext.build.version.sdk_minor=0
+[    0.959895] ro.postinstall.fstab.prefix=/system
+[    0.959915] ro.support_one_handed_mode=true
+[    0.959936] mmp.enable.3g2=true
+[    0.959957] sdm.debug.disable_skip_validate=1
+[    0.959977] qcom.bluetooth.soc=smd
+[    0.959998] rild.libargs=-d /dev/smd0
+[    0.960019] rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
+[    0.960039] vidc.enc.dcvs.extra-buff-count=2
+[    0.960060] audio.chk.cal.us=0
+[    0.960080] audio.offload.disable=false
+[    0.960101] media.camera.ts.monotonic=1
+[    0.960122] media.msm8956hw=0
+[    0.960143] media.stagefright.audio.sink=280
+[    0.960163] media.aac_51_output_enabled=true
+[    0.960184] camera.hal1.packagelist=com.skype.raider,com.google.android.talk
+[    0.960205] camera.display.lmax=1280x720
+[    0.960225] camera.display.umax=1920x1080
+[    0.960245] camera.lowpower.record.enable=1
+[    0.960267] persist.wm.extensions.enabled=true
+[    0.960288] persist.hwc.mdpcomp.enable=true
+[    0.960309] persist.hwc.enable_vds=1
+[    0.960329] persist.qfp=false
+[    0.960350] persist.data.netmgrd.qos.enable=true
+[    0.960370] persist.demo.hdmirotationlock=false
+[    0.960391] persist.rild.nitz_plmn=""
+[    0.960412] persist.rild.nitz_long_ons_0=""
+[    0.960433] persist.rild.nitz_long_ons_1=""
+[    0.960454] persist.rild.nitz_long_ons_2=""
+[    0.960474] persist.rild.nitz_long_ons_3=""
+[    0.960495] persist.rild.nitz_short_ons_0=""
+[    0.960515] persist.rild.nitz_short_ons_1=""
+[    0.960536] persist.rild.nitz_short_ons_2=""
+[    0.960556] persist.rild.nitz_short_ons_3=""
+[    0.960577] persist.timed.enable=true
+[    0.960597] DEVICE_PROVISIONED=1
+[    0.962438] drm.service.enabled=true
+[    0.962655] ro.product.build.16k_page.enabled=false
+[    0.962793] ro.frp.pst=/dev/block/bootdevice/by-name/config
+[    0.962816] ro.apex.updatable=true
+[    0.962839] ro.hwui.use_vulkan=
+[    0.962860] ro.board.platform=msm8953
+[    0.962881] ro.build.ab_update=false
+[    0.962902] ro.carrier=unknown
+[    0.962924] ro.hardware.egl=adreno
+[    0.962945] ro.hardware.vulkan=msm8953
+[    0.963085] pm.dexopt.ab-ota=speed-profile
+[    0.963140] pm.dexopt.shared=verify
+[    0.963163] pm.dexopt.cmdline=verify
+[    0.963185] pm.dexopt.install=speed-profile
+[    0.963206] pm.dexopt.inactive=verify
+[    0.963228] pm.dexopt.bg-dexopt=speed-profile
+[    0.963249] pm.dexopt.post-boot=verify
+[    0.963270] pm.dexopt.first-boot=verify
+[    0.963292] pm.dexopt.install-bulk=speed-profile
+[    0.963313] pm.dexopt.install-fast=skip
+[    0.963334] pm.dexopt.boot-after-ota=verify
+[    0.963355] pm.dexopt.install-bulk-secondary=verify
+[    0.963376] pm.dexopt.install-bulk-downgraded=verify
+[    0.963398] pm.dexopt.boot-after-mainline-update=verify
+[    0.963419] pm.dexopt.downgrade_after_inactive_days=10
+[    0.963440] pm.dexopt.install-bulk-secondary-downgraded=verify
+[    0.963586] sys.usb.ffs.ready=1
+[    0.963642] ro.build.fingerprint=xiaomi/ysl/ysl:9/PKQ1.181203.001/V12.0.2.0.PEFMIXM:user/release-keys
+[    0.964060] ro.opengles.version=196610
+[    0.964150] ro.gsid.image_running=0
+[    0.964173] gsid.image_installed=0
+[    0.964493] ro.hw_timeout_multiplier=3
+[    0.964883] init.svc.ueventd=running
+[    0.964906] init.svc.recovery=running
+[    0.964928] init.svc.fastbootd=stopped
+[    0.964949] init.svc.servicemanager=running
+[    0.965009] init.svc.adbd=running
+[    0.965138] init.svc_debug_pid.adbd=442
+[    0.965161] init.svc_debug_pid.vendor.health-recovery=426
+[    0.965183] init.svc_debug_pid.ueventd=413
+[    0.965204] init.svc_debug_pid.recovery=425
+[    0.965225] init.svc_debug_pid.fastbootd=
+[    0.965246] init.svc_debug_pid.servicemanager=424
+[    0.965425] keyguard.no_require_sim=true
+[    0.965706] ro.lineagelegal.url=https://lineageos.org/legal
+[    0.965813] ro.lmk.low=1001
+[    0.965836] ro.lmk.medium=800
+[    0.965857] ro.lmk.critical=0
+[    0.965879] ro.lmk.kill_timeout_ms=100
+[    0.965913] ro.lmk.critical_upgrade=false
+[    0.965934] ro.lmk.upgrade_pressure=100
+[    0.965955] ro.lmk.downgrade_pressure=100
+[    0.965976] ro.lmk.kill_heaviest_task=true
+[    0.965997] ro.lmk.use_minfree_levels=true
+[    0.966195] log.tag.stats_log=I
+[    0.966305] ro.logd.size.stats=64K
+[    0.966582] media.recorder.show_manufacturer_and_model=true
+[    0.966605] media.stagefright.thumbnail.prefer_hw_codecs=true
+[    0.967700] ro.cp_system_other_odex=1
+[    0.967724] ro.control_privapp_permissions=enforce
+[    0.967801] ro.product.page_size=4096
+[    0.967967] persist.debug.dalvik.vm.core_platform_api_policy=just-warn
+[    0.968628] ro.property_service.version=2
+[    0.968936] persist.radio.multisim.config=dsds
+[    0.968991] ril.subscription.types=NV,RUIM
+[    0.969173] ro.recovery.usb.adb.pid=D001
+[    0.969196] ro.recovery.usb.vid=18D1
+[    0.969217] ro.recovery.usb.fastboot.pid=4EE0
+[    0.969647] ro.boot.serialno=31a3f47d
+[    0.969670] ro.serialno=31a3f47d
+[    0.969724] servicemanager.ready=true
+[    0.969809] setupwizard.theme=glif_v4
+[    0.969832] setupwizard.feature.day_night_mode_enabled=true
+[    0.969887] security.perf_harden=1
+[    0.970074] ro.soc.model=SDM450
+[    0.970097] ro.soc.manufacturer=Qualcomm
+[    0.970245] ro.storage_manager.enabled=true
+[    0.970354] ro.sf.lcd_density=260
+[    0.970377] ro.surface_flinger.enable_frame_rate_override=false
+[    0.970399] ro.surface_flinger.max_virtual_display_dimension=4096
+[    0.970421] ro.surface_flinger.force_hwc_copy_for_virtual_displays=true
+[    0.970834] dev.pm.dyn_samplingrate=1
+[    0.970858] dev.mnt.blk.cache=mmcblk0p52
+[    0.970880] dev.mnt.dev.cache=mmcblk0p52
+[    0.970902] dev.mnt.rootdisk.cache=mmcblk0
+[    0.970923] net.bt.name=Android
+[    0.970944] net.tethering.noprovisioning=true
+[    0.970965] persist.sys.adb.shell=/system_ext/bin/bash
+[    0.970986] persist.sys.usb.config=none
+[    0.971007] persist.sys.strictmode.disable=true
+[    0.971029] service.qti.ims.enabled=1
+[    0.971241] ro.config.ringtone=Orion.ogg
+[    0.971264] ro.config.alarm_alert=Hassium.ogg
+[    0.971286] ro.config.notification_sound=Argon.ogg
+[    0.971341] ro.com.android.dataroaming=true
+[    0.971364] ro.telephony.default_network=22,20
+[    0.971386] persist.dbg.vt_avail_ovr=1
+[    0.971407] persist.dbg.wfc_avail_ovr=1
+[    0.971428] persist.dbg.volte_avail_ovr=1
+[    0.971449] telephony.lteOnCdmaDevice=1
+[    0.971870] tombstoned.max_tombstone_count=10
+[    0.971948] persist.traced.enable=1
+[    0.972434] sys.usb.state=adb
+[    0.972457] sys.usb.config=adb
+[    0.972479] sys.usb.configfs=1
+[    0.972500] sys.usb.controller=7000000.dwc3
+[    0.972638] ro.secure=1
+[    0.972660] ro.debuggable=0
+[    0.973230] ro.vendor.audio.sdk.ssr=false
+[    0.973255] ro.vendor.audio.sdk.fluencetype=fluence
+[    0.973278] vendor.audio.hw.aac.encoder=true
+[    0.973303] vendor.audio.pp.asphere.enabled=false
+[    0.973325] vendor.audio.use.sw.ape.decoder=true
+[    0.973346] vendor.audio.use.sw.alac.decoder=true
+[    0.973367] vendor.audio.flac.sw.decoder.24bit=true
+[    0.973388] vendor.audio.read.wsatz.type=true
+[    0.973408] vendor.audio.safx.pbe.enabled=true
+[    0.973429] vendor.audio.dolby.ds2.enabled=false
+[    0.973449] vendor.audio.dolby.ds2.hardbypass=false
+[    0.973471] vendor.audio.parser.ip.buffer.size=262144
+[    0.973491] vendor.audio.tunnel.encode=false
+[    0.973513] vendor.audio.offload.track.enable=false
+[    0.973534] vendor.audio.offload.buffer.size.kb=64
+[    0.973555] vendor.audio.offload.gapless.enabled=true
+[    0.973576] vendor.audio.offload.multiaac.enable=true
+[    0.973597] vendor.audio.offload.multiple.enabled=false
+[    0.973617] vendor.audio.offload.passthrough=false
+[    0.973638] vendor.audio.playback.mch.downsample=true
+[    0.973659] vendor.voice.conc.fallbackpath=deep-buffer
+[    0.973680] vendor.voice.path.for.pcm.voip=true
+[    0.973701] vendor.voice.voip.conc.disabled=true
+[    0.973722] vendor.voice.record.conc.disabled=false
+[    0.973742] vendor.voice.playback.conc.disabled=true
+[    0.973764] persist.vendor.audio.hw.binder.size_kbyte=1024
+[    0.973808] persist.vendor.audio.fluence.speaker=true
+[    0.973830] persist.vendor.audio.fluence.voicerec=false
+[    0.973851] persist.vendor.audio.fluence.voicecall=true
+[    0.973872] persist.vendor.audio.speaker.prot.enable=false
+[    0.974142] ro.vendor.qti.sys.fw.bservice_enable=true
+[    0.974373] persist.vendor.cne.feature=1
+[    0.975410] ro.odm.build.id=BP1A.250405.007
+[    0.975434] ro.odm.build.tags=release-keys
+[    0.975456] ro.odm.build.type=userdebug
+[    0.975478] ro.odm.build.version.sdk=35
+[    0.975499] ro.odm.build.version.release=15
+[    0.975520] ro.odm.build.version.sdk_minor=0
+[    0.975540] ro.odm.build.version.release_or_codename=15
+[    0.975562] ro.odm.product.cpu.abilist=arm64-v8a,armeabi-v7a,armeabi
+[    0.975583] ro.odm.product.cpu.abilist32=armeabi-v7a,armeabi
+[    0.975603] ro.odm.product.cpu.abilist64=arm64-v8a
+[    0.975624] ro.vendor.build.version.sdk_minor=0
+[    0.975645] ro.vendor.use_data_netmgrd=true
+[    0.975666] ro.vendor.extension_library=libqti-perfd-client.so
+[    0.975690] init.svc.vendor.health-recovery=running
+[    0.975712] vendor.vidc.dec.downscalar_width=1920
+[    0.975732] vendor.vidc.dec.downscalar_height=1088
+[    0.975753] vendor.vidc.enc.disable.pq=true
+[    0.975774] vendor.vidc.enc.disable_bframes=1
+[    0.975795] vendor.vidc.disable.split.mode=1
+[    0.975816] vendor.service.qti.ims.enabled=1
+[    0.975837] vendor.audio_hal.period_size=192
+[    0.975858] persist.vendor.data.mode=concurrent
+[    0.975879] persist.vendor.fingerprint.type=rear
+[    0.976029] ro.vendor.display.cabl=2
+[    0.976052] vendor.display.disable_scaler=1
+[    0.976073] vendor.display.disable_skip_validate=1
+[    0.976094] vendor.display.disable_rotator_downscale=1
+[    0.976115] vendor.display.enable_default_color_mode=1
+[    0.976171] ro.vendor.qti.va_odm.support=1
+[    0.976227] ro.vendor.qti.va_aosp.support=1
+[    0.976595] vendor.gralloc.enable_fb_ubwc=1
+[    0.977192] vendor.mm.enable.qcom_parser=1048575
+[    0.977773] persist.vendor.dpm.feature=1
+[    0.977796] persist.vendor.dpm.loglevel=0
+[    0.977957] persist.vendor.qti.telephony.vt_cam_interface=1
+[    0.978140] persist.vendor.radio.rat_on=combine
+[    0.978163] persist.vendor.radio.custom_ecc=1
+[    0.978184] persist.vendor.radio.mt_sms_ack=30
+[    0.978206] persist.vendor.radio.sib16_support=1
+[    0.978227] persist.vendor.radio.procedure_bytes=SKIP
+[    0.978247] persist.vendor.radio.apm_sim_not_pwdn=1
+[    0.978381] vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so
+[    0.978543] ro.vendor.build.security_patch=2020-09-01
+[    0.979274] vendor.video.disable.ubwc=1
+[    0.980008] ro.crypto.volume.filenames_mode=aes-256-cts
+[    0.980636] zygote.critical_window.minute=10
+[    0.980695]
+[    1.016388] I:Saving locale "en-US"
+[    1.021121] I:Clearing BCB
+[    3.222997] I:Writing BCB boot-recovery recovery
+[    3.223024] --reason=update_in_progress
+[    3.223029]
+[    7.485844]
+[    7.485876] -- Install /storage/8235-0A15/fw_ysl_miui_HMS2Global_V12.0.2.0.PEFMIXM_668a87d737_9.0.zip ...
+[    7.549699] I:Writing BCB boot-recovery recovery
+[    7.549719]
+[    8.554008] unknown fuse request opcode 2016
+[    8.558771] W:Failed to read /sys/class/thermal/thermal_zone18/temp: Invalid argument
+[    8.561796] I:current maximum temperature: 34094
+[    8.561825] Supported API: 3
+[    8.569550] Finding update package...
+[    8.586247] I:Update package id: /sideload/package.zip
+[    8.597355] I:[libfs_mgr] Running /system/bin/fsck.f2fs -a -c 10000 --debug-cache /dev/block/mmcblk0p52
+[    8.613454] libc: Unable to set property "ro.boottime.init.fsck.cache" to "15": PROP_ERROR_READ_ONLY_PROPERTY (0xb)
+[    8.626903] I:[libfs_mgr] __mount(source=/dev/block/bootdevice/by-name/cache,target=/cache,type=f2fs)=0: Success
+[    8.627278] libc: Unable to set property "ro.boottime.init.mount.cache" to "13": PROP_ERROR_READ_ONLY_PROPERTY (0xb)
+[    8.696088] I:4 key(s) loaded from /system/etc/security/otacerts.zip
+[    8.696142] Verifying update package...
+[    8.858216] ERROR:   recovery: footer is wrong
+[    8.886362] Update package verification took 0.2 s (result 1).
+[    8.903036] ERROR:   recovery: Signature verification failed
+[    8.936357] ERROR:   recovery: error: 21
+[   13.705135] Installing update...
+[   13.855808] W:Failed to find META-INF/com/android/metadata.pb treating this as non-spl-downgrade, permit OTA install. If device bricks after installing, check kernel log to see if /data failed to decrypt
+[   13.891963] Updating package '/sideload/package.zip' ...
+[   13.892103] Starting updater on Tue Feb  2 15:06:42 1971
+[   13.892141] ============= emmc ===============
+[   13.892227] name: hB8aP>
+[   13.892285] manfid: 0x000090
+[   13.892342] date: 04/2018
+[   13.892398] cid: 90014a68423861503e0131a3f47d4500
+[   13.892453] csd: d02700328f5903ffffffffef8e400000
+[   13.892508] oemid: 0x014a
+[   13.892563] erase_size: 524288
+[   13.892618] preferred_erase_size: 4194304
+[   13.892680] stat:      212      247    13440      390       37        1      584       20        0      300      410
+[   13.892704]
+[   13.892737] ============= prop ===============
+[   13.892786] ro.build.fingerprint=xiaomi/ysl/ysl:9/PKQ1.181203.001/V12.0.2.0.PEFMIXM:user/release-keys
+[   13.892832] ro.build.version.release=15
+[   13.892857] ro.build.version.incremental=1745130267
+[   13.892880] ro.build.product=ysl
+[   13.892910] ro.product.device=ysl
+[   13.892964] ro.product.mod_device=unknown
+[   13.892990] ro.miui.ui.version.name=unknown
+[   13.893010]
+[   13.893425] unknown fuse request opcode 2016
+[   13.901029] SELinux:  Skipping /odm_file_contexts:  empty file
+[   13.902139] SELinux: Loaded file_contexts
+[   13.902249] Flashing Normal Firmware ...
+[   13.903274] Target: xiaomi/ysl/ysl:9/PKQ1.181203.001/V12.0.2.0.PEFMIXM:user/release-keys
+[   13.970061] package_extract_file took 00s.
+[   13.970108]
+[   14.035511] package_extract_file took 01s.
+[   14.035562]
+[   14.071756] package_extract_file took 00s.
+[   14.071811]
+[   14.075471] package_extract_file took 00s.
+[   14.075508]
+[   14.087356] package_extract_file took 00s.
+[   14.087408]
+[   14.109778] package_extract_file took 00s.
+[   14.109833]
+[   14.121365] package_extract_file took 00s.
+[   14.121414]
+[   14.131091] package_extract_file took 00s.
+[   14.131129]
+[   14.133487] package_extract_file took 00s.
+[   14.133516]
+[   14.141290] package_extract_file took 00s.
+[   14.141322]
+[   14.183798] package_extract_file took 00s.
+[   14.183856]
+[   14.200607] package_extract_file took 00s.
+[   14.200661]
+[   14.202800] package_extract_file took 00s.
+[   14.202828]
+[   14.209880] package_extract_file took 00s.
+[   14.209917]
+[   14.219990] package_extract_file took 00s.
+[   14.220034]
+[   14.227500] package_extract_file took 00s.
+[   14.227541]
+[   14.233549] package_extract_file took 00s.
+[   14.233587]
+[   14.235311] package_extract_file took 00s.
+[   14.235337]
+[   16.805049] package_extract_file took 02s.
+[   16.805107]
+[   17.215612] package_extract_file took 01s.
+[   17.215668]
+[   17.215801] device name: /dev/block/bootdevice/by-name/system
+[   17.216338] Filesystem volume name:    /
+[   17.216362] Last mounted on:           /mnt/system
+[   17.216389] Filesystem UUID:           d392d8bb-6c67-58f7-b0b2-091ad46c5bc2
+[   17.216410] Filesystem magic number:   0xEF53
+[   17.216445] Filesystem revision #:     1 (dynamic)
+[   17.216493] Filesystem flags:          signed_directory_hash 
+[   17.216664] Filesystem features:       ext_attr dir_index filetype extents sparse_super large_file huge_file gdt_csum dir_nlink extra_isize
+[   17.216724] Default mount options:     user_xattr acl
+[   17.216770] Filesystem state:          clean
+[   17.216815] Errors behavior:           Continue
+[   17.216837] Filesystem os type:        Linux
+[   17.216859] Inode count:               196608
+[   17.216880] Block count:               786432
+[   17.216901] Reserved block count:      0
+[   17.216922] Free blocks:               281680
+[   17.216943] Free inodes:               189168
+[   17.216964] First block:               0
+[   17.216985] Block size:                4096
+[   17.217005] Blocks per group:          32768
+[   17.217041] Inodes per group:          8192
+[   17.217063] Inode blocks per group:    512
+[   17.217099] Filesystem created:        Thu Jan  1 00:00:00 2009
+[   17.217127] Last mount time:           Tue Feb  2 13:49:48 1971
+[   17.217153] Last write time:           Tue Feb  2 13:49:48 1971
+[   17.217174] Mount count:               1
+[   17.217195] Maximum mount count:       65535
+[   17.217222] Last checked:              Thu Jan  1 00:00:00 2009
+[   17.217244] Check interval:            0 (<none>)
+[   17.217279] Lifetime writes:           13 kB
+[   17.217335] Reserved blocks uid:       0 (user root)
+[   17.217383] Reserved blocks gid:       0 (group root)
+[   17.217404] First inode:               11
+[   17.217425] Inode size:                256
+[   17.217446] Required extra isize:      32
+[   17.217467] Desired extra isize:       32
+[   17.217488] Default directory hash:    half_md4
+[   17.217512] Directory Hash Seed:       baea5dae-7c08-5576-9e9b-a8d3c3d94800
+[   17.217901] Failed to unlink '/cache/otad/otad.log'
+[   17.506962]
+[   17.558199] W:failed to read uncrypt status: No such file or directory
+[   17.562215] W:Failed to read /sys/class/thermal/thermal_zone18/temp: Invalid argument
+[   17.565109] I:current maximum temperature: 34928
+[   17.565293] I:/sideload/package.zip
+[   17.565299] 1
+[   17.565304] time_total: 9
+[   17.565308] retry: 0
+[   17.565312] error: 21
+[   17.565316] target_build: V12.0.2.0.PEFMIXM
+[   17.565320] temperature_start: 34094
+[   17.565324] temperature_end: 34928
+[   17.565328] temperature_max: 34928
+[   17.565332]
+[   17.648874]
+[   17.648907] Install completed with status 0.
+[   17.706847] I:Saving locale "en-US"
+[   17.728388] I:Clearing BCB
+[   27.224805] I:Writing BCB boot-recovery recovery
+[   27.224835] --reason=update_in_progress
+[   27.224840]
+[   30.662464]
+[   30.662495] -- Install /storage/8235-0A15/MindTheGapps-15.0.0-arm64-20250812_214357.zip ...
+[   30.718147] I:Writing BCB boot-recovery recovery
+[   30.718167]
+[   31.722053] unknown fuse request opcode 2016
+[   31.726467] W:Failed to read /sys/class/thermal/thermal_zone18/temp: Invalid argument
+[   31.729484] I:current maximum temperature: 34241
+[   31.729513] Supported API: 3
+[   31.796271] Finding update package...
+[   31.862904] I:Update package id: /sideload/package.zip
+[   31.873874] I:[libfs_mgr] Running /system/bin/fsck.f2fs -a -c 10000 --debug-cache /dev/block/mmcblk0p52
+[   31.889720] libc: Unable to set property "ro.boottime.init.fsck.cache" to "15": PROP_ERROR_READ_ONLY_PROPERTY (0xb)
+[   31.903014] I:[libfs_mgr] __mount(source=/dev/block/bootdevice/by-name/cache,target=/cache,type=f2fs)=0: Success
+[   31.903457] libc: Unable to set property "ro.boottime.init.mount.cache" to "13": PROP_ERROR_READ_ONLY_PROPERTY (0xb)
+[   32.097974] I:4 key(s) loaded from /system/etc/security/otacerts.zip
+[   32.098043] Verifying update package...
+[   32.326716] I:comment is 1602 bytes; signature is 1584 bytes from end
+[   48.162646] I:signature (offset: 1e3f2814, length: 62a): 3082062606092a864886f70d010702a082061730820613020101310f300d06096086480165030402010500300b06092a864886f70d010701a08204113082040d308202f5a003020102021404771795d9948bbdeb9d353ef7089f9cf2a1207c300d06092a864886f70d01010b0500308194310b30090603550406130255533113301106035504080c0a43616c69666f726e69613116301406035504070c0d4d6f756e7461696e20566965773110300e060355040a0c07416e64726f69643110300e060355040b0c07416e64726f69643110300e06035504030c07416e64726f69643122302006092a864886f70d0109011613616e64726f696440616e64726f69642e636f6d3020170d3233303931393037313035395a180f32303531303230343037313035395a308194310b30090603550406130255533113301106035504080c0a43616c69666f726e69613116301406035504070c0d4d6f756e7461696e20566965773110300e060355040a0c07416e64726f69643110300e060355040b0c07416e64726f69643110300e06035504030c07416e64726f69643122302006092a864886f70d0109011613616e64726f696440616e64726f69642e636f6d30820122300d06092a864886f70d01010105000382010f003082010a028201010088f6a37a8ad087519956298121656a7911124b03613bbe4a7144e4c88f9ccd3efcfa12aeec05abbde7d24c45adf287ca1cea2826c51ef98983bd7a8416001025490292f32dd8cd67c6b6d57446e8177e8e1a1df9d550d6e895082bd02d55047710885981f7c56d1ead32eb4bd095bb2ef600948eb08f8dafad98440d7322bbdaee06c61676c93fe88e69257aa14af28867368380e46e756badb93f20cdbcd8cad87889ef7345e6c5be9e11d4cdd16050ae02a5473803457908b6e6b1166f239fcb3895c1189d471914759c9bc836d64f8b27a72de9ae5620ea161304aabe505fa7a736914de23843ecf2744c9d674488c698538f1a73bc6595568013de32487f0203010001a3533051301d0603551d0e041604146c09bf1b5ea2826c5489c507348ab688eeca70e9301f0603551d230418301680146c09bf1b5ea2826c5489c507348ab688eeca70e9300f0603551d130101ff040530030101ff300d06092a864886f70d01010b050003820101005fa274a4072e42afa15922abab2917e94146ba122b6e9f69e826628413a8ba06abf7be95bac2204eddd80d6dccc68457e7f44636922efe2cd797f606fbbc100ee4d27ca900e3667ccca6bf4e248ed093ec6651493ac84d3dbb2ccd6af37ad7ab3e0d2836cc0ee280fcc27cf847e54daee5db60c547bef8193ffddf9c030bca8c8c1c83525e8cb1fef1de63495b4d9270c866c949195ab27bd971766177c3695bc275b0a98d0e17565c2daa9becac99274512a5e3ee4a8420fb7b4af0d0abf27dd504f988c9f2680eda8cf1f3996972d04cf4a1e8829d71e59ecc24f18c6a3fd25ee154921efaa6a69ffcebd572139eb52d81b019050cc435a111841e5017cd8d318201d9308201d50201013081ad308194310b30090603550406130255533113301106035504080c0a43616c69666f726e69613116301406035504070c0d4d6f756e7461696e20566965773110300e060355040a0c07416e64726f69643110300e060355040b0c07416e64726f69643110300e06035504030c07416e64726f69643122302006092a864886f70d0109011613616e64726f696440616e64726f69642e636f6d021404771795d9948bbdeb9d353ef7089f9cf2a1207c300d06096086480165030402010500300d06092a864886f70d0101010500048201001775fcc6c197f7edf4a078081b5ce32f569c342a9cac6483aa8c65778a8d7850f1482ceec135833e63a94db74fd923569435c223f59568476748e3f10bbd17c5f3d90ed4eade82546c330257357441623d574da82b3c4a5155e63c17e9e15b6a1430dd60ba421eff42fe8b7e274acb3ecd6c1ea8ef6bd4314fea94eac3a0d9f8ddcd100df6eef37eea61047a463c5a354853ac1888138d59ab0f26d722beea1e60a87ee35b1541ba24e27ede3a59d9f260b1a2b0c75d985de1e4e8f3dd3282057a57fb47c04d3f7f53c17d563f63de031cc024807d836a4ab0bcb564ea3cffe88049d9cc47e05995b2eaacb7d74ed9e12464855a0010bc90746cade46cff056d
+[   48.169458] I:whole-file signature verified against RSA key 0
+[   48.169508] Update package verification took 15.9 s (result 0).
+[   48.236610] Installing update...
+[   48.303570] W:Failed to find META-INF/com/android/metadata.pb treating this as non-spl-downgrade, permit OTA install. If device bricks after installing, check kernel log to see if /data failed to decrypt
+[   48.400974] unknown fuse request opcode 2016
+[   59.469577] Archive:  /sideload/package.zip
+[   59.469608]   inflating: system/product/etc/permissions/privapp-permissions-google-product.xml
+[   59.469614]   inflating: system/product/etc/sysconfig/google_build.xml
+[   59.469619]   inflating: toybox
+[   59.469623]   inflating: system/addon.d/addond_head
+[   59.469627]   inflating: build.prop
+[   59.469631]   inflating: system/product/etc/permissions/com.google.android.dialer.support.xml
+[   59.469635]   inflating: META-INF/com/google/android/updater-script
+[   59.469640]   inflating: system/product/etc/default-permissions/default-permissions-google.xml
+[   59.469644]   inflating: META-INF/com/google/android/update-binary
+[   59.469648]   inflating: system/product/app/GoogleContactsSyncAdapter/GoogleContactsSyncAdapter.apk
+[   59.469652]   inflating: system/product/etc/sysconfig/wellbeing.xml
+[   59.469657]   inflating: system/addon.d/addond_tail
+[   59.469661]   inflating: system/product/etc/sysconfig/d2d_cable_migration_feature.xml
+[   59.469665]   inflating: system/product/etc/sysconfig/google.xml
+[   59.469669]   inflating: system/product/overlay/GmsOverlay.apk
+[   59.469674]   inflating: system/product/etc/permissions/privapp-permissions-mtg.xml
+[   59.469678]   inflating: system/product/priv-app/Phonesky/Phonesky.apk
+[   59.469682]   inflating: system/system_ext/priv-app/SetupWizard/SetupWizard.apk
+[   59.469686]   inflating: system/system_ext/etc/permissions/privapp-permissions-google-system-ext.xml
+[   59.469691]   inflating: system/product/app/talkback/talkback.apk
+[   59.469695]   inflating: system/product/etc/sysconfig/google-hiddenapi-package-allowlist.xml
+[   59.469713]   inflating: system/product/priv-app/Velvet/Velvet.apk
+[   59.469717]   inflating: system/product/etc/sysconfig/sysconfig_contextual_search.xml
+[   59.469721]   inflating: system/product/framework/com.google.android.dialer.support.jar
+[   59.469726]   inflating: system/product/priv-app/GmsCore/GmsCore.apk
+[   59.469730]   inflating: system/product/overlay/GmsSettingsProviderOverlay.apk
+[   59.469734]   inflating: system/product/priv-app/Wellbeing/Wellbeing.apk
+[   59.469738]   inflating: system/product/etc/default-permissions/default-permissions-mtg.xml
+[   59.469742]   inflating: system/product/priv-app/AndroidAutoStub/AndroidAutoStub.apk
+[   59.469746]   inflating: system/product/etc/init/gapps.rc
+[   59.469750]   inflating: system/product/app/GoogleCalendarSyncAdapter/GoogleCalendarSyncAdapter.apk
+[   59.469754]   inflating: system/system_ext/priv-app/GoogleFeedback/GoogleFeedback.apk
+[   59.469758]   inflating: system/product/lib64/libjni_latinimegoogle.so
+[   59.469762]   inflating: system/product/priv-app/GoogleRestore/GoogleRestore.apk
+[   59.469765]   inflating: system/system_ext/priv-app/GoogleServicesFramework/GoogleServicesFramework.apk
+[   59.469769]   inflating: system/product/overlay/GmsSetupWizardOverlay.apk
+[   59.469774]   inflating: system/product/app/MarkupGoogle_v2/MarkupGoogle_v2.apk
+[   59.469778]   inflating: META-INF/com/android/otacert
+[   59.469782]   inflating: system/product/overlay/GmsSettingsOverlay.apk
+[   59.469786]   inflating: system/product/priv-app/VelvetTitan/VelvetTitan.apk
+[   59.469790]   inflating: system/product/etc/security/fsverity/gms_fsverity_cert.der
+[   59.469793]   inflating: system/product/app/PrebuiltExchange3Google/PrebuiltExchange3Google.apk
+[   59.469798]   inflating: system/product/app/SpeechServicesByGoogle/SpeechServicesByGoogle.apk
+[   59.469801]   inflating: system/product/priv-app/GooglePartnerSetup/GooglePartnerSetup.apk
+[   59.837387] umount: /system: Invalid argument
+[   59.839583] umount: /mnt/system: Invalid argument
+[   59.841696] umount: /system/product: No such file or directory
+[   59.843885] umount: /system/system_ext: No such file or directory
+[   60.194141] unknown fuse request opcode 17
+[   68.312295] W:Failed to read /sys/class/thermal/thermal_zone18/temp: Invalid argument
+[   68.314781] I:current maximum temperature: 36300
+[   68.408368] umount: /system/product: No such file or directory
+[   68.417155] umount: /system/system_ext: No such file or directory
+[   68.545514]
+[   68.617895] W:failed to read uncrypt status: No such file or directory
+[   68.621892] W:Failed to read /sys/class/thermal/thermal_zone18/temp: Invalid argument
+[   68.624784] I:current maximum temperature: 36006
+[   68.624923] I:/sideload/package.zip
+[   68.624929] 1
+[   68.624934] time_total: 36
+[   68.624938] retry: 0
+[   68.624942] temperature_start: 34241
+[   68.624946] temperature_end: 36006
+[   68.624950] temperature_max: 36300
+[   68.624954]
+[   68.931722]
+[   68.931757] Install completed with status 0.
+[   68.995539] I:Saving locale "en-US"
+[   69.016417] I:Clearing BCB
+[   71.905853] I:Saving locale "en-US"
+[   71.912082] I:[libfs_mgr] Running /system/bin/fsck.f2fs -a -c 10000 --debug-cache /dev/block/mmcblk0p52
+[   71.927836] libc: Unable to set property "ro.boottime.init.fsck.cache" to "15": PROP_ERROR_READ_ONLY_PROPERTY (0xb)
+[   71.942204] I:[libfs_mgr] __mount(source=/dev/block/bootdevice/by-name/cache,target=/cache,type=f2fs)=0: Success
+[   71.942627] libc: Unable to set property "ro.boottime.init.mount.cache" to "14": PROP_ERROR_READ_ONLY_PROPERTY (0xb)

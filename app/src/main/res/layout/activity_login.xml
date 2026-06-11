@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/ic_launcher_foreground"
+        android:src="@drawable/app_logo_kantongku"
         android:contentDescription="@string/account"
         android:layout_marginBottom="32dp" />
 

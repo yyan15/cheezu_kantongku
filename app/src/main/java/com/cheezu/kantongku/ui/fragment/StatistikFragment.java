@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,31 +65,40 @@ public class StatistikFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Log.d("StatistikFragment", "onViewCreated started");
 
-        barChart           = view.findViewById(R.id.bar_chart);
-        tvTotalPengeluaran = view.findViewById(R.id.tv_total_pengeluaran);
-        tvKategoriTerbesar = view.findViewById(R.id.tv_kategori_terbesar);
-        tvJumlahTransaksi  = view.findViewById(R.id.tv_jumlah_transaksi);
-        progressMakan      = view.findViewById(R.id.progress_makan);
-        progressTransport  = view.findViewById(R.id.progress_transport);
-        progressBelanja    = view.findViewById(R.id.progress_belanja);
-        progressHiburan    = view.findViewById(R.id.progress_hiburan);
-        tvPctMakan         = view.findViewById(R.id.tv_pct_makan);
-        tvPctTransport     = view.findViewById(R.id.tv_pct_transport);
-        tvPctBelanja       = view.findViewById(R.id.tv_pct_belanja);
-        tvPctHiburan       = view.findViewById(R.id.tv_pct_hiburan);
-        toggleBulanan      = view.findViewById(R.id.toggle_bulanan);
-        toggleMingguan     = view.findViewById(R.id.toggle_mingguan);
-        progressKesehatan  = view.findViewById(R.id.progress_kesehatan);
-        progressLainnya    = view.findViewById(R.id.progress_lainnya);
-        tvPctKesehatan     = view.findViewById(R.id.tv_pct_kesehatan);
-        tvPctLainnya       = view.findViewById(R.id.tv_pct_lainnya);
+        try {
+            barChart           = view.findViewById(R.id.bar_chart);
+            tvTotalPengeluaran = view.findViewById(R.id.tv_total_pengeluaran);
+            tvKategoriTerbesar = view.findViewById(R.id.tv_kategori_terbesar);
+            tvJumlahTransaksi  = view.findViewById(R.id.tv_jumlah_transaksi);
+            progressMakan      = view.findViewById(R.id.progress_makan);
+            progressTransport  = view.findViewById(R.id.progress_transport);
+            progressBelanja    = view.findViewById(R.id.progress_belanja);
+            progressHiburan    = view.findViewById(R.id.progress_hiburan);
+            tvPctMakan         = view.findViewById(R.id.tv_pct_makan);
+            tvPctTransport     = view.findViewById(R.id.tv_pct_transport);
+            tvPctBelanja       = view.findViewById(R.id.tv_pct_belanja);
+            tvPctHiburan       = view.findViewById(R.id.tv_pct_hiburan);
+            toggleBulanan      = view.findViewById(R.id.toggle_bulanan);
+            toggleMingguan     = view.findViewById(R.id.toggle_mingguan);
+            
+            // Check if these exist in layout before assigning to avoid potential crashes
+            progressKesehatan  = view.findViewById(R.id.progress_kesehatan);
+            progressLainnya    = view.findViewById(R.id.progress_lainnya);
+            tvPctKesehatan     = view.findViewById(R.id.tv_pct_kesehatan);
+            tvPctLainnya       = view.findViewById(R.id.tv_pct_lainnya);
 
+            Log.d("StatistikFragment", "Views initialized");
 
-        apiService = ApiClient.getApiService();
-        setupBarChart();
-        setupToggle();
-        loadStatistik();
+            apiService = ApiClient.getApiService();
+            setupBarChart();
+            setupToggle();
+            loadStatistik();
+            Log.d("StatistikFragment", "Setup and load finished");
+        } catch (Exception e) {
+            Log.e("StatistikFragment", "Error in onViewCreated", e);
+        }
     }
 
     // ─── Toggle bulanan / mingguan ───────────────────────────
@@ -151,8 +161,8 @@ public class StatistikFragment extends Fragment {
             public void onResponse(@NonNull Call<ApiResponse.StatistikResponse> call,
                                    @NonNull Response<ApiResponse.StatistikResponse> response) {
                 if (!isAdded() || getContext() == null) return;
-                if (response.isSuccessful() && response.body() != null)
-                    updateKategoriUI((List<ApiResponse.StatistikItem>) response.body().data);
+                if (response.isSuccessful() && response.body() != null && response.body().data != null)
+                    updateKategoriUI(response.body().data.perKategori);
             }
             @Override
             public void onFailure(@NonNull Call<ApiResponse.StatistikResponse> call, @NonNull Throwable t) {
@@ -169,7 +179,7 @@ public class StatistikFragment extends Fragment {
                 if (response.isSuccessful() && response.body() != null) {
                     ApiResponse.DashboardResponse data = response.body();
                     tvTotalPengeluaran.setText(
-                            fmt.format(data.totalPengeluaran).replace("Rp", "").replace(",00", "").trim());
+                            fmt.format(data.totalPengeluaran).replace("Rp", "Rp ").replace(",00", "").trim());
                     long jumlahPengeluaran = data.data != null
                             ? data.data.stream().filter(t -> "pengeluaran".equalsIgnoreCase(t.getTipe())).count()
                             : 0;
@@ -207,6 +217,8 @@ public class StatistikFragment extends Fragment {
         Calendar cal = Calendar.getInstance();
 
         int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+        // Senin=2, Selasa=3, ..., Sabtu=7, Minggu=1
+        // Jika Minggu(1), daysFromMonday = 6. Jika Senin(2), daysFromMonday = 0.
         int daysFromMonday = (dayOfWeek == Calendar.SUNDAY) ? 6 : dayOfWeek - Calendar.MONDAY;
         cal.add(Calendar.DAY_OF_MONTH, -daysFromMonday);
         cal.set(Calendar.HOUR_OF_DAY, 0);
@@ -234,7 +246,7 @@ public class StatistikFragment extends Fragment {
                 Calendar c = Calendar.getInstance();
                 c.setTime(tgl);
                 int dow = c.get(Calendar.DAY_OF_WEEK);
-                int idx = (dow == Calendar.SUNDAY) ? 6 : dow - 2; // Senin=0
+                int idx = (dow == Calendar.SUNDAY) ? 6 : dow - Calendar.MONDAY; // Senin=0, ..., Minggu=6
                 if (idx >= 0 && idx < 7) harian[idx] += t.getNominal();
 
                 totalMingguIni += t.getNominal();
@@ -261,7 +273,7 @@ public class StatistikFragment extends Fragment {
         }
 
         tvTotalPengeluaran.setText(
-                fmt.format(totalMingguIni).replace("Rp", "").replace(",00", "").trim());
+                fmt.format(totalMingguIni).replace("Rp", "Rp ").replace(",00", "").trim());
         tvJumlahTransaksi.setText(String.valueOf(jumlah));
         tvKategoriTerbesar.setText(jumlah == 0 ? "-" : terbesar);
 
@@ -269,6 +281,9 @@ public class StatistikFragment extends Fragment {
                 + totalHiburan + totalKesehatan + totalLainnya;
         updateProgressKategori(totalMakan, totalTransport, totalBelanja,
                 totalHiburan, totalKesehatan, totalLainnya, totalAll);
+
+        // UPDATE CHART MINGGUAN
+        updateBarChartMingguan(harian);
     }
 
     private void updateKategoriUI(List<ApiResponse.StatistikItem> items) {
@@ -306,19 +321,20 @@ public class StatistikFragment extends Fragment {
         int pK  = total > 0 ? (int) ((kesehatan  / total) * 100) : 0;
         int pL  = total > 0 ? (int) ((lainnya    / total) * 100) : 0;
 
-        progressMakan.setProgress(pM);
-        progressTransport.setProgress(pT);
-        progressBelanja.setProgress(pB);
-        progressHiburan.setProgress(pH);
-        progressKesehatan.setProgress(pK);
-        progressLainnya.setProgress(pL);
+        if (progressMakan != null) progressMakan.setProgress(pM);
+        if (progressTransport != null) progressTransport.setProgress(pT);
+        if (progressBelanja != null) progressBelanja.setProgress(pB);
+        if (progressHiburan != null) progressHiburan.setProgress(pH);
+        if (progressKesehatan != null) progressKesehatan.setProgress(pK);
+        if (progressLainnya != null) progressLainnya.setProgress(pL);
 
-        tvPctMakan.setText(fmt.format(makan).replace("Rp", "Rp ").replace(",00", "") + " · " + pM + "%");
-        tvPctTransport.setText(fmt.format(transport).replace("Rp", "Rp ").replace(",00", "") + " · " + pT + "%");
-        tvPctBelanja.setText(fmt.format(belanja).replace("Rp", "Rp ").replace(",00", "") + " · " + pB + "%");
-        tvPctHiburan.setText(fmt.format(hiburan).replace("Rp", "Rp ").replace(",00", "") + " · " + pH + "%");
-        tvPctKesehatan.setText(fmt.format(kesehatan).replace("Rp", "Rp ").replace(",00", "") + " · " + pK + "%");
-        tvPctLainnya.setText(fmt.format(lainnya).replace("Rp", "Rp ").replace(",00", "") + " · " + pL + "%");
+        String formatStr = "%s · %d%%";
+        if (tvPctMakan != null) tvPctMakan.setText(String.format(formatStr, fmt.format(makan).replace("Rp", "Rp ").replace(",00", ""), pM));
+        if (tvPctTransport != null) tvPctTransport.setText(String.format(formatStr, fmt.format(transport).replace("Rp", "Rp ").replace(",00", ""), pT));
+        if (tvPctBelanja != null) tvPctBelanja.setText(String.format(formatStr, fmt.format(belanja).replace("Rp", "Rp ").replace(",00", ""), pB));
+        if (tvPctHiburan != null) tvPctHiburan.setText(String.format(formatStr, fmt.format(hiburan).replace("Rp", "Rp ").replace(",00", ""), pH));
+        if (tvPctKesehatan != null) tvPctKesehatan.setText(String.format(formatStr, fmt.format(kesehatan).replace("Rp", "Rp ").replace(",00", ""), pK));
+        if (tvPctLainnya != null) tvPctLainnya.setText(String.format(formatStr, fmt.format(lainnya).replace("Rp", "Rp ").replace(",00", ""), pL));
     }
 
     // ─── Bar chart bulanan (6 bulan) ─────────────────────────

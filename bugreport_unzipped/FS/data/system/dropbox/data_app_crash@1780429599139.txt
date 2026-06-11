@@ -1,0 +1,27 @@
+SystemUptimeMs: 849859
+Process: com.cheezu.kantongku
+PID: 10040
+UID: 10232
+Frozen: false
+Flags: 0x28c8bf46
+Package: com.cheezu.kantongku v1 (1.0)
+Foreground: Yes
+Process-Runtime: 8593
+Timestamp: 2026-06-03 02:46:39.137+0700
+Build: xiaomi/ysl/ysl:9/PKQ1.181203.001/V12.0.2.0.PEFMIXM:user/release-keys
+Crash-Handler: com.google.firebase.crashlytics.internal.common.CrashlyticsUncaughtExceptionHandler
+Loading-Progress: 1.0
+Dropped-Count: 0
+
+java.lang.ClassCastException: com.cheezu.kantongku.data.api.ApiResponse$StatistikData cannot be cast to java.util.List
+	at com.cheezu.kantongku.ui.fragment.StatistikFragment$1.onResponse(StatistikFragment.java:155)
+	at retrofit2.DefaultCallAdapterFactory$ExecutorCallbackCall$1.lambda$onResponse$0$retrofit2-DefaultCallAdapterFactory$ExecutorCallbackCall$1(DefaultCallAdapterFactory.java:89)
+	at retrofit2.DefaultCallAdapterFactory$ExecutorCallbackCall$1$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+	at android.os.Handler.handleCallback(Handler.java:991)
+	at android.os.Handler.dispatchMessage(Handler.java:102)
+	at android.os.Looper.loopOnce(Looper.java:232)
+	at android.os.Looper.loop(Looper.java:317)
+	at android.app.ActivityThread.main(ActivityThread.java:8934)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:591)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:911)

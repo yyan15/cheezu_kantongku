@@ -397,8 +397,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:src="@drawable/ic_other"
-                            android:padding="12dp"
-                            app:tint="@color/teal_primary"
                             android:contentDescription="Avatar"/>
                     </androidx.cardview.widget.CardView>
 
@@ -441,18 +439,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:orientation="horizontal"
-                    android:gravity="center_vertical"
+                    android:gravity="center"
                     android:clickable="true"
                     android:focusable="true"
-                    android:background="?attr/selectableItemBackground">
+                    android:background="?attr/selectableItemBackground"
+                    android:layout_marginTop="8dp">
 
-                    <ImageView android:layout_width="20dp" android:layout_height="20dp"
-                        android:src="@drawable/ic_other" android:contentDescription="Logout"
-                        app:tint="@color/expense_red"/>
-
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                         android:text="Logout / Keluar" android:textColor="@color/expense_red"
-                        android:textSize="14sp" android:layout_marginStart="12dp" android:textStyle="bold"/>
+                        android:textSize="18sp" android:gravity="center" android:textStyle="bold"/>
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

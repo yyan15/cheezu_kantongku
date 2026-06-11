@@ -1,0 +1,1 @@
+*** command '/system/xbin/su root lshal debug -E vendor.lineage.livedisplay@2.0::IPictureAdjustment/default' failed: exit code 1

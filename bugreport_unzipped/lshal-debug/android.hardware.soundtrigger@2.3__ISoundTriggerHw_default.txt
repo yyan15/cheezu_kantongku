@@ -1,0 +1,1 @@
+*** command '/system/xbin/su root lshal debug -E android.hardware.soundtrigger@2.3::ISoundTriggerHw/default' failed: exit code 1

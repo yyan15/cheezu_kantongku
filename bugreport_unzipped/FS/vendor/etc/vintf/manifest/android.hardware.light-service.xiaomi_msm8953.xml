@@ -1,0 +1,11 @@
+<!--
+    Input:
+        device/xiaomi/msm8953-common/light/android.hardware.light-service.xiaomi_msm8953.xml
+-->
+<manifest version="9.0" type="device">
+    <hal format="aidl">
+        <name>android.hardware.light</name>
+        <version>2</version>
+        <fqname>ILights/default</fqname>
+    </hal>
+</manifest>

@@ -10,8 +10,8 @@ android {
 
     defaultConfig {
         applicationId "com.cheezu.kantongku"
-        minSdk 33
-        targetSdk 36
+        minSdk 28
+        targetSdk 35
         versionCode 1
         versionName "1.0"
 
@@ -83,6 +83,10 @@ dependencies {
 
     implementation 'androidx.preference:preference:1.2.1'
     implementation 'com.google.android.material:material:1.9.0'
+
+    // Glide for image loading
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
 
     // ─── SSO Dependencies ─────────────────────────────────────
     implementation "androidx.credentials:credentials:1.2.0"

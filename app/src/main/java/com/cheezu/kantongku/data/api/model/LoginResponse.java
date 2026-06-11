@@ -32,8 +32,11 @@ public class LoginResponse {
         private String name;
         @SerializedName("email")
         private String email;
+        @SerializedName("photo")
+        private String photo;
 
         public String getName() { return name; }
         public String getEmail() { return email; }
+        public String getPhoto() { return photo; }
     }
 }

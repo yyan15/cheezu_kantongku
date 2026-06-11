@@ -1,0 +1,1 @@
+*** command '/system/xbin/su root lshal debug -E android.hardware.graphics.allocator@2.0::IAllocator/default' failed: exit code 1

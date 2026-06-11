@@ -38,6 +38,8 @@ import com.cheezu.kantongku.data.api.ApiResponse;
 import com.cheezu.kantongku.data.api.TransaksiApiService;
 import com.cheezu.kantongku.data.api.model.Transaksi;
 import com.cheezu.kantongku.util.ExportHelper;
+import com.bumptech.glide.Glide;
+import android.widget.ImageView;
 import com.cheezu.kantongku.util.RupiahTextWatcher;
 
 import retrofit2.Call;
@@ -75,6 +77,7 @@ public class SetelanFragment extends Fragment {
     };
 
     private TextView tvBudgetTotalValue, tvThresholdValue, tvUserName, tvUserEmail;
+    private ImageView ivUserAvatar;
     private Switch switchResetBudget, switchNotifBudget, switchReminder, switchDarkMode;
     private LinearLayout itemBudgetTotal, itemBudgetKategori,
             itemThreshold, itemExport, itemResetData, itemLogout;
@@ -101,6 +104,7 @@ public class SetelanFragment extends Fragment {
         tvThresholdValue    = view.findViewById(R.id.tv_threshold_value);
         tvUserName          = view.findViewById(R.id.tv_user_name);
         tvUserEmail         = view.findViewById(R.id.tv_user_email);
+        ivUserAvatar        = view.findViewById(R.id.iv_user_avatar);
         switchResetBudget   = view.findViewById(R.id.switch_reset_budget);
         switchNotifBudget   = view.findViewById(R.id.switch_notif_budget);
         switchReminder      = view.findViewById(R.id.switch_reminder);
@@ -123,9 +127,24 @@ public class SetelanFragment extends Fragment {
         SharedPreferences kantongkuPrefs = requireContext().getSharedPreferences("KantongkuPrefs", Context.MODE_PRIVATE);
         String name = kantongkuPrefs.getString("user_name", "Pengguna");
         String email = kantongkuPrefs.getString("user_email", "Belum Login");
+        String photoUrl = kantongkuPrefs.getString("user_photo", null);
+        android.util.Log.d("PHOTO_DEBUG", "URL Foto ditemukan: " + photoUrl);
 
         tvUserName.setText(name);
         tvUserEmail.setText(email);
+
+        if (photoUrl != null && ivUserAvatar != null && isAdded()) {
+            Glide.with(this)
+                    .load(photoUrl)
+                    .circleCrop()
+                    .placeholder(R.drawable.ic_other)
+                    .error(R.drawable.ic_other)
+                    .into(ivUserAvatar);
+            ivUserAvatar.setPadding(0,0,0,0);
+        } else if (ivUserAvatar != null) {
+            ivUserAvatar.setImageResource(R.drawable.ic_other);
+            ivUserAvatar.setPadding(12, 12, 12, 12);
+        }
     }
 
     // ─── Load setting tersimpan ──────────────────────────────
@@ -210,19 +229,16 @@ public class SetelanFragment extends Fragment {
 
     private void showDialogLogout() {
         new AlertDialog.Builder(requireContext())
-                .setTitle("Logout")
-                .setMessage("Apakah Anda yakin ingin keluar?")
-                .setPositiveButton("Logout", (dialog, which) -> {
-                    // 1. Hapus token dari SharedPreferences
+                .setTitle("Logout / Keluar")
+                .setMessage("Apa anda yakin ingin keluar dari aplikasi?")
+                .setPositiveButton("Ya, Keluar", (dialog, which) -> {
+                    // Hapus data dari SharedPreferences
                     SharedPreferences kantongkuPrefs = requireContext().getSharedPreferences("KantongkuPrefs", Context.MODE_PRIVATE);
                     kantongkuPrefs.edit().clear().apply();
 
-                    // 2. Clear Google Sign In (Optional but recommended)
-                    // You might need to inject GoogleSignInClient here or just clear the local state
-
                     Toast.makeText(requireContext(), "Logout berhasil", Toast.LENGTH_SHORT).show();
 
-                    // 3. Pindah ke LoginActivity
+                    // Pindah ke LoginActivity
                     Intent intent = new Intent(requireActivity(), LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
